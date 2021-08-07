@@ -4,3 +4,9 @@ bin
 obj
 .DS_Store
 .idea
+.vs
+**.shp
+**.png
+mods/d2k
+mods/common
+mods/modcontent
