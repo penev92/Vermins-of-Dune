@@ -1,0 +1,12 @@
+Speech:
+	DefaultVariant: .AUD
+	Prefixes:
+		atreides: AI_
+		fremen: AI_
+		ordos: OI_
+		smuggler: OI_
+		tuek: OI_
+		ix: OI_
+		mercenary: OI_
+		harkonnen: HI_
+		corrino: HI_

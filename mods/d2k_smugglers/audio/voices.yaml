@@ -1,0 +1,98 @@
+InfantryVoice:
+	DefaultVariant: .WAV
+	Variants:
+		atreides: .AUD
+		ordos: .AUD
+		smuggler: .WAV
+		harkonnen: .AUD
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+	Voices:
+		Select: _ISEL1,_ISEL2,_ISEL3
+		Action: _ICONF1,_ICONF2,_ICONF3
+		Die: KILLGUY1,KILLGUY2,KILLGUY3,KILLGUY4,KILLGUY5,KILLGUY6,KILLGUY7,KILLGUY8,KILLGUY9
+		Guard: I_GUARD
+	DisablePrefixes: Die
+	DisableVariants: ~Select, ~Action, ~Guard, Die
+
+
+GenericVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+
+VehicleVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+
+InfantryVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+
+EngineerVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+
+FremenVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+
+SaboteurVoice:
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+

@@ -1,0 +1,158 @@
+power.smugglers:
+	idle: s-windtrap.shp
+		Offset: 1,-6
+	make: DATA.R8
+		Start: 4415
+		Length: 12
+		Offset: -32,64
+	crumble-overlay: DATA.R8
+		Start: 4427
+		Length: 12
+		Offset: -32,64
+		Tick: 100
+	damaged-idle: s-windtrap-damaged.shp
+		Offset: 1,-6
+	idle-zaps: s-windtrap-zaps.shp
+		Start: 0
+		Length: 10
+		# Length: 5
+		Offset: 3,-4
+		Tick: 200
+	damaged-idle-zaps: DATA.R8
+		Start: 4761
+		Length: 5
+		Offset: -32,64
+		Tick: 200
+	bib: BLOXBASE.R8
+		Frames: 617, 618, 637, 638
+		Length: 4
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 649, 650, 669, 670
+		Length: 4
+		Offset: -16,-16
+	icon: s-windtrap-cameo.shp
+		# Offset: -30,-24
+
+
+silo.smugglers:
+	idle: s-silo-idle.shp
+		Offset: 1,1
+	damaged-idle: s-silo-idle-damaged.shp
+		Offset: 1,1
+	stages: s-silo-idle.shp
+		Offset: 1,1 
+		Length: 4
+	damaged-stages: s-silo-idle-damaged.shp
+		Offset: 1,1
+	make: DATA.R8
+		Start: 4577
+		Length: 7
+		Offset: -16,16
+	crumble-overlay: DATA.R8
+		Start: 4584
+		Length: 7
+		Offset: -16,16
+		Tick: 200
+		ZOffset: 1024
+	icon: s-silo-cameo.shp
+
+
+refinery.smugglers:
+	idle: s-refinery-bottom.shp
+		Offset: 8,-16
+	make: DATA.R8
+		Start: 4495
+		Length: 11
+		Offset: -48,64
+	crumble-overlay: DATA.R8
+		Start: 4505
+		Length: 12
+		Offset: -48,64
+		Tick: 100
+	damaged-idle: DATA.R8
+		Start: 2969
+		Offset: -48,64
+	idle-top: s-refinery-top.shp
+		Offset: 8,-16
+	damaged-idle-top: s-refinery-damaged-both.shp
+		Offset: 8,-16
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: s-refinery-cameo.shp
+	smoke: DATA.R8
+		Start: 4138
+		Length: 14
+		Offset: 13,-16
+		Tick: 100
+		BlendMode: Additive
+
+
+
+conyard.smugglers:
+	idle: s-conyard-idle.shp
+		# Offset: -48,64
+		# Offset: -1, 117\
+		Offset: 0, -10
+	make: DATA.R8
+		Start: 4373
+		Length: 30
+		Offset: -48,64
+	crumble-overlay: DATA.R8
+		Start: 4403
+		Length: 12
+		Offset: -48,64
+		Tick: 170
+	damaged-idle: s-conyard-idle-damaged.shp
+		Offset: 0, -10
+	crane-overlay: s-conyard-crane.shp
+		Length: 14
+		Offset: -26, -6
+		Tick: 80
+		ZOffset: 1023
+	damaged-crane-overlay: s-conyard-crane.shp
+		Length: 14
+		Offset: -26, -6
+		Tick: 80
+		ZOffset: 1023
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: s-conyard-cameo.shp
+
+
+barracks.smugglers:
+	idle: s-barracks-idle.shp
+		# Offset: -32,64
+		Offset: 4, 4
+	make: s-barracks-crumble.shp
+		Length: 8
+		Offset: 4, 0
+	crumble-overlay: s-barracks-crumble.shp
+		Start: 8
+		Offset: 4, 0
+		Length: 9
+		Tick: 100
+	damaged-idle: s-barracks-damaged.shp
+		# Offset: -32,64
+		Offset: 4, 4
+	bib: BLOXBASE.R8
+		Frames: 617, 618, 637, 638
+		Length: 4
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 649, 650, 669, 670
+		Length: 4
+		Offset: -16,-16
+	icon: s-barracks-cameo.shp

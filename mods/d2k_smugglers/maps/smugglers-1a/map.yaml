@@ -1,0 +1,219 @@
+MapFormat: 11
+
+RequiresMod: d2k_smugglers
+
+Title: Smugglers 01a
+
+Author: oldnaari
+
+Tileset: ARRAKIS
+
+MapSize: 34,34
+
+Bounds: 1,1,32,32
+
+Visibility: MissionSelector
+
+Categories: Campaign
+
+LockPreview: True
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Smugglers:
+		Name: Smugglers
+		Playable: True
+		LockFaction: True
+		Faction: smuggler
+		LockColor: True
+		Color: 542209
+		Enemies: Fremen, Creeps
+	PlayerReference@Fremen:
+		Name: Fremen
+		Bot: campaign
+		LockFaction: True
+		Faction: fremen
+		LockColor: True
+		Color: DDDDDD
+		Enemies: Smugglers, Creeps
+
+Actors:
+	SmugglersConyard: construction_yard
+		Owner: Smugglers
+		Location: 5,10
+	Actor3: light_inf
+		Owner: Smugglers
+		SubCell: 3
+		Location: 9,10
+		Facing: 0
+	Actor4: light_inf
+		Owner: Smugglers
+		SubCell: 3
+		Location: 7,8
+		Facing: 0
+	Actor5: light_inf
+		Owner: Smugglers
+		SubCell: 3
+		Location: 3,10
+		Facing: 0
+	Actor9: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 3
+		Location: 3,4
+		Stance: ReturnFire
+	Actor10: nsfremen
+		Owner: Fremen
+		Facing: 384
+		Location: 3,4
+		SubCell: 1
+		Stance: ReturnFire
+	Actor11: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 9,21
+	Actor12: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 23,5
+	Actor19: refinery
+		Owner: Fremen
+		Location: 29,25
+	Actor20: wind_trap
+		Owner: Fremen
+		Location: 30,29
+	Actor21: silo
+		Owner: Fremen
+		Location: 30,23
+	Actor22: silo
+		Owner: Fremen
+		Location: 29,23
+	Actor24: nsfremen
+		Owner: Fremen
+		Location: 29,22
+		SubCell: 3
+		Facing: 0
+		Stance: AttackAnything
+	Actor25: nsfremen
+		Owner: Fremen
+		SubCell: 1
+		Location: 29,22
+		Facing: 0
+		Stance: AttackAnything
+	Actor26: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 27,24
+		Facing: 0
+		Stance: AttackAnything
+	Actor28: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 26,28
+		Facing: 0
+		Stance: AttackAnything
+	Actor29: nsfremen
+		Owner: Fremen
+		Location: 25,28
+		SubCell: 3
+		Facing: 0
+		Stance: AttackAnything
+	Actor30: light_inf
+		Owner: Fremen
+		Location: 29,22
+		SubCell: 2
+		Facing: 0
+		Stance: AttackAnything
+	Actor31: light_inf
+		Owner: Fremen
+		Location: 26,28
+		SubCell: 1
+		Facing: 0
+		Stance: AttackAnything
+	Actor32: light_inf
+		Owner: Fremen
+		Location: 25,28
+		SubCell: 1
+		Facing: 0
+		Stance: AttackAnything
+	Actor34: light_inf
+		Owner: Fremen
+		Location: 25,27
+		SubCell: 2
+		Facing: 0
+		Stance: AttackAnything
+	Actor40: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 28,17
+	Actor41: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 17,29
+	Actor42: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 5,30
+		Facing: 0
+		Stance: ReturnFire
+	Actor43: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 6,31
+		Facing: 0
+		Stance: ReturnFire
+	Actor46: nsfremen
+		Owner: Fremen
+		Location: 28,23
+		SubCell: 3
+		Facing: 0
+		Stance: AttackAnything
+	FremenAttack: waypoint
+		Owner: Fremen
+		Location: 4,9
+	SmugglersEntry: waypoint
+		Owner: Smugglers
+		Location: 11,1
+	SmugglersRally: waypoint
+		Owner: Smugglers
+		Location: 11,9
+	Actor39: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 3
+		Location: 16,27
+	Actor44: nsfremen
+		Owner: Fremen
+		Facing: 384
+		Location: 16,27
+		SubCell: 1
+	Actor45: nsfremen
+		Owner: Fremen
+		Facing: 384
+		Location: 16,27
+		SubCell: 2
+	FremenEntry: waypoint
+		Owner: Fremen
+		Location: 21,32
+	FremenMidpoint1: waypoint
+		Owner: Fremen
+		Location: 3,28
+	FremenMidpoint2: waypoint
+		Owner: Fremen
+		Location: 31,6
+	Actor49: light_inf
+		SubCell: 3
+		Location: 12,15
+		TurretFacing: 0
+		Facing: 0
+		Faction: Random
+		Owner: Smugglers
+	FremenMapCenterGatherPoint: waypoint
+		Location: 17,20
+		Owner: Fremen
+
+Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k|rules/campaign-palettes.yaml, rules.yaml, infantry.yaml

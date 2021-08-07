@@ -1,0 +1,85 @@
+
+wind_trap:
+	RenderSprites:
+		Image: power.ordos
+		FactionImages:
+			atreides: power.atreides
+			fremen: power.atreides
+			smuggler: power.smugglers
+			tuek: power.smugglers
+			harkonnen: power.harkonnen
+			corrino: power.harkonnen
+
+
+refinery:
+	RenderSprites:
+		Image: refinery.ordos
+		FactionImages:
+			atreides: refinery.atreides
+			fremen: refinery.atreides
+			smuggler: refinery.smugglers
+			tuek: refinery.smugglers
+			harkonnen: refinery.harkonnen
+			corrino: refinery.harkonnen
+
+construction_yard:
+	RenderSprites:
+		Image: conyard.ordos
+		FactionImages:
+			atreides: conyard.atreides
+			fremen: conyard.atreides
+			smuggler: conyard.smugglers
+			tuek: conyard.smugglers
+			harkonnen: conyard.harkonnen
+			corrino: conyard.harkonnen
+
+silo:
+	RenderSprites:
+		Image: silo.ordos
+		FactionImages:
+			atreides: silo.atreides
+			fremen: silo.atreides
+			smuggler: silo.smugglers
+			tuek: silo.smugglers
+			harkonnen: silo.harkonnen
+			corrino: silo.harkonnen
+
+
+barracks:
+	# ProvidesPrerequisite@atreides:
+	# 	Prerequisite: barracks.atreides
+	# 	Factions: atreides
+	# ProvidesPrerequisite@ordos:
+	# 	Prerequisite: barracks.ordos
+	# 	Factions: ordos
+	# ProvidesPrerequisite@harkonnen:
+	# 	Prerequisite: barracks.harkonnen
+	# 	Factions: harkonnen
+	RenderSprites:
+		Image: barracks.ordos
+		FactionImages:
+			atreides: barracks.atreides
+			fremen: barracks.atreides
+			smuggler: barracks.smugglers
+			tuek: barracks.smugglers
+			harkonnen: barracks.harkonnen
+			corrino: barracks.harkonnen
+
+
+light_factory:
+	# ProvidesPrerequisite@atreides:
+	# 	Prerequisite: light.atreides
+	# 	Factions: atreides
+	# ProvidesPrerequisite@ordos:
+	# 	Prerequisite: light.ordos
+	# 	Factions: ordos
+	# ProvidesPrerequisite@harkonnen:
+	# 	Prerequisite: light.harkonnen
+	# 	Factions: harkonnen
+	ProvidesPrerequisite@trike:
+		Prerequisite: light.trike
+		Factions: atreides, fremen, harkonnen, corrino, ix
+	ProvidesPrerequisite@raider:
+		Prerequisite: light.raider
+		Factions: ordos, smuggler, mercenary, tuek
+		

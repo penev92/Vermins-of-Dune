@@ -1,0 +1,54 @@
+civilian:
+	stand: civilian-idle.shp
+		Offset: 4, -5
+		Facings: -8
+		Transpose: true
+	idle1: civilian-idle1.shp
+		Offset: 4, -5
+		Length: 8
+		Tick: 80
+	idle2: civilian-idle2.shp
+		Offset: 4, -5
+		Length: 8
+		Tick: 80
+	run: civilian-run.shp
+		Offset: 4, -5
+		Length: 6
+		Facings: -8
+		Transpose: true
+		Tick: 120
+	standup: civilian-idle.shp
+		Offset: 4, -5
+		Facings: -8
+		Transpose: true
+		Tick: 120
+	prone-stand: civilian-prone-stand.shp
+		Facings: -8
+		Transpose: true
+	prone-run: civilian-prone-run.shp
+		Length: 3
+		Facings: -8
+		Transpose: true
+		Tick: 120
+	die1: civilian-die1.shp
+		Offset: -3, -3
+		Length: 12
+		Tick: 80
+	die2: civilian-die2.shp
+		Offset: 0, -3
+		Length: 8
+		Tick: 80
+	die3: civilian-die3.shp
+		Offset: 0, -3
+		Length: 8
+		Tick: 80
+	die4: civilian-die4.shp
+		Length: 8
+		Tick: 80
+	die-crushed: civilian-crushed.shp
+		Length: 8
+		Tick: 800
+		ZOffset: -511
+	icon: DATA.R8
+		Start: 4274
+		Offset: -30,-24

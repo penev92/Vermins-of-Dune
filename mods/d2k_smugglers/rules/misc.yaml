@@ -1,0 +1,22 @@
+upgrade.conyard:
+	RenderSprites:
+		Image: conyard.ordos
+		FactionImages:
+			atreides: conyard.atreides
+			fremen: conyard.atreides
+			smuggler: conyard.smugglers
+			tuek: conyard.smugglers
+			harkonnen: conyard.harkonnen
+			corrino: conyard.harkonnen
+
+
+upgrade.barracks:
+	RenderSprites:
+		Image: barracks.ordos
+		FactionImages:
+			atreides: barracks.atreides
+			fremen: barracks.atreides
+			smuggler: barracks.smugglers
+			tuek: barracks.smugglers
+			harkonnen: barracks.harkonnen
+			corrino: barracks.harkonnen

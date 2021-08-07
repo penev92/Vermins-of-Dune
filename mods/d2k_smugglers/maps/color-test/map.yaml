@@ -1,0 +1,113 @@
+MapFormat: 11
+
+RequiresMod: d2k_smugglers
+
+Title: Color Test Map
+
+Author: oldnaari
+
+Tileset: ARRAKIS
+
+MapSize: 34,34
+
+Bounds: 1,1,32,32
+
+Visibility: MissionSelector
+
+Categories: Campaign
+
+LockPreview: True
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Brown:
+		Name: Smugglers
+		Playable: True
+		LockFaction: True
+		Faction: smuggler
+		LockColor: True
+		# Color: DDDDDD
+		Enemies: Creeps
+	PlayerReference@Gray:
+		Name: Fremen
+		LockFaction: True
+		Faction: fremen
+		LockColor: True
+		# Color: DDDDDD
+		Enemies: Creeps
+	PlayerReference@Green:
+		Name: Ordos
+		LockFaction: True
+		Faction: ordos
+		LockColor: True
+		# Color: 542209
+		Enemies: Creeps
+	PlayerReference@Red:
+		Name: Harkonnen
+		LockFaction: True
+		Faction: harkonnen
+		LockColor: True
+		# Color: DDDDDD
+		Enemies: Creeps
+	PlayerReference@Blue:
+		Name: Atreides
+		LockFaction: True
+		Faction: atreides
+		LockColor: True
+		# Color: DDDDDD
+		Enemies: Creeps
+	PlayerReference@Yellow:
+		Name: Mercenaries
+		LockFaction: True
+		Faction: mercenary
+		LockColor: True
+		# Color: DDDDDD
+		Enemies: Creeps
+
+Actors:
+	ActorSpawn: mpspawn
+		Location: 14,14
+		Owner: Neutral
+	Actor0: construction_yard
+		Owner: Smugglers
+		Location: 13,9
+	Actor1: barracks
+		Owner: Smugglers
+		Location: 17,5
+	Actor2: wind_trap
+		Owner: Smugglers
+		Location: 17,9
+	Actor3: wind_trap
+		Owner: Smugglers
+		Location: 19,9
+	Actor4: refinery
+		Owner: Smugglers
+		Location: 13,5
+	Actor5: light_factory
+		Owner: Smugglers
+		Location: 20,5
+	Actor6: silo
+		Owner: Smugglers
+		Location: 22,9
+	Actor7: silo
+		Owner: Smugglers
+		Location: 22,10
+	Actor8: silo
+		Owner: Smugglers
+		Location: 22,11
+	Actor9: wind_trap
+		Owner: Smugglers
+		Location: 19,13
+	Actor10: wind_trap
+		Owner: Smugglers
+		Location: 17,13
+
+Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

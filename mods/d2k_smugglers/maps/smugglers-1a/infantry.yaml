@@ -1,0 +1,5 @@
+nsfremen:
+	AutoTarget:
+		ScanRadius: -1
+		InitialStance: Defend
+		InitialStanceAI: AttackAnything

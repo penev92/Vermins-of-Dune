@@ -1,0 +1,17 @@
+civilian:
+	Inherits: ^Infantry
+	Inherits@selection: ^SelectableSupportUnit
+	Tooltip:
+		Name: Civilian
+	UpdatesPlayerStatistics:
+		AddToArmyValue: false
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 2c768
+	Mobile:
+		Speed: 31
+	-RevealOnFire:
+	Voiced:
+		VoiceSet: EngineerVoice
+	-AttackFrontal:

@@ -1,0 +1,42 @@
+^RadarSmugglers:
+	Image: tuek-insignia.png
+
+radar-smuggler:
+	Inherits: ^RadarSmugglers
+	Regions:
+		insignia: 14, 14, 100, 100
+
+
+^RadarSmugglers0:
+	Image: smuggler-insignia.png
+
+radar-smuggler0:
+	Inherits: ^RadarSmugglers0
+	Regions:
+		insignia: 14, 14, 100, 100
+
+
+
+# ^Glyphs:
+# 	Image: glyphs.png
+# 	Image2x: glyphs-2x.png
+# 	Image3x: glyphs-3x.png
+
+flags:
+	# Inherits: ^Glyphs
+	Image: mini-insignias.png
+	Image2x: mini-insignias-2x.png
+	Image3x: mini-insignias-3x.png
+	Regions:
+		tuek: 0, 0, 22, 21
+		ix: 0, 0, 22, 21
+		atreides: 0, 22, 22, 21
+		harkonnen: 0, 44, 22, 21
+		ordos: 0, 66, 22, 21
+		corrino: 23, 0, 22, 21
+		smuggler: 23, 22, 22, 21
+		fremen: 23, 44, 22, 21
+		worm: 23, 66, 22, 21
+		mercenary: 46, 0, 22, 21
+		spectator: 46, 22, 22, 21
+		Random: 46, 44, 22, 21
