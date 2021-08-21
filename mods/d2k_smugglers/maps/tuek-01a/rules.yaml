@@ -1,0 +1,12 @@
+# World:
+#   # -CreateMPPlayers:
+# 	MapOptions:
+# 		TechLevel: low
+# 	ScriptLobbyDropdown@difficulty:
+# 		ID: difficulty
+# 		Label: Difficulty
+# 		Values:
+# 			easy: Easy
+# 			normal: Normal
+# 			hard: Hard
+# 		Default: easy

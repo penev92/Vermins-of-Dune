@@ -79,6 +79,7 @@ Assemblies:
 	^BinDir|OpenRA.Mods.Common.dll
 	^BinDir|OpenRA.Mods.Cnc.dll
 	^BinDir|OpenRA.Mods.D2k.dll
+	^BinDir|OpenRA.Mods.D2kSmugglers.dll
 
 ChromeLayout:
 	common|chrome/ingame.yaml
@@ -117,7 +118,7 @@ ChromeLayout:
 	common|chrome/connection.yaml
 	d2k|chrome/dropdowns.yaml
 	common|chrome/musicplayer.yaml
-	d2k|chrome/tooltips.yaml
+	# d2k|chrome/tooltips.yaml
 	common|chrome/assetbrowser.yaml
 	d2k|chrome/missionbrowser.yaml
 	common|chrome/confirmation-dialogs.yaml
@@ -125,6 +126,7 @@ ChromeLayout:
 	common|chrome/replaybrowser.yaml
 	common|chrome/gamesave-browser.yaml
 	common|chrome/gamesave-loading.yaml
+	d2k_smugglers|chrome/tooltips.yaml
 
 Weapons:
 	d2k|weapons/debris.yaml

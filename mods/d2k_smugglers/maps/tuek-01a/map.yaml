@@ -28,7 +28,7 @@ Players:
 		Name: Creeps
 		NonCombatant: True
 		Faction: Random
-		Enemies: Smugglers, Fremen, Multi0
+		Enemies: Smugglers, Fremen
 	PlayerReference@Smugglers:
 		Name: Smugglers
 		Playable: True
@@ -45,11 +45,6 @@ Players:
 		LockColor: True
 		Color: DDDDDD
 		Enemies: Smugglers, Creeps
-	PlayerReference@Multi0:
-		Name: Multi0
-		Playable: True
-		Faction: Random
-		Enemies: Creeps
 
 Actors:
 	Actor0: construction_yard
@@ -125,8 +120,6 @@ Actors:
 		Facing: 384
 		Location: 5,5
 		SubCell: 4
-	Actor15: mpspawn
-		Owner: Neutral
-		Location: 25,22
 
-Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-palettes.yaml
+
+Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-palettes.yaml, rules.yaml
