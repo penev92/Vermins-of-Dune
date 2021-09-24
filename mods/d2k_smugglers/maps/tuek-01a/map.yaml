@@ -37,6 +37,14 @@ Players:
 		LockColor: True
 		Color: 542209
 		Enemies: Fremen, Creeps
+	PlayerReference@SmugglerReinforcements:
+		Name: SmugglerReinforcements
+		Bot: campaign
+		LockFaction: True
+		Faction: fremen
+		LockColor: True
+		Color: 542209
+		Enemies: Fremen, Creeps
 	PlayerReference@Fremen:
 		Name: Fremen
 		Bot: campaign
@@ -47,29 +55,6 @@ Players:
 		Enemies: Smugglers, Creeps
 
 Actors:
-	Actor0: construction_yard
-		Owner: Smugglers
-		Location: 20,21
-	Actor1: light_inf
-		Owner: Smugglers
-		SubCell: 3
-		Location: 28,23
-		Facing: 1023
-	Actor2: light_inf
-		Owner: Smugglers
-		SubCell: 3
-		Location: 19,23
-		Facing: 1023
-	Actor3: light_inf
-		Owner: Smugglers
-		Location: 19,23
-		SubCell: 1
-		Facing: 1023
-	Actor4: light_inf
-		Owner: Smugglers
-		SubCell: 3
-		Location: 23,19
-		Facing: 1023
 	Actor5: fremen
 		Owner: Fremen
 		SubCell: 3
@@ -120,6 +105,45 @@ Actors:
 		Facing: 384
 		Location: 5,5
 		SubCell: 4
+	SmugglerRF1Entry: waypoint
+		Owner: Neutral
+		Location: 21,40
+	SmugglerRF1Drop: waypoint
+		Owner: Neutral
+		Location: 21,22
+	SmugglerRF1Exit: waypoint
+		Owner: Neutral
+		Location: 21,0
+	Actor15: camera
+		Owner: Smugglers
+		Location: 21,22
+	Actor16: sietch
+		Owner: Neutral
+		Location: 6,36
+	Actor17: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 3
+		Location: 4,36
+	Actor18: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 3
+		Location: 8,38
+	Actor19: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 3
+		Location: 7,38
+	Actor20: nsfremen
+		Owner: Fremen
+		Facing: 384
+		SubCell: 1
+		Location: 8,38
+	Actor21: nsfremen
+		Owner: Fremen
+		Facing: 384
+		Location: 8,38
+		SubCell: 2
 
-
-Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-palettes.yaml, rules.yaml
+Rules: d2k|rules/campaign-rules.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml

@@ -28,48 +28,60 @@ Players:
 		Name: Creeps
 		NonCombatant: True
 		Faction: Random
-	PlayerReference@Brown:
+	PlayerReference@Smugglers:
 		Name: Smugglers
 		Playable: True
 		LockFaction: True
 		Faction: smuggler
 		LockColor: True
-		# Color: DDDDDD
 		Enemies: Creeps
-	PlayerReference@Gray:
+	PlayerReference@Fremen:
 		Name: Fremen
 		LockFaction: True
 		Faction: fremen
 		LockColor: True
-		# Color: DDDDDD
 		Enemies: Creeps
-	PlayerReference@Green:
+	PlayerReference@Ordos:
 		Name: Ordos
 		LockFaction: True
 		Faction: ordos
 		LockColor: True
-		# Color: 542209
 		Enemies: Creeps
-	PlayerReference@Red:
+	PlayerReference@Harkonnen:
 		Name: Harkonnen
 		LockFaction: True
 		Faction: harkonnen
 		LockColor: True
-		# Color: DDDDDD
 		Enemies: Creeps
-	PlayerReference@Blue:
+	PlayerReference@Atreides:
 		Name: Atreides
 		LockFaction: True
 		Faction: atreides
 		LockColor: True
-		# Color: DDDDDD
 		Enemies: Creeps
-	PlayerReference@Yellow:
+	PlayerReference@Mercenaries:
 		Name: Mercenaries
 		LockFaction: True
 		Faction: mercenary
 		LockColor: True
-		# Color: DDDDDD
+		Enemies: Creeps
+	PlayerReference@IX:
+		Name: IX
+		LockFaction: True
+		Faction: ix
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Corrino:
+		Name: Corrino
+		LockFaction: True
+		Faction: corrino
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Tuek:
+		Name: Tuek
+		LockFaction: True
+		Faction: tuek
+		LockColor: True
 		Enemies: Creeps
 
 Actors:
@@ -109,5 +121,179 @@ Actors:
 	Actor10: wind_trap
 		Owner: Smugglers
 		Location: 17,13
+	Actor12: silo
+		Owner: Harkonnen
+		Location: 23,9
+	Actor13: silo
+		Owner: Ordos
+		Location: 23,10
+	Actor14: silo
+		Owner: Atreides
+		Location: 23,11
+	Actor15: civilian
+		Owner: Smugglers
+		SubCell: 3
+		Facing: 384
+		Location: 14,14
+	Actor16: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 1
+	Actor17: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 2
+	Actor18: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 4
+	Actor19: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 5
+	Actor20: civilian
+		Owner: Neutral
+		SubCell: 3
+		Facing: 384
+		Location: 12,12
+	Actor21: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 1
+	Actor22: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 2
+	Actor23: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 4
+	Actor24: civilian
+		Owner: Neutral
+		Location: 12,12
+		SubCell: 5
+		Facing: 384
+	Actor25: nsfremen
+		Owner: Neutral
+		Facing: 384
+		SubCell: 3
+		Location: 9,12
+	Actor26: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 1
+	Actor27: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 2
+	Actor28: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 4
+	Actor29: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 5
+	Actor30: wind_trap
+		Owner: Smugglers
+		Location: 25,13
+	Actor31: heavy_factory
+		Owner: Smugglers
+		Location: 9,4
+	Actor32: outpost
+		Owner: Smugglers
+		Location: 5,5
+	Actor35: wind_trap
+		Owner: Smugglers
+		Location: 27,13
+	Actor36: starport
+		Owner: Smugglers
+		Location: 22,17
+	Actor37: wind_trap
+		Owner: Smugglers
+		Location: 25,17
+	Actor38: wind_trap
+		Owner: Smugglers
+		Location: 27,17
+	Actor39: siege_tank
+		Owner: Neutral
+		Location: 8,9
+		Facing: 0
+	Actor40: combat_tank_h
+		Owner: Neutral
+		Location: 7,9
+		Facing: 0
+	Actor41: missile_tank
+		Owner: Neutral
+		Location: 6,9
+		Facing: 0
+	Actor42: sonic_tank
+		Owner: Neutral
+		Location: 5,9
+		Facing: 0
+	Actor43: quad
+		Owner: Neutral
+		Location: 9,9
+		Facing: 0
+	Actor44: barracks
+		Owner: Harkonnen
+		Location: 19,2
+	Actor45: barracks
+		Owner: Ordos
+		Location: 15,2
+	Actor46: barracks
+		Owner: Smugglers
+		Location: 17,2
+	Actor47: light_inf
+		Owner: IX
+		SubCell: 3
+		Location: 14,26
+		Facing: 563
+	Actor48: light_inf
+		Owner: IX
+		Location: 14,26
+		SubCell: 1
+		Facing: 384
+	Actor49: light_inf
+		Owner: IX
+		Facing: 384
+		Location: 14,26
+		SubCell: 2
+	Actor50: research_centre
+		Owner: IX
+		Location: 11,24
+	Actor51: wind_trap
+		Owner: IX
+		Location: 8,25
+	Actor52: wind_trap
+		Owner: IX
+		Location: 6,25
+	Actor53: quad
+		Owner: IX
+		Location: 14,27
+		Facing: 0
+	Actor54: quad
+		Owner: IX
+		Location: 9,23
+		Facing: 0
+	Actor55: carryall
+		Owner: IX
+		Facing: 384
+		Location: 10,27
+	Actor56: trike
+		Owner: IX
+		Location: 11,28
+		Facing: 0
 
-Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml
+Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

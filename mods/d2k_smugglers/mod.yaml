@@ -25,7 +25,7 @@ Packages:
 
 MapFolders:
 	d2k_smugglers|maps: System
-	d2k|maps: System
+	# d2k|maps: System
 	~^SupportDir|maps/d2k/release-20210321: User
 
 RequiresMods:
@@ -50,6 +50,7 @@ Rules:
 	d2k_smugglers|rules/infantry.yaml
 	d2k_smugglers|rules/misc.yaml
 	d2k_smugglers|rules/world.yaml
+	d2k_smugglers|rules/aircraft.yaml
 
 Sequences:
 	d2k|sequences/aircraft.yaml

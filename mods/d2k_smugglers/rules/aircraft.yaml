@@ -1,0 +1,5 @@
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 20
+	# Aircraft:
+	# 	LandAltitude: 1024

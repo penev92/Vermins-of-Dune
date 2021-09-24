@@ -27,14 +27,19 @@ WorldLoaded = function()
 
 	player = {
 		Player.GetPlayer("Smugglers"),
+		Player.GetPlayer("Tuek"),
+		Player.GetPlayer("IX"),
 		Player.GetPlayer("Ordos"),
 		Player.GetPlayer("Mercenaries"),
 		Player.GetPlayer("Atreides"),
 		Player.GetPlayer("Harkonnen"),
 		Player.GetPlayer("Fremen"),
+		Player.GetPlayer("Corrino"),
 	} 
 
 	all_units = player[1].GetActors()
+	neutral_units = Player.GetPlayer("Neutral").GetActors()
+	ChangeOwner(neutral_units, player[1])
 
 	ChangeColor = function()
 		i = i % 6 + 1
@@ -44,4 +49,6 @@ WorldLoaded = function()
 
 
 	Trigger.AfterDelay(FlashTime, ChangeColor)
+
+
 end

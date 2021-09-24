@@ -1,6 +1,15 @@
+^Palettes:
+	IndexedPlayerPalette:
+		PlayerIndex:
+			Deserters: 239, 238, 237, 236, 235, 234, 233, 232, 231, 230, 229, 228, 227, 226, 225, 224
+
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
 World:
 	LuaScript:
-		Scripts: campaign-global.lua, tuek01a.lua
+		Scripts: campaign-global.lua
 	MapOptions:
 		TechLevel: low
 	ScriptLobbyDropdown@difficulty:
@@ -12,10 +21,9 @@ World:
 			hard: Hard
 		Default: easy
 
-^Palettes:
-	IndexedPlayerPalette:
-		PlayerIndex:
-			SmugglerReinforcements: 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
 
 upgrade.conyard:
 	Buildable:
@@ -37,14 +45,6 @@ concreteb:
 	Buildable:
 		Prerequisites: ~disabled
 
-barracks:
-	Buildable:
-		Prerequisites: ~disabled
-
-light_factory:
-	Buildable:
-		Prerequisites: ~disabled
-
 heavy_factory:
 	Buildable:
 		Prerequisites: ~disabled
@@ -56,3 +56,7 @@ medium_gun_turret:
 wall:
 	Buildable:
 		Prerequisites: ~disabled
+
+outpost:
+	Buildable:
+		Prerequisites: barracks
