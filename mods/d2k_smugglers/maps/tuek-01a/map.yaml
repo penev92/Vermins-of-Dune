@@ -35,7 +35,8 @@ Players:
 		LockFaction: True
 		Faction: smuggler
 		LockColor: True
-		Color: 542209
+		# Color: 542209
+		Color: 9e5a10
 		Enemies: Fremen, Creeps
 	PlayerReference@SmugglerReinforcements:
 		Name: SmugglerReinforcements
