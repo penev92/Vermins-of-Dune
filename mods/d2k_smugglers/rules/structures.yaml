@@ -67,19 +67,18 @@ barracks:
 
 
 light_factory:
-	# ProvidesPrerequisite@atreides:
-	# 	Prerequisite: light.atreides
-	# 	Factions: atreides
-	# ProvidesPrerequisite@ordos:
-	# 	Prerequisite: light.ordos
-	# 	Factions: ordos
-	# ProvidesPrerequisite@harkonnen:
-	# 	Prerequisite: light.harkonnen
-	# 	Factions: harkonnen
 	ProvidesPrerequisite@trike:
 		Prerequisite: light.trike
 		Factions: atreides, fremen, harkonnen, corrino, ix
 	ProvidesPrerequisite@raider:
 		Prerequisite: light.raider
 		Factions: ordos, smuggler, mercenary, tuek
-		
+	RenderSprites:
+		Image: light.ordos
+		FactionImages:
+			atreides: light.atreides
+			fremen: light.atreides
+			smuggler: light.smugglers
+			tuek: light.smugglers
+			harkonnen: light.harkonnen
+			corrino: light.harkonnen
