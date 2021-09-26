@@ -27,7 +27,7 @@ Messages =
 	"Build a Silo to store additional Spice."
 }
 
-StarterUnits = {"mcv", "light_inf", "light_inf", "light_inf", "light_inf"}
+StarterUnits = {"mcv", "light_inf", "light_inf", "raider", "thumper"}
 
 
 Tick = function()
