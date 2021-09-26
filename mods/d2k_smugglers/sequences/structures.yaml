@@ -156,3 +156,42 @@ barracks.smugglers:
 		Length: 4
 		Offset: -16,-16
 	icon: s-barracks-cameo.shp
+
+
+light.smugglers:
+	idle: DATA.R8
+		Start: 3241 #TODO
+		Offset: -48,64
+	make: DATA.R8
+		Start: 4559
+		Length: 8
+		Offset: -48,64
+	crumble-overlay: DATA.R8
+		Start: 4567
+		Length: 9
+		Offset: -48,64
+		Tick: 100
+	damaged-idle: DATA.R8
+		Start: 3241 #TODO
+		Offset: -48,64
+	idle-top: s-light-idle-top.shp
+		# Offset: -48,64
+		ZOffset: 896
+	damaged-idle-top: s-light-idle-top-damaged.shp
+		ZOffset: 896
+	production-welding: DATA.R8
+		Start: 4928 #TODO
+		Length: 10
+		Offset: -48,64
+		Tick: 200
+		BlendMode: Additive
+		ZOffset: 1024
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: s-light-cameo.shp
