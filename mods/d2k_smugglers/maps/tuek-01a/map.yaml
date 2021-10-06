@@ -35,8 +35,7 @@ Players:
 		LockFaction: True
 		Faction: smuggler
 		LockColor: True
-		# Color: 542209
-		Color: 9e5a10
+		Color: 9E5A10
 		Enemies: Fremen, Creeps
 	PlayerReference@SmugglerReinforcements:
 		Name: SmugglerReinforcements
@@ -61,90 +60,94 @@ Actors:
 		SubCell: 3
 		Facing: 384
 		Location: 32,21
-	Actor6: fremen
-		Owner: Fremen
-		Facing: 384
-		SubCell: 3
-		Location: 11,15
-	Actor7: fremen
-		Owner: Fremen
-		Facing: 384
-		SubCell: 3
-		Location: 17,32
-	Actor8: fremen
-		Owner: Fremen
-		Facing: 384
-		Location: 17,32
-		SubCell: 1
 	Actor9: fremen
 		Owner: Fremen
 		Facing: 384
 		Location: 32,21
 		SubCell: 1
-	Actor10: fremen
-		Owner: Fremen
-		Facing: 384
-		SubCell: 3
-		Location: 12,16
-	Actor11: nsfremen
-		Owner: Fremen
-		Facing: 384
-		SubCell: 3
-		Location: 5,5
-	Actor12: nsfremen
-		Owner: Fremen
-		Facing: 384
-		Location: 5,5
-		SubCell: 1
-	Actor13: nsfremen
-		Owner: Fremen
-		Facing: 384
-		Location: 5,5
-		SubCell: 2
-	Actor14: nsfremen
-		Owner: Fremen
-		Facing: 384
-		Location: 5,5
-		SubCell: 4
 	SmugglerRF1Entry: waypoint
 		Owner: Neutral
 		Location: 21,40
 	SmugglerRF1Drop: waypoint
-		Owner: Neutral
 		Location: 21,22
+		Faction: Random
+		Owner: Smugglers
 	SmugglerRF1Exit: waypoint
 		Owner: Neutral
 		Location: 21,0
 	Actor15: camera
 		Owner: Smugglers
 		Location: 21,22
-	Actor16: sietch
-		Owner: Neutral
+	FremenCave1: sietch
 		Location: 6,36
+		Faction: Random
+		Owner: Fremen
+	SmugglerRF2Drop: waypoint
+		Faction: Random
+		Location: 26,19
+		Owner: Smugglers
+	SmugglerRF2Entry: waypoint
+		Owner: Neutral
+		Location: 26,40
+	Actor22: wormspawner
+		Owner: Neutral
+		Location: 14,24
+	Actor23: wormspawner
+		Owner: Neutral
+		Location: 33,17
+	Actor24: wormspawner
+		Owner: Neutral
+		Location: 6,12
+	FremenCave2: sietch
+		Faction: Random
+		Location: 38,1
+		Owner: Fremen
+	Actor26: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 15,25
+	Actor27: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 29,14
+	Actor28: spicebloom.spawnpoint
+		Owner: Neutral
+		Location: 15,11
+	SmugglerRF2Exit: waypoint
+		Owner: Smugglers
+		Location: 26,0
 	Actor17: nsfremen
 		Owner: Fremen
-		Facing: 384
 		SubCell: 3
-		Location: 4,36
+		Location: 7,38
+		Facing: 777
 	Actor18: nsfremen
 		Owner: Fremen
-		Facing: 384
-		SubCell: 3
-		Location: 8,38
+		Location: 7,38
+		SubCell: 1
+		Facing: 507
 	Actor19: nsfremen
 		Owner: Fremen
 		Facing: 384
 		SubCell: 3
-		Location: 7,38
+		Location: 32,11
 	Actor20: nsfremen
 		Owner: Fremen
+		SubCell: 3
+		Location: 38,3
 		Facing: 384
-		SubCell: 1
-		Location: 8,38
 	Actor21: nsfremen
 		Owner: Fremen
+		Location: 38,3
+		SubCell: 1
+		Facing: 499
+	Actor25: nsfremen
+		Owner: Fremen
 		Facing: 384
-		Location: 8,38
-		SubCell: 2
+		SubCell: 3
+		Location: 33,33
+	Actor29: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 7,4
+		Facing: 634
 
 Rules: d2k|rules/campaign-rules.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml

@@ -10,7 +10,18 @@ World:
 			easy: Easy
 			normal: Normal
 			hard: Hard
+			impossible: Impossible
 		Default: easy
+#MissionData:
+#Briefing: Some text \n Here
+#BriefingVideo: A_BR01_E.VQA
+#StartVideo: A_BR01_E.VQA
+#WinVideo: A_BR01_E.VQA
+#LossVideo: A_BR01_E.VQA
+
+Player:
+	PlayerResources:
+		DefaultCash: 2000
 
 ^Palettes:
 	IndexedPlayerPalette:

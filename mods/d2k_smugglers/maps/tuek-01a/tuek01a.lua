@@ -12,7 +12,8 @@ ToHarvest =
 {
 	easy = 2500,
 	normal = 3000,
-	hard = 3500
+	hard = 3500,
+	impossible = 4000
 }
 
 -- SmugglersReinforcements = { "light_inf", "light_inf", "light_inf" }
@@ -28,7 +29,7 @@ Messages =
 }
 
 StarterUnits = {"mcv", "light_inf", "light_inf", "raider", "thumper"}
-
+SmugglerReinforcements = {"thumper", "light_inf", "light_inf", "light_inf"}
 
 Tick = function()
 	-- if FremenArrived and fremen.HasNoRequiredUnits() then
@@ -66,7 +67,6 @@ WorldLoaded = function()
 	SpiceToHarvest = ToHarvest[Difficulty]
 
 	InitObjectives(player)
-	KillSmugglers = fremen.AddPrimaryObjective("Kill all smuggler units.")
 	GatherSpice = player.AddPrimaryObjective("Harvest " .. tostring(SpiceToHarvest) .. " Solaris worth of Spice.")
 	-- KillHarkonnen = player.AddSecondaryObjective("Eliminate all Harkonnen units and reinforcements\nin the area.")
 
@@ -84,7 +84,13 @@ WorldLoaded = function()
 	end
 
 	Reinforcements.ReinforceWithTransport(player, "carryall.reinforce", StarterUnits, {SmugglerRF1Entry.Location, SmugglerRF1Drop.Location}, {SmugglerRF1Exit.Location})
-
+	Trigger.AfterDelay(DateTime.Seconds(30), function() 
+	    Reinforcements.ReinforceWithTransport(player, "carryall.reinforce", SmugglerReinforcements,
+		{SmugglerRF2Entry.Location, SmugglerRF2Drop.Location}, {SmugglerRF2Exit.Location})
+	end)
+	-- Trigger.AfterDelay(DateTime.Seconds(3), function() 
+	-- 	Media.PlayMovieInRadar("A_BR01_E.VQA")
+	-- end)
 	Media.DisplayMessage(Messages[1], "Mentat")
 	CurrentWave = 1
 	RunWaves()
