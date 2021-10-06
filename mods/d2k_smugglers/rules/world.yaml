@@ -124,7 +124,7 @@ World:
 		ClassName: Light Support
 		Factions: tuek
 		BaseActor: mcv
-		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, quad
+		SupportActors: light_inf, light_inf, light_inf, thumper, trooper, raider, quad
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	MPStartUnits@heavyatreides:

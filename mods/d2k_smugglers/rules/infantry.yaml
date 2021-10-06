@@ -15,3 +15,8 @@ civilian:
 	Voiced:
 		VoiceSet: EngineerVoice
 	-AttackFrontal:
+
+	
+thumper:
+	Buildable:
+		Prerequisites: upgrade.barracks
