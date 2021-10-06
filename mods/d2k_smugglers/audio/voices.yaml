@@ -23,6 +23,28 @@ InfantryVoice:
 	DisablePrefixes: Die
 	DisableVariants: ~Select, ~Action, ~Guard, Die
 
+VehicleVoice:
+	DefaultVariant: .WAV
+	Variants:
+		atreides: .AUD
+		ordos: .AUD
+		smuggler: .WAV
+		harkonnen: .AUD
+	Prefixes:
+		atreides: A
+		fremen: A
+		ordos: O
+		smuggler: S
+		tuek: S
+		ix: S
+		mercenary: O
+		harkonnen: H
+		corrino: H
+	Voices:
+		Select: _VSEL1,_VSEL2,_VSEL3
+		Action: _VCONF1,_VCONF2,_VCONF3
+		Guard: I_GUARD
+
 
 GenericVoice:
 	Prefixes:
