@@ -10,6 +10,7 @@ Packages:
 	~^SupportDir|Content/d2k/v2/GAMESFX
 	~^SupportDir|Content/d2k_smugglers/GAMESFX
 	~^SupportDir|Content/d2k_smugglers/Movies
+	~^SupportDir|Content/d2k_smugglers/Music
 	~^SupportDir|Content/d2k/v2/Music
 	^EngineDir
 	$d2k: d2k

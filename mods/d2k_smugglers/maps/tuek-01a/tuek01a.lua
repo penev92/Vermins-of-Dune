@@ -16,9 +16,14 @@ ToHarvest =
 	impossible = 4000
 }
 
--- SmugglersReinforcements = { "light_inf", "light_inf", "light_inf" }
--- SmugglersPath = { SmugglersEntry.Location, SmugglersRally.Location }
--- SmugglerSpeaker = "Adjutant"
+FremenAttackCooldown =
+{
+	easy = 100,
+	normal = 80,
+	hard = 60,
+	impossible = 40
+}
+
 
 Messages =
 {
@@ -30,6 +35,13 @@ Messages =
 
 StarterUnits = {"mcv", "light_inf", "light_inf", "raider", "thumper"}
 SmugglerReinforcements = {"thumper", "light_inf", "light_inf", "light_inf"}
+
+-- PickPlayerStructure = function(player)
+-- end 
+
+-- AttackEnemyBase = function(unit, player_enemy)
+-- 	unit.AttackMove(SmugglerRF1Drop.Location)
+-- end
 
 Tick = function()
 	-- if FremenArrived and fremen.HasNoRequiredUnits() then
@@ -65,7 +77,6 @@ WorldLoaded = function()
 	fremen = Player.GetPlayer("Fremen")
 
 	SpiceToHarvest = ToHarvest[Difficulty]
-
 	InitObjectives(player)
 	GatherSpice = player.AddPrimaryObjective("Harvest " .. tostring(SpiceToHarvest) .. " Solaris worth of Spice.")
 	-- KillHarkonnen = player.AddSecondaryObjective("Eliminate all Harkonnen units and reinforcements\nin the area.")
@@ -83,51 +94,40 @@ WorldLoaded = function()
 		end)
 	end
 
-	Reinforcements.ReinforceWithTransport(player, "carryall.reinforce", StarterUnits, {SmugglerRF1Entry.Location, SmugglerRF1Drop.Location}, {SmugglerRF1Exit.Location})
-	Trigger.AfterDelay(DateTime.Seconds(30), function() 
+	Reinforcements.ReinforceWithTransport(player, "carryall.reinforce", StarterUnits,
+	                                      {SmugglerRF1Entry.Location, SmugglerRF1Drop.Location}, {SmugglerRF1Exit.Location})
+
+	Trigger.AfterDelay(DateTime.Seconds(150), function() 
 	    Reinforcements.ReinforceWithTransport(player, "carryall.reinforce", SmugglerReinforcements,
 		{SmugglerRF2Entry.Location, SmugglerRF2Drop.Location}, {SmugglerRF2Exit.Location})
 	end)
-	-- Trigger.AfterDelay(DateTime.Seconds(3), function() 
-	-- 	Media.PlayMovieInRadar("A_BR01_E.VQA")
-	-- end)
+
 	Media.DisplayMessage(Messages[1], "Mentat")
+	Media.StopMusic()
+	Media.PlayMusic("desoper")
 	CurrentWave = 1
 	RunWaves()
 end
 
 RunWaves = function()
-	-- local wavetype = FremenWaves[Difficulty][CurrentWave]
-	-- local units = FremenReinforcements[wavetype][Difficulty]
+	local units = {"nsfremen", "nsfremen"}
 
-	-- -- FremenAttackDelay = FremenAttackDelay - (#units * 3 - 3 - WavesLeft) * DateTime.Seconds(1)
-	-- local delay = 0
-	-- if CurrentWave == 1 then 
-	-- 	delay = DateTime.Seconds(30)
-	-- else
-	-- 	delay = FremenAttackDelay[wavetype]
-	-- end 
-	-- delay = Utils.RandomInteger(delay - DateTime.Seconds(2), delay)
+	if CurrentWave == 1 then
+		delay = DateTime.Seconds(90)
+	else
+		delay = DateTime.Seconds(FremenAttackCooldown[Difficulty])
+	end
 
-
-	-- if wavetype == "final" then
-	-- 	Media.DisplayMessage("Hold your defences, commander. A wave with a trike vehicle is approaching", SmugglerSpeaker)
-	-- end
-
-	-- Trigger.AfterDelay(delay, function()
-	-- 	SendReinforcementsFremen(units)
-	-- 	if CurrentWave == SmugglerReinforcementsOnWave[Difficulty] then
-	-- 		SendReinforcementsSmugglers()
-	-- 	end
-
-	-- 	CurrentWave = CurrentWave + 1
-	-- 	if wavetype == "final" then
-	-- 		Media.DisplayMessage("The fremen trike has arrived", SmugglerSpeaker)
-	-- 		Trigger.AfterDelay(DateTime.Seconds(1), function() FremenArrived = true end)
-	-- 	else
-	-- 		RunWaves()
-	-- 	end
-	-- end)
+	Trigger.AfterDelay(delay, function()
+		ReinforcementLocation = Utils.Random({FremenReinforceEntry1.Location, FremenReinforceEntry2.Location}) 
+		reinforcements = Reinforcements.Reinforce(fremen, units, {ReinforcementLocation}, 10, IdleHunt)
+		Utils.Do(reinforcements, function(unit)
+			-- unit.AttackMove(SmugglerRF1Drop.Location)
+			IdleHunt(unit)
+		end)
+		CurrentWave = CurrentWave + 1
+		RunWaves()
+	end)
 end
 
 

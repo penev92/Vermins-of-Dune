@@ -170,3 +170,4 @@ Actors:
 		Facing: 904
 
 Rules: d2k|rules/campaign-rules.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml
+Music: music.yaml
