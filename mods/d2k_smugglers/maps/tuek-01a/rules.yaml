@@ -21,7 +21,7 @@ World:
 
 Player:
 	PlayerResources:
-		DefaultCash: 2000
+		DefaultCash: 1845
 
 ^Palettes:
 	IndexedPlayerPalette:

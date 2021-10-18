@@ -80,8 +80,7 @@ Actors:
 		Location: 21,22
 	FremenCave1: sietch
 		Location: 6,36
-		Faction: Random
-		Owner: Fremen
+		Owner: Neutral
 	SmugglerRF2Drop: waypoint
 		Faction: Random
 		Location: 26,19
@@ -99,9 +98,8 @@ Actors:
 		Owner: Neutral
 		Location: 6,12
 	FremenCave2: sietch
-		Faction: Random
 		Location: 38,1
-		Owner: Fremen
+		Owner: Neutral
 	Actor26: spicebloom.spawnpoint
 		Owner: Neutral
 		Location: 15,25
@@ -149,5 +147,26 @@ Actors:
 		SubCell: 3
 		Location: 7,4
 		Facing: 634
+	FremenReinforceEntry1: waypoint
+		Owner: Fremen
+		Location: 6,38
+	FremenReinforceEntry2: waypoint
+		Owner: Fremen
+		Location: 38,3
+	Actor30: nsfremen
+		Owner: Fremen
+		SubCell: 3
+		Location: 38,5
+		Facing: 531
+	Actor31: nsfremen
+		Owner: Fremen
+		Facing: 384
+		Location: 38,5
+		SubCell: 1
+	Actor32: nsfremen
+		Owner: Fremen
+		Location: 7,38
+		SubCell: 2
+		Facing: 904
 
 Rules: d2k|rules/campaign-rules.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml
