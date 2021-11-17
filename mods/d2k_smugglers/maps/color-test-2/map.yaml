@@ -1,0 +1,316 @@
+MapFormat: 11
+
+RequiresMod: d2k_smugglers
+
+Title: Color Test Map
+
+Author: oldnaari
+
+Tileset: ARRAKIS
+
+MapSize: 34,34
+
+Bounds: 1,1,32,32
+
+Visibility: MissionSelector
+
+Categories: Campaign
+
+LockPreview: True
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Smugglers:
+		Name: Smugglers
+		Playable: True
+		LockFaction: True
+		Faction: smuggler
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Fremen:
+		Name: Fremen
+		Bot: campaign
+		LockFaction: True
+		Faction: fremen
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Ordos:
+		Name: Ordos
+		Bot: campaign
+		LockFaction: True
+		Faction: ordos
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Harkonnen:
+		Name: Harkonnen
+		Bot: campaign
+		LockFaction: True
+		Faction: harkonnen
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Atreides:
+		Name: Atreides
+		Bot: campaign
+		LockFaction: True
+		Faction: atreides
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Mercenaries:
+		Name: Mercenaries
+		Bot: campaign
+		LockFaction: True
+		Faction: mercenary
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@IX:
+		Name: IX
+		Bot: campaign
+		LockFaction: True
+		Faction: ix
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Corrino:
+		Name: Corrino
+		Bot: campaign
+		LockFaction: True
+		Faction: corrino
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Tuek:
+		Name: Tuek
+		Bot: campaign
+		LockFaction: True
+		Faction: tuek
+		LockColor: True
+		Enemies: Creeps
+
+Actors:
+	ActorSpawn: mpspawn
+		Location: 14,14
+		Owner: Neutral
+	Actor0: construction_yard
+		Owner: Smugglers
+		Location: 13,9
+	Actor1: barracks
+		Location: 17,5
+		Owner: Smugglers
+	Actor2: wind_trap
+		Owner: Smugglers
+		Location: 17,9
+	Actor3: wind_trap
+		Owner: Smugglers
+		Location: 19,9
+	Actor4: refinery
+		Owner: Smugglers
+		Location: 13,5
+	Actor5: light_factory
+		Owner: Smugglers
+		Location: 20,5
+	Actor6: silo
+		Owner: Smugglers
+		Location: 22,9
+	Actor7: silo
+		Owner: Smugglers
+		Location: 22,10
+	Actor8: silo
+		Owner: Smugglers
+		Location: 22,11
+	Actor9: wind_trap
+		Owner: Smugglers
+		Location: 19,13
+	Actor10: wind_trap
+		Owner: Smugglers
+		Location: 17,13
+	Actor12: silo
+		Owner: Harkonnen
+		Location: 23,9
+	Actor13: silo
+		Owner: Ordos
+		Location: 23,10
+	Actor14: silo
+		Owner: Atreides
+		Location: 23,11
+	Actor15: civilian
+		Owner: Smugglers
+		SubCell: 3
+		Facing: 384
+		Location: 14,14
+	Actor16: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 1
+	Actor17: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 2
+	Actor18: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 4
+	Actor19: civilian
+		Owner: Smugglers
+		Facing: 384
+		Location: 14,14
+		SubCell: 5
+	Actor20: civilian
+		Owner: Neutral
+		SubCell: 3
+		Facing: 384
+		Location: 12,12
+	Actor21: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 1
+	Actor22: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 2
+	Actor23: civilian
+		Owner: Neutral
+		Facing: 384
+		Location: 12,12
+		SubCell: 4
+	Actor24: civilian
+		Owner: Neutral
+		Location: 12,12
+		SubCell: 5
+		Facing: 384
+	Actor25: nsfremen
+		Owner: Neutral
+		Facing: 384
+		SubCell: 3
+		Location: 9,12
+	Actor26: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 1
+	Actor27: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 2
+	Actor28: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 4
+	Actor29: nsfremen
+		Owner: Neutral
+		Facing: 384
+		Location: 9,12
+		SubCell: 5
+	Actor31: heavy_factory
+		Owner: Smugglers
+		Location: 9,4
+	Actor39: siege_tank
+		Owner: Neutral
+		Location: 8,9
+		Facing: 0
+	Actor40: combat_tank_h
+		Owner: Neutral
+		Location: 7,9
+		Facing: 0
+	Actor41: missile_tank
+		Owner: Neutral
+		Location: 6,9
+		Facing: 0
+	Actor42: sonic_tank
+		Owner: Neutral
+		Location: 5,9
+		Facing: 0
+	Actor43: quad
+		Owner: Neutral
+		Location: 9,9
+		Facing: 0
+	Actor44: barracks
+		Owner: Harkonnen
+		Location: 19,2
+	Actor45: barracks
+		Owner: Ordos
+		Location: 15,2
+	Actor46: barracks
+		Owner: Smugglers
+		Location: 17,2
+	Actor47: light_inf
+		Owner: IX
+		SubCell: 3
+		Location: 14,26
+		Facing: 563
+	Actor48: light_inf
+		Owner: IX
+		Location: 14,26
+		SubCell: 1
+		Facing: 384
+	Actor49: light_inf
+		Owner: IX
+		Facing: 384
+		Location: 14,26
+		SubCell: 2
+	Actor50: research_centre
+		Owner: IX
+		Location: 11,24
+	Actor51: wind_trap
+		Owner: IX
+		Location: 8,25
+	Actor52: wind_trap
+		Owner: IX
+		Location: 6,25
+	Actor53: quad
+		Owner: IX
+		Location: 14,27
+		Facing: 0
+	Actor54: quad
+		Owner: IX
+		Location: 9,23
+		Facing: 0
+	Actor55: carryall
+		Owner: IX
+		Facing: 384
+		Location: 10,27
+	Actor56: trike
+		Owner: IX
+		Location: 11,28
+		Facing: 0
+	Actor57: outpost
+		Faction: atreides
+		Location: 22,13
+		Owner: Corrino
+	Actor58: heavy_factory
+		Faction: atreides
+		Location: 25,8
+		Owner: Corrino
+	Actor59: wind_trap
+		Faction: atreides
+		Location: 25,13
+		Owner: Corrino
+	Actor60: wind_trap
+		Faction: atreides
+		Location: 27,13
+		Owner: Corrino
+	Actor61: wind_trap
+		Faction: atreides
+		Location: 27,17
+		Owner: Corrino
+	Actor63: palace
+		Owner: Corrino
+		Location: 22,17
+	Actor62: wind_trap
+		Faction: atreides
+		Location: 25,17
+		Owner: Corrino
+
+Rules: d2k|rules/campaign-rules.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

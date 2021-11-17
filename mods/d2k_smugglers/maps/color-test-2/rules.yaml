@@ -1,0 +1,56 @@
+World:
+	LuaScript:
+		Scripts: campaign-global.lua, changecolor.lua
+	MissionData:
+		Briefing:A map for color test
+	MapOptions:
+		TechLevel: unrestricted
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: Difficulty
+		Values:
+			easy: Easy
+			normal: Normal
+			hard: Hard
+		Default: easy
+
+# upgrade.conyard:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# upgrade.barracks:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# upgrade.light:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# upgrade.heavy:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# concreteb:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# barracks:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# light_factory:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# heavy_factory:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# medium_gun_turret:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
+# wall:
+# 	Buildable:
+# 		Prerequisites: ~disabled
+
