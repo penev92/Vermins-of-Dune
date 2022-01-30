@@ -39,6 +39,7 @@ silo:
 		FactionImages:
 			atreides: silo.atreides
 			fremen: silo.atreides
+			ordos: silo.ordos
 			smuggler: silo.smugglers
 			tuek: silo.smugglers
 			harkonnen: silo.harkonnen
@@ -82,3 +83,16 @@ light_factory:
 			tuek: light.smugglers
 			harkonnen: light.harkonnen
 			corrino: light.harkonnen
+
+
+
+outpost:
+	RenderSprites:
+		Image: outpost.ordos
+		FactionImages:
+			atreides: outpost.atreides
+			fremen: outpost.atreides
+			harkonnen: outpost.harkonnen
+			corrino: outpost.harkonnen
+			smuggler: outpost.smugglers
+			tuek: outpost.smugglers

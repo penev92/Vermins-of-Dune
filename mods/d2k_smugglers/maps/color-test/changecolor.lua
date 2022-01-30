@@ -42,7 +42,7 @@ WorldLoaded = function()
 	ChangeOwner(neutral_units, player[1])
 
 	ChangeColor = function()
-		i = i % 6 + 1
+		i = i % 9 + 1
 		ChangeOwner(all_units, player[i])
 		Trigger.AfterDelay(FlashTime, ChangeColor)
 	end

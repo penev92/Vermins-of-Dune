@@ -195,3 +195,33 @@ light.smugglers:
 		Length: 6
 		Offset: -16,-16
 	icon: s-light-cameo.shp
+
+
+outpost.smugglers:
+	idle: s-outpost.shp
+		Offset: 0,-7
+	make: DATA.R8
+		Start: 4518
+		Length: 9
+		Offset: -48,64
+	crumble-overlay: DATA.R8
+		Start: 4527
+		Length: 10
+		Offset: -48,64
+		Tick: 100
+	damaged-idle: s-outpost-damaged.shp
+		Offset: 0,-6
+	idle-dish: s-outpost-radar.shp
+		Length: 12
+		Offset: 12,-4
+		Tick: 80
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: s-outpost-cameo.shp
+	

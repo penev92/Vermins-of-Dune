@@ -230,7 +230,7 @@ Actors:
 		Owner: Neutral
 		Location: 8,9
 		Facing: 0
-	Actor40: combat_tank_h
+	Actor40: combat_tank_s
 		Owner: Neutral
 		Location: 7,9
 		Facing: 0
@@ -246,15 +246,6 @@ Actors:
 		Owner: Neutral
 		Location: 9,9
 		Facing: 0
-	Actor44: barracks
-		Owner: Harkonnen
-		Location: 19,2
-	Actor45: barracks
-		Owner: Ordos
-		Location: 15,2
-	Actor46: barracks
-		Owner: Smugglers
-		Location: 17,2
 	Actor47: light_inf
 		Owner: IX
 		SubCell: 3
@@ -295,5 +286,25 @@ Actors:
 		Owner: IX
 		Location: 11,28
 		Facing: 0
-
+	Actor57: outpost
+		Owner: Ordos
+		Location: 15,2
+	Actor58: wind_trap
+		Owner: Ordos
+		Location: 13,2
+	Actor59: wind_trap
+		Owner: Ordos
+		Location: 11,2
+	Actor60: outpost
+		Owner: Smugglers
+		Location: 18,2
+	Actor61: outpost
+		Owner: Atreides
+		Location: 21,2
+	Actor62: wind_trap
+		Owner: Atreides
+		Location: 24,2
+	Actor63: wind_trap
+		Owner: Atreides
+		Location: 26,2
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml
