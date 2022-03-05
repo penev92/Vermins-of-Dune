@@ -52,6 +52,8 @@ Rules:
 	d2k_smugglers|rules/misc.yaml
 	d2k_smugglers|rules/world.yaml
 	d2k_smugglers|rules/aircraft.yaml
+	d2k_smugglers|rules/vehicles.yaml
+	d2k_smugglers|rules/husks.yaml
 
 Sequences:
 	d2k|sequences/aircraft.yaml
@@ -61,7 +63,7 @@ Sequences:
 	d2k|sequences/misc.yaml
 	d2k_smugglers|sequences/structures.yaml
 	d2k_smugglers|sequences/infantry.yaml
-
+	d2k_smugglers|sequences/vehicles.yaml
 
 TileSets:
 	d2k|tilesets/arrakis.yaml

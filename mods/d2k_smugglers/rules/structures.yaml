@@ -96,3 +96,23 @@ outpost:
 			corrino: outpost.harkonnen
 			smuggler: outpost.smugglers
 			tuek: outpost.smugglers
+
+
+
+heavy_factory:
+	ProvidesPrerequisite@smuggler:
+		Prerequisite: heavy.smuggler
+		Factions: smuggler, tuek
+	ProvidesPrerequisite@smuggler_combat:
+		Prerequisite: heavy.smuggler_combat
+		Factions: smuggler, tuek
+	RenderSprites:
+		Image: heavy.ordos
+		FactionImages:
+			atreides: heavy.atreides
+			fremen: heavy.atreides
+			harkonnen: heavy.harkonnen
+			corrino: heavy.harkonnen
+			mercenary: heavy.mercenary
+			smuggler: heavy.smugglers
+			tuek: heavy.smugglers

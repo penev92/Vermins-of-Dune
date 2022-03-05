@@ -1,0 +1,4 @@
+combat_tank_s.husk:
+	Inherits: ^combat_tank.husk
+	TransformOnCapture:
+		IntoActor: combat_tank_s

@@ -156,7 +156,7 @@ World:
 		ClassName: Heavy Support
 		Factions: tuek
 		BaseActor: mcv
-		SupportActors: light_inf, light_inf, light_inf, engineer, raider, stealth_raider, quad, combat_tank_o
+		SupportActors: light_inf, light_inf, light_inf, engineer, raider, combat_tank_s, quad, combat_tank_s
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	SpawnMPUnits:

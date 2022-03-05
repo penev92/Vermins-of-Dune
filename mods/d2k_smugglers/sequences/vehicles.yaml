@@ -1,0 +1,18 @@
+combat_tank_s:
+	idle: s-combat-tank-idle.shp
+		Facings: -32
+	turret: s-combat-tank-turret.shp
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 4028
+		Tick: 60
+		Facings: -32
+		BlendMode: Additive
+	icon: s-combat-tank-cameo.shp
+
+combat_tank_s.husk:
+	idle: s-combat-tank-idle.shp
+		Facings: -32
+	turret: s-combat-tank-turret.shp
+		Facings: -32
+		ZOffset: -512
