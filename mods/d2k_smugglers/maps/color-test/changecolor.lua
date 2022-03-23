@@ -14,7 +14,7 @@ i = 0
 
 ChangeOwner = function(units, new_owner)
 	Utils.Do(units, function(unit)
-		if not unit.IsDead then
+		if not unit.IsDead and unit.IsInWorld then
 			unit.Owner = new_owner
 		end
 	end)
@@ -22,6 +22,33 @@ end
 
 
 FlashTime = DateTime.Seconds(8)
+
+all_unit_types = {
+	"wind_trap",
+	"refinery",
+	"barracks",
+	"light_factory",
+	"heavy_factory",
+	"silo",
+	"construction_yard",
+	"outpost",
+	"high_tech_factory",
+	"starport",
+	"palace",
+
+	"quad",
+	"trike",
+	"raider",
+	"stealth_raider",
+	"combat_tank_s",
+	"combat_tank_o",
+	"combat_tank_h",
+	"combat_tank_a",
+	"siege_tank",
+	"missile_tank",
+	"civilian",
+	"nsfremen"
+}
 
 WorldLoaded = function()
 
@@ -36,19 +63,17 @@ WorldLoaded = function()
 		Player.GetPlayer("Fremen"),
 		Player.GetPlayer("Corrino"),
 	} 
-
-	all_units = player[1].GetActors()
-	neutral_units = Player.GetPlayer("Neutral").GetActors()
+	
+	colored_units = player[1].GetActorsByTypes(all_unit_types)
+	neutral_units = Player.GetPlayer("Neutral").GetActorsByTypes(all_unit_types)
 	ChangeOwner(neutral_units, player[1])
 
 	ChangeColor = function()
 		i = i % 9 + 1
-		ChangeOwner(all_units, player[i])
+		ChangeOwner(colored_units, player[i])
 		Trigger.AfterDelay(FlashTime, ChangeColor)
 	end
 
-
 	Trigger.AfterDelay(FlashTime, ChangeColor)
-
 
 end

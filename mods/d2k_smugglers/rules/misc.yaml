@@ -20,3 +20,28 @@ upgrade.barracks:
 			tuek: barracks.smugglers
 			harkonnen: barracks.harkonnen
 			corrino: barracks.harkonnen
+
+
+upgrade.light:
+	RenderSprites:
+		Image: light.ordos
+		FactionImages:
+			atreides: light.atreides
+			fremen: light.atreides
+			smuggler: light.smugglers
+			tuek: light.smugglers
+			harkonnen: light.harkonnen
+			corrino: light.harkonnen
+
+
+upgrade.heavy:
+	RenderSprites:
+		Image: heavy.ordos
+		FactionImages:
+			atreides: heavy.atreides
+			fremen: heavy.atreides
+			smuggler: heavy.smugglers
+			tuek: heavy.smugglers
+			harkonnen: heavy.harkonnen
+			corrino: heavy.harkonnen
+	

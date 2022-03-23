@@ -399,5 +399,36 @@ Actors:
 		Owner: Smugglers
 		Facing: 384
 		Location: 18,20
+	Actor87: high_tech_factory
+		Owner: Smugglers
+		Location: 25,8
+	Actor88: palace
+		Owner: Smugglers
+		Location: 22,13
+	Actor89: wind_trap
+		Owner: Smugglers
+		Location: 26,5
+	Actor90: wind_trap
+		Owner: Smugglers
+		Location: 24,5
+	Actor91: high_tech_factory
+		Owner: Atreides
+		Location: 29,8
+	Actor92: heavy_factory
+		Location: 22,21
+		Faction: Random
+		Owner: Corrino
+	Actor93: heavy_factory
+		Location: 26,21
+		Faction: Random
+		Health: 44
+		Owner: Ordos
+	Actor94: heavy_factory
+		Owner: Smugglers
+		Location: 22,26
+	Actor95: heavy_factory
+		Owner: Smugglers
+		Location: 26,26
+		Health: 35
 
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

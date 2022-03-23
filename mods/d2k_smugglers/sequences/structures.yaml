@@ -228,6 +228,7 @@ outpost.smugglers:
 
 heavy.smugglers:
 	idle: s-heavy-idle.shp
+		Offset: 0, 7
 	make: DATA.R8
 		Start: 4592
 		Length: 9
@@ -237,14 +238,13 @@ heavy.smugglers:
 		Length: 9
 		Offset: -48,80
 		Tick: 100
-	damaged-idle: DATA.R8
-		Start: 3086
-		Offset: -48,80
+	damaged-idle: s-heavy-idle.shp
+		Offset: 0, 7
 	idle-top: s-heavy-idle-top.shp
 		ZOffset: 896
-	damaged-idle-top: DATA.R8
-		Start: 3088
-		Offset: -48,80
+		Offset: 0, 7
+	damaged-idle-top: s-heavy-idle-damaged-top.shp
+		Offset: 0, 7
 		ZOffset: 896
 	production-welding: DATA.R8
 		Start: 4958
@@ -261,7 +261,43 @@ heavy.smugglers:
 		Frames: 643, 644, 645, 663, 664, 665
 		Length: 6
 		Offset: -16,-16
-	icon: DATA.R8
-		Start: 4353
-		Offset: -30,-24
+	icon: s-heavy-cameo.shp
 
+
+hightech.smugglers:
+	Defaults:
+		Offset: -48,80
+	idle: s-hightech-idle.shp
+		Offset: 0, 0
+	make: DATA.R8
+		Start: 4538
+		Length: 10
+	crumble-overlay: DATA.R8
+		Start: 4548
+		Length: 10
+		Tick: 100
+	damaged-idle: DATA.R8
+		Start: 2813
+	production-welding: DATA.R8
+		Start: 4878
+		Length: 10
+		Tick: 200
+		BlendMode: Additive
+		ZOffset: 1024
+	damaged-production-welding: DATA.R8
+		Frames: 4878, 4879, 4880, 4881, 4882, 4884, 4885, 4886, 4887
+		Length: 9
+		Tick: 200
+		BlendMode: Additive
+		ZOffset: 1024
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: DATA.R8
+		Start: 4342
+		Offset: -30,-24

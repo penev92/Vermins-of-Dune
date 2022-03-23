@@ -116,3 +116,15 @@ heavy_factory:
 			mercenary: heavy.mercenary
 			smuggler: heavy.smugglers
 			tuek: heavy.smugglers
+
+
+high_tech_factory:
+	RenderSprites:
+		Image: hightech.ordos
+		FactionImages:
+			atreides: hightech.atreides
+			fremen: hightech.atreides
+			harkonnen: hightech.harkonnen
+			corrino: hightech.harkonnen
+			smuggler: hightech.smugglers
+			tuek: hightech.smugglers	
