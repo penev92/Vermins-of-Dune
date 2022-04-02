@@ -414,21 +414,23 @@ Actors:
 	Actor91: high_tech_factory
 		Owner: Atreides
 		Location: 29,8
-	Actor92: heavy_factory
-		Location: 22,21
-		Faction: Random
-		Owner: Corrino
-	Actor93: heavy_factory
-		Location: 26,21
-		Faction: Random
-		Health: 44
+	Actor92: high_tech_factory
 		Owner: Ordos
-	Actor94: heavy_factory
-		Owner: Smugglers
-		Location: 22,26
-	Actor95: heavy_factory
+		Location: 26,21
+		Health: 43
+	Actor93: high_tech_factory
+		Owner: Ordos
+		Location: 22,21
+	Actor94: high_tech_factory
 		Owner: Smugglers
 		Location: 26,26
-		Health: 35
+		Health: 45
+	Actor95: high_tech_factory
+		Owner: Smugglers
+		Location: 22,26
+	Actor96: raider
+		Owner: Neutral
+		Location: 25,28
+		Facing: 1023
 
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

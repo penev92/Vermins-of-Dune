@@ -276,8 +276,8 @@ hightech.smugglers:
 		Start: 4548
 		Length: 10
 		Tick: 100
-	damaged-idle: DATA.R8
-		Start: 2813
+	damaged-idle: s-hightech-idle-damaged.shp
+		Offset: 0, 0
 	production-welding: DATA.R8
 		Start: 4878
 		Length: 10
@@ -298,6 +298,5 @@ hightech.smugglers:
 		Frames: 643, 644, 645, 663, 664, 665
 		Length: 6
 		Offset: -16,-16
-	icon: DATA.R8
-		Start: 4342
-		Offset: -30,-24
+	icon: s-hightech-cameo.shp
+		Offset: 0, 0
