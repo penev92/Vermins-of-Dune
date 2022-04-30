@@ -1,6 +1,7 @@
 ^RadarSmugglers:
 	Image: tuek-insignia.png
 
+
 radar-smuggler:
 	Inherits: ^RadarSmugglers
 	Regions:
@@ -10,17 +11,12 @@ radar-smuggler:
 ^RadarSmugglers0:
 	Image: smuggler-insignia.png
 
+
 radar-smuggler0:
 	Inherits: ^RadarSmugglers0
 	Regions:
 		insignia: 14, 14, 100, 100
 
-
-
-# ^Glyphs:
-# 	Image: glyphs.png
-# 	Image2x: glyphs-2x.png
-# 	Image3x: glyphs-3x.png
 
 flags:
 	# Inherits: ^Glyphs

@@ -83,7 +83,9 @@ light_factory:
 			tuek: light.smugglers
 			harkonnen: light.harkonnen
 			corrino: light.harkonnen
-
+	ProvidesPrerequisite@smuggler:
+		Prerequisite: light.smuggler
+		Factions: smuggler, tuek
 
 
 outpost:

@@ -16,3 +16,9 @@ combat_tank_s.husk:
 	turret: s-combat-tank-turret.shp
 		Facings: -32
 		ZOffset: -512
+
+
+shuttle:
+	idle: s-shuttle.shp
+		Facings: -32
+	icon: s-shuttle-cameo.shp

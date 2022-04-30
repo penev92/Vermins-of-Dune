@@ -1,41 +1,3 @@
-# combat_tank_a:
-# 	Inherits: ^combat_tank
-# 	Buildable:
-# 		Prerequisites: ~heavy.atreides_combat
-# 	Armament:
-# 		Weapon: 80mm_A
-# 	SpawnActorOnDeath:
-# 		Actor: combat_tank_a.husk
-
-# combat_tank_h:
-# 	Inherits: ^combat_tank
-# 	Buildable:
-# 		Prerequisites: ~heavy.harkonnen_combat
-# 	Armament:
-# 		Weapon: 80mm_H
-# 	Mobile:
-# 		Speed: 64
-# 	Health:
-# 		HP: 27000
-# 	SpawnActorOnDeath:
-# 		Actor: combat_tank_h.husk
-
-# combat_tank_o:
-# 	Inherits: ^combat_tank
-# 	Buildable:
-# 		Prerequisites: ~heavy.ordos_combat
-# 	Turreted:
-# 		TurnSpeed: 20
-# 	Armament:
-# 		Weapon: 80mm_O
-# 	Mobile:
-# 		Speed: 85
-# 	Health:
-# 		HP: 18000
-# 	SpawnActorOnDeath:
-# 		Actor: combat_tank_o.husk
-
-
 combat_tank_s:
 	Inherits: ^combat_tank
 	Buildable:
@@ -52,3 +14,55 @@ combat_tank_s:
 		Cost: 550
 	SpawnActorOnDeath:
 		Actor: combat_tank_o.husk
+
+
+shuttle:
+	Inherits: ^Tank
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 14
+		Prerequisites: ~light.smuggler, upgrade.light, high_tech_factory, ~techlevel.medium
+		BuildDuration: 225
+		BuildDurationModifier: 100
+		Description: Stealth transport unit
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Shuttle
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Selectable:
+		Class: shuttle
+	Health:
+		HP: 9000
+	Armor:
+		Type: wood
+	Mobile:
+		TurnSpeed: 20
+		Speed: 64
+		Locomotor: tank
+		PauseOnCondition: notmobile
+	Cargo:
+		Types: Infantry
+		MaxWeight: 3
+		LoadingCondition: notmobile
+	RevealsShroud:
+		Range: 4c768
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AttractsWorms:
+		Intensity: 420
+	WithCargoPipsDecoration:
+		Position: BottomLeft
+		Margin: 1, 4
+		RequiresSelection: true
+		PipCount: 3
+	Cloak:
+		InitialDelay: 45
+		CloakDelay: 90
+		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Damage, Heal
+		IsPlayerPalette: true
+		PauseOnCondition: cloak-force-disabled
+	

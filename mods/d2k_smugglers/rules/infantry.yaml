@@ -20,3 +20,7 @@ civilian:
 thumper:
 	Buildable:
 		Prerequisites: upgrade.barracks
+
+engineer:
+	Passenger:
+		Weight: 2

@@ -246,6 +246,14 @@ Actors:
 		Owner: Neutral
 		Location: 9,9
 		Facing: 0
+	Actor_shuttle: shuttle
+		Owner: Neutral
+		Location: 10,9
+		Facing: 0
+	Actor_trike: trike
+		Owner: Neutral
+		Location: 11,9
+		Facing: 0
 	Actor47: light_inf
 		Owner: IX
 		SubCell: 3
@@ -432,5 +440,20 @@ Actors:
 		Owner: Neutral
 		Location: 25,28
 		Facing: 1023
+	Actor97: engineer
+		Owner: Neutral
+		Facing: 384
+		SubCell: 3
+		Location: 10,8
+	Actor98: engineer
+		Owner: Neutral
+		Facing: 384
+		Location: 10,8
+		SubCell: 1
+	Actor99: engineer
+		Owner: Neutral
+		Facing: 384
+		Location: 10,8
+		SubCell: 2
 
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

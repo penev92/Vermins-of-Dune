@@ -40,6 +40,8 @@ all_unit_types = {
 	"trike",
 	"raider",
 	"stealth_raider",
+	"shuttle",
+	
 	"combat_tank_s",
 	"combat_tank_o",
 	"combat_tank_h",
@@ -47,7 +49,8 @@ all_unit_types = {
 	"siege_tank",
 	"missile_tank",
 	"civilian",
-	"nsfremen"
+	"nsfremen",
+	"engineer"
 }
 
 WorldLoaded = function()
