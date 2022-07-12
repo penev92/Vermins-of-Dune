@@ -2,7 +2,7 @@
 	Faction@Random:
 		Name: Any
 		InternalName: Random
-		RandomFactionMembers: atreides, harkonnen, ordos, tuek
+		RandomFactionMembers: atreides, harkonnen, ordos, smuggler
 		Description: Random House\nA random house will be chosen when the game starts.
 	Faction@Atreides:
 		Name: Atreides
@@ -16,10 +16,11 @@
 		Name: Ordos
 		InternalName: ordos
 		Description: House Ordos\nThe insidious Ordos of the icy planet Sigma Draconis IV\nare known for their wealth, greed and treachery.\nRelying heavily on mercenaries they often resort\nto sabotage and forbidden Ixian technologies.\n\nFaction Variations: \n    - Trikes are replaced by Raider Trikes\n    - Combat Tanks are faster but less durable\n\nSpecial Units:\n    - Raider Trike\n    - Stealth Raider Trike\n    - Saboteur\n    - Deviator
-	Faction@Tuek:
-		Name: Tuek
-		InternalName: tuek
-		Description: House Tuek\nThe opportunist Tuek, that over time took control over\nthe smugglers guild. They are good at sneaking into the \nenemy terrirory and their Vulture squad can capture \nand deliver any vehicle within seconds\n\nFaction Variations: \n    - Trikes are replaced by Raider Trikes\n    - Combat Tanks are cheaper, faster but less durable\n\nSpecial Units:\n    - Raider Trike\n    - Stealth Raider Trike\n    - Scarab\n    - Operation Valture
+	Faction@Smugglers:
+		Name: Smugglers
+		InternalName: smuggler
+		Description: Smugglers\nThe opportunist smugglers, that have their net spread accross the entire habitable universe.\nTheir main source of wealth is the corruption in the major Houses. \nThey use cheep hastly prepared tech for their operations and their Vulture squad can capture \nand deliver any vehicle within seconds\n\nFaction Variations: \n    - Trikes are replaced by Raider Trikes\n    - Combat Tanks are cheaper, faster but less durable\n\nSpecial Units:\n    - Raider Trike\n    - Stealth Raider Trike\n    - Scarab\n    - Operation Valture
+		Selectable: true
 	Faction@Corrino:
 		Name: Corrino
 		InternalName: corrino
@@ -31,10 +32,6 @@
 	Faction@IX:
 		Name: IX
 		InternalName: ix
-		Selectable: false
-	Faction@Smugglers:
-		Name: Smugglers
-		InternalName: smuggler
 		Selectable: false
 	Faction@Fremen:
 		Name: Fremen
@@ -94,7 +91,7 @@ World:
 		Class: none
 		ClassName: MCV Only
 		BaseActor: mcv
-		Factions: atreides, ordos, harkonnen, tuek
+		Factions: atreides, ordos, harkonnen, smuggler
 	MPStartUnits@lightatreides:
 		Class: light
 		ClassName: Light Support
@@ -119,10 +116,10 @@ World:
 		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, quad
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@lighttuek:
+	MPStartUnits@lightsmuggler:
 		Class: light
 		ClassName: Light Support
-		Factions: tuek
+		Factions: smuggler
 		BaseActor: mcv
 		SupportActors: light_inf, light_inf, light_inf, thumper, trooper, raider, quad
 		InnerSupportRadius: 3
@@ -151,10 +148,10 @@ World:
 		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, combat_tank_o, missile_tank
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@heavytuek:
+	MPStartUnits@heavysmuggler:
 		Class: heavy
 		ClassName: Heavy Support
-		Factions: tuek
+		Factions: smuggler
 		BaseActor: mcv
 		SupportActors: light_inf, light_inf, light_inf, engineer, raider, combat_tank_s, quad, combat_tank_s
 		InnerSupportRadius: 3

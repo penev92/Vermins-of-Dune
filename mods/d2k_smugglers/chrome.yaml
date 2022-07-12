@@ -8,23 +8,12 @@ radar-smuggler:
 		insignia: 14, 14, 100, 100
 
 
-^RadarSmugglers0:
-	Image: smuggler-insignia.png
-
-
-radar-smuggler0:
-	Inherits: ^RadarSmugglers0
-	Regions:
-		insignia: 14, 14, 100, 100
-
-
 flags:
 	# Inherits: ^Glyphs
 	Image: mini-insignias.png
 	Image2x: mini-insignias-2x.png
 	Image3x: mini-insignias-3x.png
 	Regions:
-		tuek: 0, 0, 22, 21
 		ix: 0, 0, 22, 21
 		atreides: 0, 22, 22, 21
 		harkonnen: 0, 44, 22, 21
