@@ -21,7 +21,7 @@ shuttle:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 14
+		BuildPaletteOrder: 20
 		Prerequisites: ~light.smuggler, upgrade.light, high_tech_factory, ~techlevel.medium
 		BuildDuration: 225
 		BuildDurationModifier: 100

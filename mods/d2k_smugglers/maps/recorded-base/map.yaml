@@ -1,0 +1,32 @@
+MapFormat: 11
+
+RequiresMod: d2k_smugglers
+
+Title: Recorded Base
+
+Author: Your name here
+
+Tileset: ARRAKIS
+
+MapSize: 130,130
+
+Bounds: 1,1,128,128
+
+Visibility: Lobby
+
+Categories: Conquest
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+
+Actors:
+
+Rules:
