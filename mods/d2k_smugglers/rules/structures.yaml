@@ -6,7 +6,6 @@ wind_trap:
 			atreides: power.atreides
 			fremen: power.atreides
 			smuggler: power.smugglers
-			tuek: power.smugglers
 			harkonnen: power.harkonnen
 			corrino: power.harkonnen
 
@@ -18,7 +17,6 @@ refinery:
 			atreides: refinery.atreides
 			fremen: refinery.atreides
 			smuggler: refinery.smugglers
-			tuek: refinery.smugglers
 			harkonnen: refinery.harkonnen
 			corrino: refinery.harkonnen
 
@@ -29,7 +27,6 @@ construction_yard:
 			atreides: conyard.atreides
 			fremen: conyard.atreides
 			smuggler: conyard.smugglers
-			tuek: conyard.smugglers
 			harkonnen: conyard.harkonnen
 			corrino: conyard.harkonnen
 
@@ -41,7 +38,6 @@ silo:
 			fremen: silo.atreides
 			ordos: silo.ordos
 			smuggler: silo.smugglers
-			tuek: silo.smugglers
 			harkonnen: silo.harkonnen
 			corrino: silo.harkonnen
 
@@ -62,7 +58,6 @@ barracks:
 			atreides: barracks.atreides
 			fremen: barracks.atreides
 			smuggler: barracks.smugglers
-			tuek: barracks.smugglers
 			harkonnen: barracks.harkonnen
 			corrino: barracks.harkonnen
 
@@ -73,19 +68,18 @@ light_factory:
 		Factions: atreides, fremen, harkonnen, corrino, ix
 	ProvidesPrerequisite@raider:
 		Prerequisite: light.raider
-		Factions: ordos, smuggler, mercenary, tuek
+		Factions: ordos, smuggler, mercenary
 	RenderSprites:
 		Image: light.ordos
 		FactionImages:
 			atreides: light.atreides
 			fremen: light.atreides
 			smuggler: light.smugglers
-			tuek: light.smugglers
 			harkonnen: light.harkonnen
 			corrino: light.harkonnen
 	ProvidesPrerequisite@smuggler:
 		Prerequisite: light.smuggler
-		Factions: smuggler, tuek
+		Factions: smuggler
 
 
 outpost:
@@ -97,17 +91,16 @@ outpost:
 			harkonnen: outpost.harkonnen
 			corrino: outpost.harkonnen
 			smuggler: outpost.smugglers
-			tuek: outpost.smugglers
 
 
 
 heavy_factory:
 	ProvidesPrerequisite@smuggler:
 		Prerequisite: heavy.smuggler
-		Factions: smuggler, tuek
+		Factions: smuggler
 	ProvidesPrerequisite@smuggler_combat:
 		Prerequisite: heavy.smuggler_combat
-		Factions: smuggler, tuek
+		Factions: smuggler
 	RenderSprites:
 		Image: heavy.ordos
 		FactionImages:
@@ -117,7 +110,6 @@ heavy_factory:
 			corrino: heavy.harkonnen
 			mercenary: heavy.mercenary
 			smuggler: heavy.smugglers
-			tuek: heavy.smugglers
 
 
 high_tech_factory:
@@ -129,4 +121,3 @@ high_tech_factory:
 			harkonnen: hightech.harkonnen
 			corrino: hightech.harkonnen
 			smuggler: hightech.smugglers
-			tuek: hightech.smugglers	

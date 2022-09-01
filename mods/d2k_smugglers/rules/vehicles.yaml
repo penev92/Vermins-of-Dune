@@ -16,6 +16,30 @@ combat_tank_s:
 		Actor: combat_tank_o.husk
 
 
+scavanger:
+	Inherits: ^combat_tank
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: ~heavy.smuggler_combat, research_centre, ~techlevel.high
+		BuildDuration: 562
+		BuildDurationModifier: 100
+		Description: Decomposes enemy units into resources\n  Strong vs Cheep Vehicles\n  Weak vs Infantry
+	Valued:
+		Cost: 800
+	-WithMuzzleOverlay:
+	Armament:
+		Weapon: DecomposerRay
+		Recoil: 32
+		RecoilRecovery: 32
+		LocalOffset: 256,0,300
+	Mobile:
+		Speed: 64
+	Health:
+		HP: 30000
+	SpawnActorOnDeath:
+		Actor: combat_tank_o.husk
+
+
 shuttle:
 	Inherits: ^Tank
 	Inherits@GAINSEXPERIENCE: ^GainsExperience

@@ -1,6 +1,0 @@
-carryall.reinforce:
-	Cargo:
-		MaxWeight: 20
-		AfterUnloadDelay: 100
-	Aircraft:
-		LandAltitude: 1024

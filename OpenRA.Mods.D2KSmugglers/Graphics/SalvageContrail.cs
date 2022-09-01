@@ -1,0 +1,162 @@
+﻿#region Copyright & License Information
+/*
+ * Copyright 2007-2020 The OpenRA Developers (see AUTHORS)
+ * This file is part of OpenRA, which is free software. It is made
+ * available to you under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version. For more
+ * information, see COPYING.
+ */
+#endregion
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using OpenRA.Effects;
+using OpenRA.Graphics;
+using OpenRA.Mods.Common.Graphics;
+using OpenRA.Primitives;
+
+namespace OpenRA.Mods.D2KSmugglers.Graphics
+{
+	public struct SalvageContrailRenderable : IRenderable, IFinalizedRenderable
+	{
+		public int Length { get { return trail.Length; } }
+
+		readonly World world;
+		readonly Color color;
+		readonly int zOffset;
+
+		// Store trail positions in a circular buffer
+		readonly WPos[] trail;
+		readonly WDist width;
+		int next;
+		int length;
+		int skip;
+
+		public SalvageContrailRenderable(World world, Color color, WDist width, int length, int skip, int zOffset)
+			: this(world, new WPos[length], width, 0, 0, skip, color, zOffset) { }
+
+		SalvageContrailRenderable(World world, WPos[] trail, WDist width, int next, int length, int skip, Color color, int zOffset)
+		{
+			this.world = world;
+			this.trail = trail;
+			this.width = width;
+			this.next = next;
+			this.length = length;
+			this.skip = skip;
+			this.color = color;
+			this.zOffset = zOffset;
+		}
+
+		public WPos Pos { get { return trail[Index(next - 1)]; } }
+		public PaletteReference Palette { get { return null; } }
+		public int ZOffset { get { return zOffset; } }
+		public bool IsDecoration { get { return true; } }
+
+		public IRenderable WithPalette(PaletteReference newPalette) { return new SalvageContrailRenderable(world, (WPos[])trail.Clone(), width, next, length, skip, color, zOffset); }
+		public IRenderable WithZOffset(int newOffset) { return new SalvageContrailRenderable(world, (WPos[])trail.Clone(), width, next, length, skip, color, newOffset); }
+		public IRenderable OffsetBy(WVec vec) { return new SalvageContrailRenderable(world, trail.Select(pos => pos + vec).ToArray(), width, next, length, skip, color, zOffset); }
+		public IRenderable AsDecoration() { return this; }
+
+		public IFinalizedRenderable PrepareRender(WorldRenderer wr) { return this; }
+
+		public static float PositionBasedRadiusModifier(WPos position)
+		{
+			TimeSpan t = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+			double seconds = (double)t.TotalSeconds;
+			double mutliplier = (
+				(1.0 + 0.3 * Math.Sin((double)position.X * 100.0 + 10.0 * seconds)) *
+				(1.0 + 0.3 * Math.Sin((double)position.Y * 100.0 + 10.0 * seconds)) *
+				(1.0 + 0.3 * Math.Sin((double)position.Z * 100.0 + 10.0 * seconds)));
+
+			return (float)mutliplier;
+		}
+
+		public void Render(WorldRenderer wr)
+		{
+			// Need at least 4 points to smooth the contrail over
+			if (length - skip < 4)
+				return;
+
+			var screenWidth = wr.ScreenVector(new WVec(width, WDist.Zero, WDist.Zero))[0];
+			var wcr = Game.Renderer.WorldRgbaColorRenderer;
+
+			// Start of the first line segment is the tail of the list - don't smooth it.
+			var curPos = trail[Index(next - skip - 1)];
+			var curColor = color;
+			for (var i = 0; i < length - skip - 4; i++)
+			{
+				var j = next - skip - i - 2;
+				var nextPos = Average(trail[Index(j)], trail[Index(j - 1)], trail[Index(j - 2)], trail[Index(j - 3)]);
+				var nextColor = Exts.ColorLerp(i * 1f / (length - 4), color, Color.FromArgb(0x00ff0000));
+
+				if (!world.FogObscures(curPos) && !world.FogObscures(nextPos))
+				{
+					float modifier = PositionBasedRadiusModifier(curPos);
+					wcr.DrawLine(wr.Screen3DPosition(curPos), wr.Screen3DPosition(nextPos), modifier * screenWidth, curColor, nextColor);
+				}
+
+				curPos = nextPos;
+				curColor = nextColor;
+			}
+		}
+
+		public void RenderDebugGeometry(WorldRenderer wr) { }
+		public Rectangle ScreenBounds(WorldRenderer wr) { return Rectangle.Empty; }
+
+		// Array index modulo length
+		int Index(int i)
+		{
+			var j = i % trail.Length;
+			return j < 0 ? j + trail.Length : j;
+		}
+
+		static WPos Average(params WPos[] list)
+		{
+			return list.Average();
+		}
+
+		public void Update(WPos pos)
+		{
+			trail[next] = pos;
+			next = Index(next + 1);
+
+			if (length < trail.Length)
+				length++;
+		}
+
+		public static Color ChooseColor(Actor self)
+		{
+			var ownerColor = Color.FromArgb(255, self.Owner.Color);
+			return Exts.ColorLerp(0.5f, ownerColor, Color.White);
+		}
+	}
+
+	public class SalvageContrailFader : IEffect
+	{
+		WPos pos;
+		SalvageContrailRenderable trail;
+		int ticks;
+
+		public SalvageContrailFader(WPos pos, SalvageContrailRenderable trail)
+		{
+			this.pos = pos;
+			this.trail = trail;
+		}
+
+		public void Tick(World world)
+		{
+			if (ticks++ == trail.Length)
+				world.AddFrameEndTask(w => w.Remove(this));
+
+			trail.Update(pos);
+		}
+
+		public IEnumerable<IRenderable> Render(WorldRenderer wr)
+		{
+			yield return trail;
+		}
+	}
+}

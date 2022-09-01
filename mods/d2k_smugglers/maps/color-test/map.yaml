@@ -34,7 +34,7 @@ Players:
 		LockFaction: True
 		Faction: smuggler
 		LockColor: True
-		Enemies: Creeps
+		Enemies: IX, Creeps
 	PlayerReference@Fremen:
 		Name: Fremen
 		LockFaction: True
@@ -455,5 +455,59 @@ Actors:
 		Facing: 384
 		Location: 10,8
 		SubCell: 2
+	Actor100: scavanger
+		Location: 12,17
+		Faction: smuggler
+		Owner: Neutral
+		Facing: 1023
+	Actor101: scavanger
+		Owner: Smugglers
+		Location: 15,19
+		Facing: 1023
+	Actor102: scavanger
+		Owner: Smugglers
+		Location: 16,19
+		Facing: 261
+	Actor103: scavanger
+		Owner: Smugglers
+		Location: 15,20
+		Facing: 642
+	Actor104: scavanger
+		Owner: Smugglers
+		Location: 16,20
+		Facing: 500
+	Actor105: deviator
+		Faction: smuggler
+		Location: 13,17
+		Owner: Neutral
+		Facing: 1023
+	Actor106: devastator
+		Faction: smuggler
+		Location: 11,17
+		Facing: 1023
+		Owner: Neutral
+	Actor107: sonic_tank
+		Faction: smuggler
+		Location: 10,17
+		Facing: 1023
+		Owner: Neutral
+	Actor108: silo
+		Owner: Smugglers
+		Location: 4,12
+	Actor109: silo
+		Owner: Smugglers
+		Location: 3,13
+	Actor110: silo
+		Owner: Smugglers
+		Location: 3,14
+	Actor111: silo
+		Owner: Smugglers
+		Location: 4,14
+	Actor112: silo
+		Owner: Smugglers
+		Location: 4,13
+	Actor113: silo
+		Owner: Smugglers
+		Location: 3,12
 
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

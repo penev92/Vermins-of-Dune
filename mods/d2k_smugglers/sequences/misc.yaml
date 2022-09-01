@@ -1,0 +1,12 @@
+scavange-warp-effect:
+	Defaults:
+		BlendMode: Multiply
+	salvage: eff-scavange-target-1.shp
+		Length: *
+    Tick: 80
+    ZOffset: 1024
+
+
+devour-trail:
+	idle: s-devour-trail.shp
+		ZOffset: 1023

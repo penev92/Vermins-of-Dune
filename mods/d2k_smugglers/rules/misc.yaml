@@ -5,7 +5,6 @@ upgrade.conyard:
 			atreides: conyard.atreides
 			fremen: conyard.atreides
 			smuggler: conyard.smugglers
-			tuek: conyard.smugglers
 			harkonnen: conyard.harkonnen
 			corrino: conyard.harkonnen
 
@@ -17,7 +16,6 @@ upgrade.barracks:
 			atreides: barracks.atreides
 			fremen: barracks.atreides
 			smuggler: barracks.smugglers
-			tuek: barracks.smugglers
 			harkonnen: barracks.harkonnen
 			corrino: barracks.harkonnen
 
@@ -29,7 +27,6 @@ upgrade.light:
 			atreides: light.atreides
 			fremen: light.atreides
 			smuggler: light.smugglers
-			tuek: light.smugglers
 			harkonnen: light.harkonnen
 			corrino: light.harkonnen
 
@@ -41,7 +38,6 @@ upgrade.heavy:
 			atreides: heavy.atreides
 			fremen: heavy.atreides
 			smuggler: heavy.smugglers
-			tuek: heavy.smugglers
 			harkonnen: heavy.harkonnen
 			corrino: heavy.harkonnen
 	

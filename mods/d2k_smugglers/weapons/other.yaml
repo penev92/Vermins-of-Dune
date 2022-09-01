@@ -1,0 +1,36 @@
+DecomposerRay:
+	ReloadDelay: 120
+	Range: 5c0
+	Report: MEDTANK1.WAV
+	Projectile: SalvageBomb
+		Speed: 200
+		Blockable: false
+		Shadow: true
+		LaunchAngle: 10
+		# LaunchAngle: 62
+		ContrailLength: 20
+		ContrailWidth: 64
+		# Image: devour-trail
+		TrailImage: devour-trail
+		ContrailColor: 000000
+	Warhead@1Dam: SalvageResources
+		Damage: 100
+    Spread: 512
+		Versus:
+			none: 20
+			wall: 100
+			building: 50
+			wood: 50
+			heavy: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 50
+		DamageTypes: Prone50Percent, TriggerProne, SoundDeath
+		# DamageCalculationType: ClosestTargetablePosition
+    ResourceYield: 75
+	# Warhead@3Eff: CreateEffect
+	# 	Image: scavange-warp-effect
+	# 	Explosions: salvage
+	# 	ImpactSounds: EXPLSML1.WAV
+	# 	ImpactActors: false
+

@@ -50,7 +50,8 @@ all_unit_types = {
 	"missile_tank",
 	"civilian",
 	"nsfremen",
-	"engineer"
+	"engineer",
+	"scavanger",
 }
 
 WorldLoaded = function()

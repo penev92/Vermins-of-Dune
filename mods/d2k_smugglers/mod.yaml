@@ -64,6 +64,8 @@ Sequences:
 	d2k_smugglers|sequences/structures.yaml
 	d2k_smugglers|sequences/infantry.yaml
 	d2k_smugglers|sequences/vehicles.yaml
+	d2k_smugglers|sequences/misc.yaml
+
 
 TileSets:
 	d2k|tilesets/arrakis.yaml
@@ -138,6 +140,7 @@ Weapons:
 	d2k|weapons/largeguns.yaml
 	d2k|weapons/missiles.yaml
 	d2k|weapons/other.yaml
+	d2k_smugglers|weapons/other.yaml
 
 Voices:
 	d2k|audio/voices.yaml

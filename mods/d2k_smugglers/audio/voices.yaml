@@ -10,7 +10,6 @@ InfantryVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -35,7 +34,6 @@ VehicleVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -52,7 +50,6 @@ GenericVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -64,7 +61,6 @@ VehicleVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -76,7 +72,6 @@ InfantryVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -88,7 +83,6 @@ EngineerVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -100,7 +94,6 @@ FremenVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
@@ -112,7 +105,6 @@ SaboteurVoice:
 		fremen: A
 		ordos: O
 		smuggler: S
-		tuek: S
 		ix: S
 		mercenary: O
 		harkonnen: H
