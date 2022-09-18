@@ -26,7 +26,7 @@ Packages:
 
 MapFolders:
 	d2k_smugglers|maps: System
-	# d2k|maps: System
+	d2k|maps: System
 	~^SupportDir|maps/d2k/release-20210321: User
 
 RequiresMods:
@@ -53,7 +53,8 @@ Rules:
 	d2k_smugglers|rules/world.yaml
 	d2k_smugglers|rules/aircraft.yaml
 	d2k_smugglers|rules/vehicles.yaml
-	d2k_smugglers|rules/husks.yaml
+	d2k_smugglers|rules/husks.yaml	
+	d2k_smugglers|rules/starport.yaml
 
 Sequences:
 	d2k|sequences/aircraft.yaml
@@ -216,7 +217,7 @@ Fonts:
 		Ascender: 23
 
 Missions:
-	d2k|missions.yaml
+	# d2k|missions.yaml
 	d2k_smugglers|missions.yaml
 
 SupportsMapsFrom: d2k, d2k_smugglers

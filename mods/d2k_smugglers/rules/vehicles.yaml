@@ -33,9 +33,10 @@ scavanger:
 		RecoilRecovery: 32
 		LocalOffset: 256,0,300
 	Mobile:
-		Speed: 64
+		Speed: 32
+		TurnSpeed: 12
 	Health:
-		HP: 30000
+		HP: 9000
 	SpawnActorOnDeath:
 		Actor: combat_tank_o.husk
 

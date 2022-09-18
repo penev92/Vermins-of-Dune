@@ -1,0 +1,12 @@
+combat_tank_s.starport:
+	Inherits: combat_tank_s
+	Buildable:
+		Prerequisites: ~starport.smugglers_combat
+		Queue: Starport
+	Valued:
+		Cost: 875
+	-MapEditorData:
+	RenderSprites:
+		Image: combat_tank_s
+	UpdatesPlayerStatistics:
+		OverrideActor: combat_tank_s

@@ -7,11 +7,6 @@ using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Warheads
 {
-
-	public class ResourceDropActivity : Activity
-	{
-	}
-
 	public class SalvageResourcesWarhead : SpreadDamageWarhead
 	{
 		[Desc("The percentage of the damage that will be returned as resources.")]
@@ -26,8 +21,7 @@ namespace OpenRA.Mods.Common.Warheads
 
 			var damage = damageResourceEquivalent * victimMaxHP / victimCost;
 
-			damage = Util.ApplyPercentageModifiers(damage, args.DamageModifiers);
-
+			// damage = Util.ApplyPercentageModifiers(damage, args.DamageModifiers);
 			var healthBeforeDamage = victim.Trait<Health>().HP;
 
 			victim.InflictDamage(firedBy, new Damage(damage, DamageTypes));
@@ -37,6 +31,7 @@ namespace OpenRA.Mods.Common.Warheads
 			var resourceGain = ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
 
 			resourceGain = resourceGain > 0 ? resourceGain : 0;
+			resourceGain = ((int)resourceGain / 10) * 10;
 
 			firedBy.Owner.PlayerActor.Trait<PlayerResources>().GiveResources(resourceGain);
 		}

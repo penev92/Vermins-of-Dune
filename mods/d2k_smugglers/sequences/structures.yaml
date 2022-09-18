@@ -300,3 +300,43 @@ hightech.smugglers:
 		Offset: -16,-16
 	icon: s-hightech-cameo.shp
 		Offset: 0, 0
+
+
+starport.smugglers:
+	idle: s-starport-idle.shp
+		# Offset: -48,48
+		ZOffset: -1c511
+	damaged-idle: s-starport-idle-damaged.shp
+		ZOffset: -1c511
+	active: DATA.R8
+		Start: 5002
+		Length: 7
+		ZOffset: -1c511
+		Offset: -48,48
+		BlendMode: Additive
+		Tick: 200
+	damaged-active: DATA.R8
+		Start: 5002
+		Length: 7
+		ZOffset: -1c511
+		Offset: -48,48
+		BlendMode: Additive
+		Tick: 200
+	make: DATA.R8
+		Start: 4611
+		Length: 11
+		Offset: -48,48
+	crumble-overlay: DATA.R8
+		Start: 4622
+		Length: 11
+		Offset: -48,48
+		Tick: 100
+	bib: BLOXBASE.R8
+		Frames: 611, 612, 613, 631, 632, 633
+		Length: 6
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 643, 644, 645, 663, 664, 665
+		Length: 6
+		Offset: -16,-16
+	icon: s-starport-cameo.shp

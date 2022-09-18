@@ -121,3 +121,23 @@ high_tech_factory:
 			harkonnen: hightech.harkonnen
 			corrino: hightech.harkonnen
 			smuggler: hightech.smugglers
+
+
+starport:
+	RenderSprites:
+		Image: starport.ordos
+		FactionImages:
+			smuggler: starport.smugglers
+	WithDeliveryOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: starportlights
+	ProductionBar:
+		ProductionType: Starport
+	PrimaryBuilding:
+		ProductionQueues: Starport
+	ProvidesPrerequisite@smugglers:
+		Prerequisite: starport.smugglers
+		Factions: smuggler
+	ProvidesPrerequisite@ordos_combat:
+		Prerequisite: starport.smugglers_combat
+		Factions: smuggler, mercenary

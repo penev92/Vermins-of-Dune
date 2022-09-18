@@ -27,7 +27,7 @@ scavanger:
 		Tick: 60
 		Facings: -32
 		BlendMode: Additive
-	icon: s-combat-tank-cameo.shp
+	icon: s-scavanger-cameo.shp
 
 
 shuttle:
