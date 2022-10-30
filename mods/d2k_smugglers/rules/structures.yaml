@@ -101,6 +101,12 @@ heavy_factory:
 	ProvidesPrerequisite@smuggler_combat:
 		Prerequisite: heavy.smuggler_combat
 		Factions: smuggler
+	ProvidesPrerequisite@ordos_combat:
+		Prerequisite: heavy.ordos_combat
+		Factions: ordos, mercenary
+	ProvidesPrerequisite@missile_tank:
+		Prerequisite: heavy.missile_tank
+		Factions: atreides, fremen, harkonnen, corrino, smuggler
 	RenderSprites:
 		Image: heavy.ordos
 		FactionImages:

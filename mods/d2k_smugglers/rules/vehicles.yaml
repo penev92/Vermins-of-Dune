@@ -37,6 +37,8 @@ scavanger:
 		TurnSpeed: 12
 	Health:
 		HP: 9000
+	Selectable:
+		Class: scavanger
 	SpawnActorOnDeath:
 		Actor: combat_tank_o.husk
 
