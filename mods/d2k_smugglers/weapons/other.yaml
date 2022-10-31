@@ -12,20 +12,20 @@ DecomposerRay:
 		TrailImage: devour-trail
 		ContrailColor: 000000
 	Warhead@1Dam: SalvageResources
-		Damage: 200
+		Damage: 4000
 		Versus:
-			none: 8
+			none: 80
 			building: 50
 			wall: 100
 			light: 100
-			wood: 100
-			heavy: 100
+			wood: 80
+			heavy: 60
 			invulnerable: 0
-			cy: 20
+			cy: 40
 			harvester: 50
 		DamageTypes: Prone50Percent, TriggerProne, SoundDeath
 		DamageCalculationType: ClosestTargetablePosition
-    ResourceYield: 50
+    ResourceYield: 75
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater, RockCrater
 		InvalidTargets: Vehicle, Structure

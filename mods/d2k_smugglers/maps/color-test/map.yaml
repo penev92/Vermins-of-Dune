@@ -34,6 +34,7 @@ Players:
 		LockFaction: True
 		Faction: smuggler
 		LockColor: True
+		Color: 9E5A10
 		Enemies: IX, Creeps
 	PlayerReference@Fremen:
 		Name: Fremen
@@ -75,12 +76,6 @@ Players:
 		Name: Corrino
 		LockFaction: True
 		Faction: corrino
-		LockColor: True
-		Enemies: Creeps
-	PlayerReference@Tuek:
-		Name: Tuek
-		LockFaction: True
-		Faction: tuek
 		LockColor: True
 		Enemies: Creeps
 
