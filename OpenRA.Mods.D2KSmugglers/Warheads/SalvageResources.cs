@@ -3,6 +3,7 @@
 using OpenRA.Activities;
 using OpenRA.GameRules;
 using OpenRA.Mods.Common.Traits;
+using OpenRA.Mods.Common.Effects;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Warheads
@@ -17,9 +18,7 @@ namespace OpenRA.Mods.Common.Warheads
 			var victimMaxHP = victim.Info.TraitInfo<HealthInfo>().HP;
 			var victimCost = victim.Info.TraitInfo<ValuedInfo>().Cost;
 
-			int damageResourceEquivalent = Damage * DamageVersus(victim, shape, args) / 100;
-
-			var damage = damageResourceEquivalent * victimMaxHP / victimCost;
+			int damage = Damage * DamageVersus(victim, shape, args) / 100;
 
 			// damage = Util.ApplyPercentageModifiers(damage, args.DamageModifiers);
 			var healthBeforeDamage = victim.Trait<Health>().HP;
@@ -34,6 +33,14 @@ namespace OpenRA.Mods.Common.Warheads
 			resourceGain = ((int)resourceGain / 10) * 10;
 
 			firedBy.Owner.PlayerActor.Trait<PlayerResources>().GiveResources(resourceGain);
+
+			var resourceGainString = FloatingText.FormatCashTick(resourceGain);
+
+			if (firedBy.Owner.IsAlliedWith(firedBy.World.RenderPlayer))
+			{
+				firedBy.World.AddFrameEndTask(w => w.Add(new FloatingText(firedBy.CenterPosition, firedBy.Owner.Color, resourceGainString, 30)));
+			}
+
 		}
 
 		public override bool IsValidAgainst(Actor victim, Actor firedBy)

@@ -62,14 +62,12 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 
 		public IFinalizedRenderable PrepareRender(WorldRenderer wr) { return this; }
 
-		public static float PositionBasedRadiusModifier(WPos position)
+		public static float PositionBasedRadiusModifier(float time_in_seconds, WPos position)
 		{
-			TimeSpan t = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
-			double seconds = (double)t.TotalSeconds;
 			double mutliplier = (
-				(1.0 + 0.3 * Math.Sin((double)position.X * 100.0 + 10.0 * seconds)) *
-				(1.0 + 0.3 * Math.Sin((double)position.Y * 100.0 + 10.0 * seconds)) *
-				(1.0 + 0.3 * Math.Sin((double)position.Z * 100.0 + 10.0 * seconds)));
+				(1.0 + 0.3 * Math.Sin((double)position.X * 100.0 + 10.0 * time_in_seconds)) *
+				(1.0 + 0.3 * Math.Sin((double)position.Y * 100.0 + 10.0 * time_in_seconds)) *
+				(1.0 + 0.3 * Math.Sin((double)position.Z * 100.0 + 10.0 * time_in_seconds)));
 
 			return (float)mutliplier;
 		}
@@ -79,7 +77,6 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 			// Need at least 4 points to smooth the contrail over
 			if (length - skip < 4)
 				return;
-
 			var screenWidth = wr.ScreenVector(new WVec(width, WDist.Zero, WDist.Zero))[0];
 			var wcr = Game.Renderer.WorldRgbaColorRenderer;
 
@@ -94,7 +91,8 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 
 				if (!world.FogObscures(curPos) && !world.FogObscures(nextPos))
 				{
-					float modifier = PositionBasedRadiusModifier(curPos);
+					var time_in_seconds = (float)wr.World.Timestep / 30;
+					float modifier = PositionBasedRadiusModifier(time_in_seconds, curPos);
 					wcr.DrawLine(wr.Screen3DPosition(curPos), wr.Screen3DPosition(nextPos), modifier * screenWidth, curColor, nextColor);
 				}
 
