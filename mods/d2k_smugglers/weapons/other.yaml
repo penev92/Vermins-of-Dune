@@ -1,16 +1,17 @@
-DecomposerRay:
+DecomposeTarget:
 	ReloadDelay: 120
 	Range: 5c0
 	Report: MEDTANK1.WAV
-	Projectile: SalvageBomb
-		Speed: 200
-		Blockable: false
-		Shadow: true
-		LaunchAngle: 10
-		ContrailLength: 20
-		ContrailWidth: 64
-		TrailImage: devour-trail
-		ContrailColor: 000000
+	# Projectile: SalvageBomb
+	# 	Speed: 200
+	# 	Blockable: false
+	# 	Shadow: true
+	# 	LaunchAngle: 10
+	# 	ContrailLength: 20
+	# 	ContrailWidth: 64
+	# 	TrailImage: devour-trail
+	# 	ContrailColor: 000000
+	Projectile: InstantHit
 	Warhead@1Dam: SalvageResources
 		Damage: 4000
 		Versus:
@@ -26,9 +27,24 @@ DecomposerRay:
 		DamageTypes: Prone50Percent, TriggerProne, SoundDeath
 		DamageCalculationType: ClosestTargetablePosition
     ResourceYield: 75
+		WeaponYieldInfo: DecomposeYield
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater, RockCrater
 		InvalidTargets: Vehicle, Structure
 	Warhead@3Concrete: DamagesConcrete
 		Damage: 120
 
+
+DecomposeYield:
+	ReloadDelay: 120
+	Range: 5c0
+	Report: MEDTANK1.WAV
+	Projectile: SalvageBomb
+		Speed: 200
+		Blockable: false
+		Shadow: true
+		LaunchAngle: 10
+		ContrailLength: 20
+		ContrailWidth: 64
+		TrailImage: devour-trail
+		ContrailColor: 000000

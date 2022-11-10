@@ -28,7 +28,7 @@ scavanger:
 		Cost: 800
 	-WithMuzzleOverlay:
 	Armament:
-		Weapon: DecomposerRay
+		Weapon: DecomposeTarget
 		Recoil: 32
 		RecoilRecovery: 32
 		LocalOffset: 256,0,300
