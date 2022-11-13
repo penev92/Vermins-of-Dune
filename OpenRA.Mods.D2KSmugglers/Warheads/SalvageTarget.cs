@@ -2,14 +2,14 @@
 
 using OpenRA.Activities;
 using OpenRA.GameRules;
-using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Common.Effects;
+using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.D2KSmugglers.Projectiles;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Warheads
 {
-	public class SalvageResourcesWarhead : SpreadDamageWarhead
+	public class SalvageTargetWarhead : SpreadDamageWarhead
 	{
 		[Desc("The percentage of the damage that will be returned as resources.")]
 		public readonly int ResourceYield = 75;
@@ -34,18 +34,14 @@ namespace OpenRA.Mods.Common.Warheads
 			var resourceGain = ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
 
 			resourceGain = resourceGain > 0 ? resourceGain : 0;
-			resourceGain = ((int)resourceGain / 10) * 10;
-
-			firedBy.Owner.PlayerActor.Trait<PlayerResources>().GiveResources(resourceGain);
-
-			var resourceGainString = FloatingText.FormatCashTick(resourceGain);
+			//resourceGain = ((int)resourceGain / 5) * 5;
 
 			if (firedBy.Owner.IsAlliedWith(firedBy.World.RenderPlayer))
 			{
-				firedBy.World.AddFrameEndTask(w => w.Add(new FloatingText(firedBy.CenterPosition, firedBy.Owner.Color, resourceGainString, 30)));
-
 				Func<WPos> muzzlePosition = () => victim.CenterPosition;
-				Func<WAngle> muzzleFacing = () => (firedBy.CenterPosition - victim.CenterPosition).Yaw;
+
+				IFacing firedByMobileTrait = firedBy.Trait<IFacing>();
+				Func<WAngle> muzzleFacing = () => firedByMobileTrait.Facing;
 
 				WeaponInfo weaponYield;
 				victim.World.Map.Rules.Weapons.TryGetValue(WeaponYieldInfo.ToLower(), out weaponYield);
@@ -55,7 +51,7 @@ namespace OpenRA.Mods.Common.Warheads
 					Weapon = weaponYield,
 					Facing = muzzleFacing(),
 					CurrentMuzzleFacing = muzzleFacing,
-					DamageModifiers = new int[0],
+					DamageModifiers = new int[] { resourceGain },
 					InaccuracyModifiers = new int[0],
 					RangeModifiers = new int[0],
 					Source = muzzlePosition(),

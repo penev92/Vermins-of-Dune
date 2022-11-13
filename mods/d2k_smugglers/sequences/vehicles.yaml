@@ -20,15 +20,11 @@ combat_tank_s.husk:
 scavanger:
 	idle: scavanger-body.shp
 		Facings: -32
-	turret: scavanger-turret.shp
-		Facings: -32
-	muzzle: DATA.R8
-		Start: 4028
-		Tick: 60
+	muzzle: scavanger-body-muzzle.shp
+		Tick: 100
 		Facings: -32
 		BlendMode: Additive
 	icon: s-scavanger-cameo.shp
-
 
 shuttle:
 	idle: s-shuttle.shp

@@ -17,7 +17,7 @@ combat_tank_s:
 
 
 scavanger:
-	Inherits: ^combat_tank
+	Inherits: ^Tank
 	Buildable:
 		BuildPaletteOrder: 100
 		Prerequisites: ~heavy.smuggler_combat, research_centre, ~techlevel.high
@@ -26,12 +26,19 @@ scavanger:
 		Description: Decomposes enemy units into resources\n  Strong vs Cheep Vehicles\n  Weak vs Infantry
 	Valued:
 		Cost: 800
-	-WithMuzzleOverlay:
-	Armament:
+	Tooltip:
+		Name: Scavanger Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Armament@damage:
 		Weapon: DecomposeTarget
-		Recoil: 32
-		RecoilRecovery: 32
 		LocalOffset: 256,0,300
+	Armament@muzzle:
+		Weapon: DecomposeTargetMuzzle
+		MuzzleSequence: muzzle
+	AttackFrontal:
+	WithMuzzleOverlay:
+		IgnoreOffset: true
 	Mobile:
 		Speed: 32
 		TurnSpeed: 12
@@ -39,8 +46,13 @@ scavanger:
 		HP: 9000
 	Selectable:
 		Class: scavanger
-	SpawnActorOnDeath:
-		Actor: combat_tank_o.husk
+	RevealsShroud:
+		Range: 6c768
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AttractsWorms:
+		Intensity: 420
 
 
 shuttle:
