@@ -19,11 +19,12 @@ combat_tank_s:
 scavanger:
 	Inherits: ^Tank
 	Buildable:
+		Queue: Armor
 		BuildPaletteOrder: 100
-		Prerequisites: ~heavy.smuggler_combat, research_centre, ~techlevel.high
+		Prerequisites: ~heavy.smuggler, research_centre, ~techlevel.high
 		BuildDuration: 562
 		BuildDurationModifier: 100
-		Description: Decomposes enemy units into resources\n  Strong vs Cheep Vehicles\n  Weak vs Infantry
+		Description: Decomposes enemy units into resources
 	Valued:
 		Cost: 800
 	Tooltip:

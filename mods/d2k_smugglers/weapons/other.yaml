@@ -1,7 +1,7 @@
 DecomposeTarget:
 	ReloadDelay: 16
 	Range: 4c0
-	Report: MEDTANK1.WAV
+	Report: ATK_SCAVANGER.WAV
 	# Projectile: SalvageBomb
 	# 	Speed: 200
 	# 	Blockable: false
@@ -47,7 +47,7 @@ DecomposeTargetMuzzle:
 DecomposeYield:
 	ReloadDelay: 120
 	Range: 5c0
-	Report: MEDTANK1.WAV
+	# Report: MEDTANK1.WAV
 	Projectile: SalvageBomb
 		Speed: 200
 		Blockable: false
