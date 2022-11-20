@@ -44,7 +44,7 @@ scavanger:
 		Speed: 32
 		TurnSpeed: 12
 	Health:
-		HP: 9000
+		HP: 18000
 	Selectable:
 		Class: scavanger
 	RevealsShroud:

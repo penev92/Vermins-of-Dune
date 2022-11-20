@@ -13,7 +13,7 @@ DecomposeTarget:
 	# 	ContrailColor: 000000
 	Projectile: InstantHit
 	Warhead@1Dam: SalvageTarget
-		Damage: 1000
+		Damage: 1500
 		Versus:
 			none: 100
 			building: 50
