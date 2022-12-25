@@ -79,8 +79,8 @@ shuttle:
 	Armor:
 		Type: wood
 	Mobile:
-		TurnSpeed: 20
-		Speed: 64
+		TurnSpeed: 28
+		Speed: 80
 		Locomotor: tank
 		PauseOnCondition: notmobile
 	Cargo:
@@ -99,10 +99,10 @@ shuttle:
 		Margin: 1, 4
 		RequiresSelection: true
 		PipCount: 3
-	Cloak:
-		InitialDelay: 45
-		CloakDelay: 90
-		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Damage, Heal
-		IsPlayerPalette: true
-		PauseOnCondition: cloak-force-disabled
+	# Cloak:
+	# 	InitialDelay: 45
+	# 	CloakDelay: 90
+	# 	UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Damage, Heal
+	# 	IsPlayerPalette: true
+	# 	PauseOnCondition: cloak-force-disabled
 	
