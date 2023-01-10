@@ -289,27 +289,6 @@ Actors:
 		Owner: IX
 		Location: 11,28
 		Facing: 0
-	Actor57: outpost
-		Owner: Ordos
-		Location: 15,2
-	Actor58: wind_trap
-		Owner: Ordos
-		Location: 13,2
-	Actor59: wind_trap
-		Owner: Ordos
-		Location: 11,2
-	Actor60: outpost
-		Owner: Smugglers
-		Location: 18,2
-	Actor61: outpost
-		Owner: Atreides
-		Location: 21,2
-	Actor62: wind_trap
-		Owner: Atreides
-		Location: 24,2
-	Actor63: wind_trap
-		Owner: Atreides
-		Location: 26,2
 	Actor64: combat_tank_o
 		Owner: Neutral
 		Location: 7,10
@@ -406,17 +385,15 @@ Actors:
 		Owner: Smugglers
 		Location: 25,8
 	Actor88: palace
-		Owner: Smugglers
 		Location: 22,13
+		Faction: smuggler
+		Owner: Neutral
 	Actor89: wind_trap
 		Owner: Smugglers
 		Location: 26,5
 	Actor90: wind_trap
 		Owner: Smugglers
 		Location: 24,5
-	Actor91: high_tech_factory
-		Owner: Atreides
-		Location: 29,8
 	Actor92: high_tech_factory
 		Owner: Ordos
 		Location: 26,21
@@ -504,5 +481,43 @@ Actors:
 	Actor113: silo
 		Owner: Smugglers
 		Location: 3,12
+	Actor114: wind_trap
+		Owner: Smugglers
+		Location: 26,2
+	Actor115: wind_trap
+		Owner: Smugglers
+		Location: 24,2
+	Actor116: palace
+		Owner: Smugglers
+		Location: 2,8
+		Health: 45
+	Actor117: palace
+		Owner: Smugglers
+		Location: 2,5
+	Actor118: palace
+		Owner: Ordos
+		Location: 5,2
+		Health: 44
+	Actor119: palace
+		Owner: Ordos
+		Location: 2,2
+	Actor120: wind_trap
+		Owner: Ordos
+		Location: 29,9
+	Actor121: wind_trap
+		Owner: Ordos
+		Location: 31,9
+	Actor122: wind_trap
+		Owner: Ordos
+		Location: 31,5
+	Actor123: wind_trap
+		Owner: Ordos
+		Location: 29,5
+	Actor124: wind_trap
+		Owner: Ordos
+		Location: 29,2
+	Actor125: wind_trap
+		Owner: Ordos
+		Location: 31,2
 
 Rules: d2k|rules/campaign-rules.yaml, d2k|rules/campaign-tooltips.yaml, d2k_smugglers|rules/campaign-palettes.yaml, rules.yaml, vehicles.yaml

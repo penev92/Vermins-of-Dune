@@ -6,7 +6,31 @@ scavange-warp-effect:
     Tick: 80
     ZOffset: 1024
 
+vulture-effect:
+	fly: s-fly-idle.shp
+		Length: *
+    Tick: 30
+		Offset: 0, -30
+    ZOffset: 1024
+		BlendMode: Alpha
+
 
 devour-trail:
 	idle: s-devour-trail.shp
 		ZOffset: 1023
+
+
+icon:
+	ornistrike: DATA.R8
+		Start: 4292
+		Offset: -30,-24
+	fremen: DATA.R8
+		Start: 4293
+		Offset: -30,-24
+	saboteur: DATA.R8
+		Start: 4295
+		Offset: -30,-24
+	deathhand: DATA.R8
+		Start: 4296
+		Offset: -30,-24
+	vulture: s-scavanger-cameo.shp

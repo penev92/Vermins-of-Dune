@@ -2,15 +2,6 @@ DecomposeTarget:
 	ReloadDelay: 16
 	Range: 4c0
 	Report: ATK_SCAVANGER.WAV
-	# Projectile: SalvageBomb
-	# 	Speed: 200
-	# 	Blockable: false
-	# 	Shadow: true
-	# 	LaunchAngle: 10
-	# 	ContrailLength: 20
-	# 	ContrailWidth: 64
-	# 	TrailImage: devour-trail
-	# 	ContrailColor: 000000
 	Projectile: InstantHit
 	Warhead@1Dam: SalvageTarget
 		Damage: 1500
@@ -28,11 +19,6 @@ DecomposeTarget:
 		DamageCalculationType: ClosestTargetablePosition
     ResourceYield: 75
 		WeaponYieldInfo: DecomposeYield
-	# Warhead@2Smu: LeaveSmudge
-	# 	SmudgeType: SandCrater, RockCrater
-	# 	InvalidTargets: Vehicle, Structure
-	# Warhead@3Concrete: DamagesConcrete
-	# 	Damage: 120
 
 
 DecomposeTargetMuzzle:
@@ -47,7 +33,6 @@ DecomposeTargetMuzzle:
 DecomposeYield:
 	ReloadDelay: 120
 	Range: 5c0
-	# Report: MEDTANK1.WAV
 	Projectile: SalvageBomb
 		Speed: 200
 		Blockable: false

@@ -34,7 +34,6 @@ namespace OpenRA.Mods.Common.Warheads
 			var resourceGain = ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
 
 			resourceGain = resourceGain > 0 ? resourceGain : 0;
-			//resourceGain = ((int)resourceGain / 5) * 5;
 
 			if (firedBy.Owner.IsAlliedWith(firedBy.World.RenderPlayer))
 			{

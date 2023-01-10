@@ -26,7 +26,7 @@ Packages:
 
 MapFolders:
 	d2k_smugglers|maps: System
-	d2k|maps: System
+	# d2k|maps: System
 	~^SupportDir|maps/d2k/release-20210321: User
 
 RequiresMods:
@@ -62,9 +62,10 @@ Sequences:
 	d2k|sequences/infantry.yaml
 	d2k|sequences/structures.yaml
 	d2k|sequences/misc.yaml
-	d2k_smugglers|sequences/structures.yaml
-	d2k_smugglers|sequences/infantry.yaml
+	d2k_smugglers|sequences/aircraft.yaml
 	d2k_smugglers|sequences/vehicles.yaml
+	d2k_smugglers|sequences/infantry.yaml
+	d2k_smugglers|sequences/structures.yaml
 	d2k_smugglers|sequences/misc.yaml
 
 

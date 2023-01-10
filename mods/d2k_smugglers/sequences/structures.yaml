@@ -340,3 +340,29 @@ starport.smugglers:
 		Length: 6
 		Offset: -16,-16
 	icon: s-starport-cameo.shp
+
+palace.smugglers:
+	idle: s-palace-idle.shp
+		Offset: 0,-8
+	active: DATA.R8
+		Start: 2924
+		Offset: -48,48
+	make: DATA.R8
+		Start: 4677
+		Length: 11
+		Offset: -48,48
+	crumble-overlay: DATA.R8
+		Start: 4688
+		Length: 11
+		Offset: -48,48
+	damaged-idle: s-palace-idle-damaged.shp
+		Offset: 0,-8
+	bib: BLOXBASE.R8
+		Frames: 631, 632, 633
+		Length: 3
+		Offset: -16,-16
+	bib-Concrete: BLOXBASE.R8
+		Frames: 663, 664, 665
+		Length: 3
+		Offset: -16,-16
+	icon: s-palace-cameo.shp

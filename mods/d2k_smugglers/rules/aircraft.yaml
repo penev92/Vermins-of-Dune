@@ -5,3 +5,26 @@ carryall.reinforce:
 		# LoadRange: 0
 	Aircraft:
 		LandAltitude: 512
+
+
+vulture:
+	Inherits: ^Plane
+	FlyVulture:
+	Armament:
+		Weapon: OrniBomb
+	Health:
+		HP: 9000
+	Armor:
+		Type: light
+	Aircraft:
+		Speed: 560
+		TurnSpeed: 16
+		Repulsable: False
+		CruiseAltitude: 1920
+	AmmoPool:
+		Ammo: 5
+	Tooltip:
+		Name: Vulture
+	RejectsOrders:
+	RevealOnFire:
+	-MapEditorData:

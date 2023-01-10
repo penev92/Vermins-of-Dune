@@ -147,3 +147,45 @@ starport:
 	ProvidesPrerequisite@ordos_combat:
 		Prerequisite: starport.smugglers_combat
 		Factions: smuggler, mercenary
+
+
+palace:
+	RenderSprites:
+		Image: palace.ordos
+		FactionImages:
+			atreides: palace.atreides
+			fremen: palace.atreides
+			smuggler: palace.smugglers
+			harkonnen: palace.harkonnen
+			corrino: palace.corrino
+	GrantConditionOnFaction@smuggler:
+		Condition: smuggler
+		Factions: smuggler
+	PrimaryBuilding:
+		RequiresCondition: atreides || ordos || smuggler
+	WithTextDecoration@primary:
+		RequiresCondition: primary && (atreides || ordos || smuggler)
+	GrantConditionOnFaction@Ordos:
+		Condition: ordos
+		Factions: ordos, mercenary
+	SupportPowerChargeBar:
+		RequiresCondition: atreides || harkonnen || ordos || smuggler
+	ProvidesPrerequisite@vulture:
+		Prerequisite: palace.vulture
+		Factions: smuggler
+	VulturePower@vulture:
+		Icon: vulture
+		Description: Operation Vulture 
+		Prerequisites: ~techlevel.superweapons, ~palace.vulture
+		PauseOnCondition: disabled
+		RequiresCondition: smuggler
+		ChargeInterval: 2500
+		SquadSize: 4
+		SquadOffset: -4096, 2048, 0
+		LongDesc: Vultures harvest enemy units and drop at your palace
+		UnitType: vulture
+		DisplayBeacon: True
+		CameraActor: camera
+		ArrowSequence: arrow
+		CircleSequence: circles
+		SupportPowerPaletteOrder: 10
