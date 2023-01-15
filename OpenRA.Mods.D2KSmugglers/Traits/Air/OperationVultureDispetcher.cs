@@ -10,14 +10,14 @@ namespace OpenRA.Mods.D2KSmugglers.Traits.Air
 	{
 		NOT_STARTED = 0,
 		SCOUT = 1,
-		RETURN = 2
+		HARVEST = 2,
+		DROP = 3
 	}
 
 	public class OperationVultureDispetcher
 	{
 		private Dictionary<Actor, bool> finishedScoutRun = null;
-		bool fliesAreReleased = false;
-
+		bool reachedDropPoint2ndTime = false;
 		public OperationVultureDispetcher() { }
 		public OperationVultureStage GetStage()
 		{
@@ -26,10 +26,11 @@ namespace OpenRA.Mods.D2KSmugglers.Traits.Air
 
 			OperationVultureStage stage = OperationVultureStage.SCOUT;
 
-			if (fliesAreReleased && finishedScoutRun.Values.Max())
-				stage = OperationVultureStage.RETURN;
-			else
-				return stage;
+			if (finishedScoutRun.Values.Min())
+				stage = OperationVultureStage.HARVEST;
+
+			if (reachedDropPoint2ndTime)
+				stage = OperationVultureStage.DROP;
 
 			return stage;
 		}
@@ -42,9 +43,12 @@ namespace OpenRA.Mods.D2KSmugglers.Traits.Air
 			}
 		}
 
-		public void NotifyReleaseFlies()
+		public void NotifyFinishHarvestRun(Actor actor)
 		{
-			fliesAreReleased = true;
+			if (finishedScoutRun.Keys.Contains(actor))
+			{
+				reachedDropPoint2ndTime = true;
+			}
 		}
 
 		public void NotifyVulturesArrived(IEnumerable<Actor> vultureSquad)

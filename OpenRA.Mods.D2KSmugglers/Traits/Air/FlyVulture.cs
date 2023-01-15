@@ -15,6 +15,8 @@ using System.Linq;
 using OpenRA.Activities;
 using OpenRA.Mods.Common.Activities;
 using OpenRA.Mods.Common.Effects;
+using OpenRA.Mods.Common.Traits.Render;
+using OpenRA.Mods.D2KSmugglers.Effects;
 using OpenRA.Mods.D2KSmugglers.Traits.Air;
 using OpenRA.Primitives;
 using OpenRA.Traits;
@@ -47,8 +49,9 @@ namespace OpenRA.Mods.Common.Traits
 		public WDist OperationAreaRadius;
 
 		public OperationVultureDispetcher Dispetcher;
-		public List<Actor> PossibleVictims = null;
+		public HashSet<Actor> PossibleVictims = null;
 		public Dictionary<LoopingSpriteEffect, Actor> FlyEffects = null;
+		public List<AttachedRevealShroudEffect> RevealEffects = null;
 		public List<Actor> Vultures = null;
 
 		[Sync]
@@ -72,10 +75,12 @@ namespace OpenRA.Mods.Common.Traits
 		public WPos CheckpointTurning1 { get; private set; }
 		public WPos CheckpointTurning2 { get; private set; }
 		public WPos CheckpointTurning3 { get; private set; }
+		public WPos CheckpointDropPoint { get; private set; }
 
 		public Player Owner { get; private set; }
 		public int RevealDuration { get; private set; }
 
+		int lastTick;
 		public OperationVulture(
 			WPos target,
 			WPos drop,
@@ -96,6 +101,8 @@ namespace OpenRA.Mods.Common.Traits
 			Vultures = new List<Actor>();
 			FlyEffects = new Dictionary<LoopingSpriteEffect, Actor>();
 			Dispetcher = new OperationVultureDispetcher();
+			RevealEffects = new List<AttachedRevealShroudEffect>();
+			lastTick = world.WorldTick;
 
 			World = world;
 
@@ -116,8 +123,12 @@ namespace OpenRA.Mods.Common.Traits
 			CheckpointTurning1 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 20;
 			CheckpointTurning2 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 40;
 			CheckpointTurning3 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 60;
+			CheckpointDropPoint = drop + new WVec(0, 0, altitude);
 
 			AttackAngle = WAngle.ArcTan(-attackDirection.X, attackDirection.Y);
+
+			PossibleVictims = new HashSet<Actor>();
+			FlyEffects = new Dictionary<LoopingSpriteEffect, Actor>();
 		}
 
 		public void SendVultures(
@@ -163,6 +174,9 @@ namespace OpenRA.Mods.Common.Traits
 				vulture.QueueActivity(new CallFunc(() => Dispetcher.NotifyFinishScoutRun(vulture)));
 
 				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTarget + spawnOffset)));
+				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointDropPoint + spawnOffset)));
+				vulture.QueueActivity(new CallFunc(() => Dispetcher.NotifyFinishHarvestRun(vulture)));
+
 				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointStart + spawnOffset)));
 				vulture.QueueActivity(new RemoveSelf());
 			}
@@ -170,74 +184,100 @@ namespace OpenRA.Mods.Common.Traits
 			Dispetcher.NotifyVulturesArrived(Vultures);
 		}
 
-		public void RevealTarget()
+		public void TryRunTick()
 		{
-			World.AddFrameEndTask(w =>
+			// Run only once per tick
+			if (World.WorldTick == lastTick)
 			{
-				var revealShroudEffect = new RevealShroudEffect(
-					new WPos(CheckpointTarget.X, CheckpointTarget.Y, 0),
-					new WDist(8192),
-					Shroud.SourceType.Visibility,
-					Owner,
-					PlayerRelationship.Ally,
-					0,
-					RevealDuration);
-				w.Add(revealShroudEffect);
-			});
+				return;
+			}
+
+			foreach (Actor actor in PossibleVictims.ToList())
+			{
+				if (!IsValidTarget(actor))
+					RemoveTarget(actor);
+			}
+
+			lastTick = World.WorldTick;
+		}
+
+		public void RemoveTarget(Actor target)
+		{
+			PossibleVictims.Remove(target);
+
+			foreach (LoopingSpriteEffect effect in FlyEffects.Keys.ToList())
+			{
+				if (FlyEffects[effect] == target)
+				{
+					FlyEffects.Remove(effect);
+					effect.Terminate();
+				}
+			}
+
+			foreach (AttachedRevealShroudEffect effect in RevealEffects.ToList())
+			{
+				if (effect.Target.Actor == target)
+				{
+					RevealEffects.Remove(effect);
+					effect.Terminate(World);
+				}
+			}
 		}
 
 		public bool IsValidTarget(Actor target)
 		{
-			if (Owner.RelationshipWith(target.Owner) == PlayerRelationship.Enemy)
+			if (Owner.RelationshipWith(target.Owner) != PlayerRelationship.Enemy)
 			{
-				return true;
+				return false;
 			}
 
-			return false;
+			if (target.IsDead)
+			{
+				return false;
+			}
+
+			if (target.TraitsImplementing<Carryable>().ToList().Count == 0)
+			{
+				return false;
+			}
+
+			if (target.TraitsImplementing<Mobile>().ToList().Count == 0)
+			{
+				return false;
+			}
+
+			if (IsDockedHarvester(target))
+			{
+				return false;
+			}
+
+			return true;
 		}
 
-		public void ReleaseFlies()
+		private bool IsDockedHarvester(Actor other)
 		{
-			if (AreTargetsAcquired)
+			if (other.TraitsImplementing<Harvester>().ToList().Count != 0)
+				return other.Trait<WithSpriteBody>().DefaultAnimation.CurrentSequence.Name == "dock-loop";
+			else
+				return false;
+		}
+
+		public IEnumerable<Actor> GetUnitsInBlock(WPos blockCenterPosition, WDist squareSize, WAngle angle, int speed)
+		{
+			WDist diagonal = squareSize * 141 / 100;
+			var candidates = World.FindActorsInCircle(blockCenterPosition, diagonal);
+			WRot rotation = WRot.FromYaw(-angle);
+
+			Func<Actor, bool> selector = (a) =>
 			{
-				throw new Exception("ReleaseFlies cannot be called twice");
-			}
+				var diff = (a.CenterPosition - blockCenterPosition).Rotate(rotation);
 
-			var targets = World.FindActorsInCircle(TargetPosition, OperationAreaRadius);
-			PossibleVictims = targets.ToList();
-			FlyEffects = new Dictionary<LoopingSpriteEffect, Actor>();
+				bool isYInRange = (Math.Abs(diff.Y) < squareSize.Length + speed);
+				bool isXInRange = (Math.Abs(diff.X) < squareSize.Length);
 
-			foreach (Actor actor in PossibleVictims)
-			{
-				if (!IsValidTarget(actor))
-					continue;
-				Actor closestVulture = Vultures.MaxBy(v => -(actor.CenterPosition - v.CenterPosition).LengthSquared);
-
-				FlyParticle fly = new FlyParticle();
-				fly.Position = closestVulture.CenterPosition;
-				fly.Speed = new WVec(0, closestVulture.Trait<Aircraft>().MovementSpeed, 0).Rotate(
-					WRot.FromYaw(closestVulture.TraitsImplementing<Aircraft>().First().Facing)) / 2;
-
-				Func<WPos> positionFunc = () =>
-				{
-					WVec randomIncrement = new WVec(World.SharedRandom.Next() % 30 - 15,
-													World.SharedRandom.Next() % 30 - 15,
-													World.SharedRandom.Next() % 30 - 15);
-					WPos goalPosition = new WPos(actor.CenterPosition.X, actor.CenterPosition.Y, 512);
-					WVec speedGoal = (goalPosition - fly.Position) / 10;
-					fly.Speed = (80 * fly.Speed + 20 * speedGoal) / 100 + randomIncrement;
-					fly.Speed = new WVec(fly.Speed.X, fly.Speed.Y, fly.Speed.Z);
-					fly.Position = fly.Position + fly.Speed;
-					return fly.Position;
-				};
-
-				var flyEffect = new LoopingSpriteEffect(positionFunc, () => new WAngle(0), World, "vulture-effect", "fly", "effect");
-				World.AddFrameEndTask(w => w.Add(flyEffect));
-				FlyEffects.Add(flyEffect, actor);
-			}
-
-			Dispetcher.NotifyReleaseFlies();
-			AreTargetsAcquired = true;
+				return isXInRange && isXInRange;
+			};
+			return candidates.Where(selector);
 		}
 
 		public void CleanUp()
@@ -252,6 +292,16 @@ namespace OpenRA.Mods.Common.Traits
 				FlyEffects = null;
 			}
 
+			if (RevealEffects != null)
+			{
+				foreach (var effect in RevealEffects)
+				{
+					effect.Terminate(World);
+				}
+
+				RevealEffects = null;
+			}
+
 			PossibleVictims = null;
 		}
 	}
@@ -259,9 +309,6 @@ namespace OpenRA.Mods.Common.Traits
 	public class FlyVulture : AttackBase, ITick, ISync, INotifyRemovedFromWorld
 	{
 		readonly FlyVultureInfo info;
-
-		[Sync]
-		bool inOperationArea;
 
 		public event Action<Actor> OnRemovedFromWorld = self => { };
 		public event Action<Actor> OnEnteredOperationRange = self => { };
@@ -275,42 +322,167 @@ namespace OpenRA.Mods.Common.Traits
 			this.info = info;
 		}
 
+		void ScoutTick(Actor self)
+		{
+			var candidates = Operation.GetUnitsInBlock(
+				self.CenterPosition,
+				Operation.OperationAreaRadius,
+				self.Trait<Aircraft>().Facing,
+				self.Trait<Aircraft>().MovementSpeed);
+
+			candidates = candidates.Where(c => !Operation.PossibleVictims.Contains(c));
+
+			foreach (Actor actor in candidates)
+			{
+				if (!Operation.IsValidTarget(actor))
+					continue;
+
+				Operation.PossibleVictims.Add(actor);
+
+				FlyParticle fly = new FlyParticle();
+				fly.Position = self.CenterPosition;
+				fly.Speed = new WVec(0, self.Trait<Aircraft>().MovementSpeed, 0).Rotate(
+					WRot.FromYaw(self.TraitsImplementing<Aircraft>().First().Facing)) / 2;
+
+				Func<WPos> positionFunc = () =>
+				{
+					WVec randomIncrement = new WVec(self.World.SharedRandom.Next() % 30 - 15,
+													self.World.SharedRandom.Next() % 30 - 15,
+													self.World.SharedRandom.Next() % 30 - 15);
+					WPos goalPosition = new WPos(actor.CenterPosition.X, actor.CenterPosition.Y, 512);
+					WVec speedGoal = (goalPosition - fly.Position) / 10;
+					fly.Speed = (80 * fly.Speed + 20 * speedGoal) / 100 + randomIncrement;
+					fly.Speed = new WVec(fly.Speed.X, fly.Speed.Y, fly.Speed.Z);
+					fly.Position = fly.Position + fly.Speed;
+					return fly.Position;
+				};
+
+				var flyEffect = new LoopingSpriteEffect(
+					positionFunc,
+					() => new WAngle(0),
+					self.World,
+					"vulture-effect",
+					"fly", "effect");
+
+				var revealShroudEffect = new AttachedRevealShroudEffect(
+						Target.FromActor(actor),
+						WDist.FromCells(2),
+						Shroud.SourceType.Visibility,
+						self.Owner,
+						PlayerRelationship.Ally,
+						0,
+						100000);
+
+				Operation.FlyEffects.Add(flyEffect, actor);
+				Operation.RevealEffects.Add(revealShroudEffect);
+
+				self.World.AddFrameEndTask(w =>
+				{
+					w.Add(flyEffect);
+					w.Add(revealShroudEffect);
+				});
+			}
+		}
+
+		void HarvestTick(Actor self)
+		{
+			int pickUpDistance = 1024;
+
+			var carryallTrait = self.Trait<Carryall>();
+
+			if (carryallTrait.Carryable != null)
+				return;
+
+			var candidatesIterable = Operation.GetUnitsInBlock(
+				self.CenterPosition,
+				new WDist(pickUpDistance),
+				self.Trait<Aircraft>().Facing,
+				self.Trait<Aircraft>().MovementSpeed);
+			candidatesIterable = candidatesIterable.Where(Operation.IsValidTarget);
+			candidatesIterable = candidatesIterable.Where(a => Operation.PossibleVictims.Contains(a));
+
+			List<Actor> candidates = candidatesIterable.ToList();
+
+			if (candidates.Count == 0)
+				return;
+
+			Actor closestTarget = candidates.MaxBy(a => -(self.CenterPosition - a.CenterPosition).LengthSquared);
+
+			CPos selfPosition = new CPos(self.CenterPosition.X, self.CenterPosition.Y);
+			CPos closestTargetPosition = new CPos(closestTarget.CenterPosition.X, closestTarget.CenterPosition.Y);
+
+			self.World.AddFrameEndTask(w =>
+			{
+				closestTarget.ChangeOwnerSync(self.Owner);
+				if (closestTarget.TraitsImplementing<Harvester>().ToList().Count != 0)
+					closestTarget.Trait<Harvester>().ChooseNewProc(closestTarget, null);
+				closestTarget.CancelActivity();
+				closestTarget.World.Remove(closestTarget);
+				closestTarget.Trait<Carryable>().Attached(closestTarget);
+				carryallTrait.AttachCarryable(self, closestTarget);
+			});
+		}
+
+		void DropTick(Actor self)
+		{
+			Carryall carryall = self.Trait<Carryall>();
+			BodyOrientation body = self.Trait<BodyOrientation>();
+			Aircraft aircraft = self.Trait<Aircraft>();
+
+			if (carryall.Carryable == null)
+				return;
+
+			var localOffset = carryall.CarryableOffset.Rotate(body.QuantizeOrientation(self, self.Orientation));
+			var targetPosition = self.CenterPosition + body.LocalToWorld(localOffset);
+			var targetLocation = self.World.Map.CellContaining(targetPosition);
+
+			if (!self.World.Map.Contains(targetLocation))
+				return;
+
+			Mobile droppableMobile = carryall.Carryable.Trait<Mobile>();
+
+			if (!droppableMobile.CanEnterCell(targetLocation))
+			{
+				return;
+			}
+
+			carryall.Carryable.Trait<IPositionable>().SetPosition(carryall.Carryable, targetLocation, SubCell.FullCell);
+			carryall.Carryable.Trait<IFacing>().Facing = facing.Facing;
+
+			// Put back into world
+			self.World.AddFrameEndTask(w =>
+			{
+				if (self.IsDead)
+					return;
+
+				var cargo = carryall.Carryable;
+				if (cargo == null)
+					return;
+
+				var carryable = cargo.Trait<Carryable>();
+				w.Add(cargo);
+				carryall.DetachCarryable(self);
+				carryable.UnReserve(cargo);
+				carryable.Detached(cargo);
+			});
+		}
+
 		void ITick.Tick(Actor self)
 		{
-			var wasInOperationArea = inOperationArea;
-			inOperationArea = false;
-
-			if (self.IsInWorld)
+			switch (Operation.Dispetcher.GetStage())
 			{
-				var deltePosition = Operation.TargetPosition - self.CenterPosition;
-				WDist distance = new WDist(new WVec(deltePosition.X, deltePosition.Y, 0).Length);
-
-				inOperationArea = distance < Operation.OperationAreaRadius;
+				case OperationVultureStage.SCOUT:
+					ScoutTick(self);
+					break;
+				case OperationVultureStage.HARVEST:
+					HarvestTick(self);
+					break;
+				case OperationVultureStage.DROP:
+					DropTick(self);
+					break;
 			}
 
-			if (inOperationArea && !wasInOperationArea)
-			{
-				OnEnteredOperationRange(self);
-				if (!Operation.AreTargetsAcquired)
-				{
-					Operation.RevealTarget();
-					Operation.ReleaseFlies();
-				}
-			}
-
-			if (!inOperationArea && wasInOperationArea)
-			{
-				// Remove all units after 2nd pass
-				if (Operation.Dispetcher.GetStage() == OperationVultureStage.RETURN)
-				{
-					Operation.CleanUp();
-				}
-				else
-				{
-				}
-
-				OnExitedOperationRange(self);
-			}
+			Operation.TryRunTick();
 		}
 
 		// public void SetTarget(World w, WPos pos) { Operation.Target = Target.FromPos(pos); }
@@ -322,7 +494,7 @@ namespace OpenRA.Mods.Common.Traits
 
 		public override Activity GetAttackActivity(Actor self, AttackSource source, in Target newTarget, bool allowMove, bool forceAttack, Color? targetLineColor)
 		{
-			throw new NotImplementedException("AttackBomber requires vulture scripted target");
+			throw new NotImplementedException("AttackBomber requires vulture scripted Target");
 		}
 	}
 }

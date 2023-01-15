@@ -75,10 +75,10 @@ namespace OpenRA.Mods.D2KSmugglers.Projectiles
 		[Desc("Controls the way inaccuracy is calculated. Possible values are 'Maximum' - scale from 0 to max with range, 'PerCellIncrement' - scale from 0 with range and 'Absolute' - use set value regardless of range.")]
 		public readonly InaccuracyType InaccuracyType = InaccuracyType.Absolute;
 
-		[Desc("Inaccuracy override when sucessfully locked onto target. Defaults to Inaccuracy if negative.")]
+		[Desc("Inaccuracy override when sucessfully locked onto Target. Defaults to Inaccuracy if negative.")]
 		public readonly WDist LockOnInaccuracy = new WDist(-1);
 
-		[Desc("Probability of locking onto and following target.")]
+		[Desc("Probability of locking onto and following Target.")]
 		public readonly int LockOnProbability = 100;
 
 		[Desc("Horizontal rate of turn.")]
@@ -146,13 +146,13 @@ namespace OpenRA.Mods.D2KSmugglers.Projectiles
 		[Desc("Explodes when leaving the following terrain type, e.g., Water for torpedoes.")]
 		public readonly string BoundToTerrainType = "";
 
-		[Desc("Allow the missile to snap to the target, meaning jumping to the target immediately when",
-			"the missile enters the radius of the current speed around the target.")]
+		[Desc("Allow the missile to snap to the Target, meaning jumping to the Target immediately when",
+			"the missile enters the radius of the current speed around the Target.")]
 		public readonly bool AllowSnapping = false;
 
-		[Desc("Explodes when inside this proximity radius to target.",
+		[Desc("Explodes when inside this proximity radius to Target.",
 			"Note: If this value is lower than the missile speed, this check might",
-			"not trigger fast enough, causing the missile to fly past the target.")]
+			"not trigger fast enough, causing the missile to fly past the Target.")]
 		public readonly WDist CloseEnough = new WDist(298);
 
 		public IProjectile Create(ProjectileArgs args) { return new SalvageBomb(this, args); }

@@ -29,9 +29,8 @@ namespace OpenRA.Mods.Common.Traits
 		public readonly int QuantizedFacings = 32;
 		public readonly WDist Cordon = new WDist(5120);
 
-		[Desc("The minimal distance from the target area when the ares is revealed")]
-		public readonly WDist OperationAreaRadius = new WDist(12288);
-
+		[Desc("The minimal distance from the Target area when the ares is revealed")]
+		public readonly WDist OperationAreaRadius = WDist.FromCells(4);
 		public readonly int RevealDuration = 400;
 
 		[ActorReference]
