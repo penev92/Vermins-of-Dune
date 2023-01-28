@@ -1,6 +1,5 @@
 vulture:
-	idle: DATA.R8
-		Start: 1923
+	idle: vulture-idle.shp
 		Facings: -32
 	icon: DATA.R8
 		Start: 4290
