@@ -180,7 +180,7 @@ palace:
 		PauseOnCondition: disabled
 		RequiresCondition: smuggler
 		ChargeInterval: 2500
-		SquadSize: 4
+		SquadSize: 3
 		SquadOffset: -4096, 2048, 0
 		LongDesc: Vultures harvest enemy units and drop at your palace
 		UnitType: vulture

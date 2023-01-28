@@ -78,6 +78,7 @@ namespace OpenRA.Mods.Common.Traits
 				info.UnitType,
 				self.Owner,
 				info.RevealDuration,
+				info.SquadSize,
 				self.World);
 
 			Actor camera = null;
@@ -132,7 +133,6 @@ namespace OpenRA.Mods.Common.Traits
 				PlayLaunchSounds();
 
 				operation.SendVultures(
-					info.SquadSize,
 					info.SquadOffset,
 					onEnterRange,
 					onExitRange,

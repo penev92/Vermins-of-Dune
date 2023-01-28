@@ -15,8 +15,8 @@ vulture:
 	Armor:
 		Type: light
 	Aircraft:
-		Speed: 560
-		TurnSpeed: 16
+		Speed: 250
+		TurnSpeed: 8
 		Repulsable: False
 		CruiseAltitude: 1920
 	Tooltip:

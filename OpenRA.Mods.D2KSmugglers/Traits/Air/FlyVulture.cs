@@ -17,7 +17,6 @@ using OpenRA.Mods.Common.Activities;
 using OpenRA.Mods.Common.Effects;
 using OpenRA.Mods.Common.Traits.Render;
 using OpenRA.Mods.D2KSmugglers.Effects;
-using OpenRA.Mods.D2KSmugglers.Traits.Air;
 using OpenRA.Primitives;
 using OpenRA.Traits;
 
@@ -31,27 +30,18 @@ namespace OpenRA.Mods.Common.Traits
 		public override object Create(ActorInitializer init) { return new FlyVulture(init.Self, this); }
 	}
 
-	public class FlyParticle
+	public enum OperationStateType
 	{
-		public FlyParticle() { }
-		public FlyParticle(WPos pos, WVec speed)
-		{
-			Position = pos;
-			Speed = speed;
-		}
-
-		public WPos Position;
-		public WVec Speed;
+		APPROACH,
+		HARVEST,
+		RETURN,
+		DROP
 	}
 
 	public class OperationVulture : ISync
 	{
 		public WDist OperationAreaRadius;
 
-		public OperationVultureDispetcher Dispetcher;
-		public HashSet<Actor> PossibleVictims = null;
-		public Dictionary<LoopingSpriteEffect, Actor> FlyEffects = null;
-		public List<AttachedRevealShroudEffect> RevealEffects = null;
 		public List<Actor> Vultures = null;
 
 		[Sync]
@@ -71,14 +61,15 @@ namespace OpenRA.Mods.Common.Traits
 
 		public WPos CheckpointStart { get; private set; }
 		public WPos CheckpointTarget { get; private set; }
-		public WPos CheckpointFinish { get; private set; }
-		public WPos CheckpointTurning1 { get; private set; }
-		public WPos CheckpointTurning2 { get; private set; }
-		public WPos CheckpointTurning3 { get; private set; }
 		public WPos CheckpointDropPoint { get; private set; }
 
 		public Player Owner { get; private set; }
 		public int RevealDuration { get; private set; }
+
+		public int LoopPeriodInTicks { get; private set; }
+		public int SquadSize { get; private set; }
+		public int VultureOffset { get; private set; }
+		public int LoopRadius { get; private set; }
 
 		int lastTick;
 		public OperationVulture(
@@ -89,6 +80,7 @@ namespace OpenRA.Mods.Common.Traits
 			string unitType,
 			Player owner,
 			int revealDuration,
+			int squadSize,
 			World world)
 		{
 			OperationAreaRadius = operationAreaRadius;
@@ -99,11 +91,8 @@ namespace OpenRA.Mods.Common.Traits
 			Owner = owner;
 			RevealDuration = revealDuration;
 			Vultures = new List<Actor>();
-			FlyEffects = new Dictionary<LoopingSpriteEffect, Actor>();
-			Dispetcher = new OperationVultureDispetcher();
-			RevealEffects = new List<AttachedRevealShroudEffect>();
 			lastTick = world.WorldTick;
-
+			SquadSize = squadSize;
 			World = world;
 
 			var altitude = World.Map.Rules.Actors[UnitType].TraitInfo<AircraftInfo>().CruiseAltitude.Length;
@@ -113,41 +102,32 @@ namespace OpenRA.Mods.Common.Traits
 
 			CheckpointStart = target - (World.Map.DistanceToEdge(target, -attackDirection)
 				+ cordon).Length * attackDirection / attackDirection.Length;
-			CheckpointFinish = target + (World.Map.DistanceToEdge(target, attackDirection)
-				+ cordon).Length * attackDirection / attackDirection.Length;
 
 			CheckpointTarget = target + new WVec(0, 0, altitude);
 			CheckpointStart += new WVec(0, 0, altitude);
-			CheckpointFinish += new WVec(0, 0, altitude);
-
-			CheckpointTurning1 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 20;
-			CheckpointTurning2 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 40;
-			CheckpointTurning3 = CheckpointFinish + new WVec(0, 0, altitude) + attackDirection * 60;
 			CheckpointDropPoint = drop + new WVec(0, 0, altitude);
 
 			AttackAngle = WAngle.ArcTan(-attackDirection.X, attackDirection.Y);
 
-			PossibleVictims = new HashSet<Actor>();
-			FlyEffects = new Dictionary<LoopingSpriteEffect, Actor>();
+			var rules = World.Map.Rules;
+			AircraftInfo info = rules.Actors[UnitType].TraitInfo<AircraftInfo>();
+			LoopPeriodInTicks = 1024 / info.TurnSpeed.Angle;
+			VultureOffset = info.Speed * LoopPeriodInTicks * (SquadSize + 1) / SquadSize;
+			LoopRadius = info.Speed * LoopPeriodInTicks * 100 / 628;
 		}
 
 		public void SendVultures(
-			int squadSize,
 			WVec squadOffset,
 			Action<Actor> onEnterRange,
 			Action<Actor> onExitRange,
 			Action<Actor> onRemovedFromWorld)
 		{
-			// Create the actors immediately so they can be returned
-			for (var i = -squadSize / 2; i <= squadSize / 2; i++)
+			for (var i = 0; i < SquadSize; i++)
 			{
-				// Even-sized squads skip the lead plane
-				if (i == 0 && (squadSize & 1) == 0)
-					continue;
-
 				// Includes the 90 degree rotation between body and world coordinates
 				var so = squadOffset;
-				var spawnOffset = new WVec(i * so.Y, -Math.Abs(i) * so.X, 0).Rotate(WRot.FromYaw(AttackAngle));
+				var spawnOffset = new WVec(LoopRadius, i * VultureOffset, 0).Rotate(WRot.FromYaw(AttackAngle));
+				var targetOffset = new WVec(LoopRadius, 0, 0).Rotate(WRot.FromYaw(AttackAngle));
 
 				var vulture = World.CreateActor(false, UnitType, new TypeDictionary
 				{
@@ -165,62 +145,14 @@ namespace OpenRA.Mods.Common.Traits
 
 				World.Add(vulture);
 
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTarget + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointFinish + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTurning3 + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTurning2 + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTurning1 + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointFinish + spawnOffset)));
-				vulture.QueueActivity(new CallFunc(() => Dispetcher.NotifyFinishScoutRun(vulture)));
-
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTarget + spawnOffset)));
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointDropPoint + spawnOffset)));
-				vulture.QueueActivity(new CallFunc(() => Dispetcher.NotifyFinishHarvestRun(vulture)));
-
-				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointStart + spawnOffset)));
+				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointTarget + targetOffset)));
+				vulture.QueueActivity(new CallFunc(() => vulture.Trait<FlyVulture>().State = OperationStateType.HARVEST));
+				vulture.QueueActivity(new FlyIdle(vulture, 400 - i * LoopPeriodInTicks));
+				vulture.QueueActivity(new CallFunc(() => vulture.Trait<FlyVulture>().State = OperationStateType.RETURN));
+				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointDropPoint)));
+				vulture.QueueActivity(new CallFunc(() => vulture.Trait<FlyVulture>().State = OperationStateType.DROP));
+				vulture.QueueActivity(new Fly(vulture, Target.FromPos(CheckpointStart)));
 				vulture.QueueActivity(new RemoveSelf());
-			}
-
-			Dispetcher.NotifyVulturesArrived(Vultures);
-		}
-
-		public void TryRunTick()
-		{
-			// Run only once per tick
-			if (World.WorldTick == lastTick)
-			{
-				return;
-			}
-
-			foreach (Actor actor in PossibleVictims.ToList())
-			{
-				if (!IsValidTarget(actor))
-					RemoveTarget(actor);
-			}
-
-			lastTick = World.WorldTick;
-		}
-
-		public void RemoveTarget(Actor target)
-		{
-			PossibleVictims.Remove(target);
-
-			foreach (LoopingSpriteEffect effect in FlyEffects.Keys.ToList())
-			{
-				if (FlyEffects[effect] == target)
-				{
-					FlyEffects.Remove(effect);
-					effect.Terminate();
-				}
-			}
-
-			foreach (AttachedRevealShroudEffect effect in RevealEffects.ToList())
-			{
-				if (effect.Target.Actor == target)
-				{
-					RevealEffects.Remove(effect);
-					effect.Terminate(World);
-				}
 			}
 		}
 
@@ -282,27 +214,6 @@ namespace OpenRA.Mods.Common.Traits
 
 		public void CleanUp()
 		{
-			if (FlyEffects != null)
-			{
-				foreach (LoopingSpriteEffect effect in FlyEffects.Keys)
-				{
-					effect.Terminate();
-				}
-
-				FlyEffects = null;
-			}
-
-			if (RevealEffects != null)
-			{
-				foreach (var effect in RevealEffects)
-				{
-					effect.Terminate(World);
-				}
-
-				RevealEffects = null;
-			}
-
-			PossibleVictims = null;
 		}
 	}
 
@@ -315,73 +226,13 @@ namespace OpenRA.Mods.Common.Traits
 		public event Action<Actor> OnExitedOperationRange = self => { };
 
 		public OperationVulture Operation;
+		public OperationStateType State;
 
 		public FlyVulture(Actor self, FlyVultureInfo info)
 			: base(self, info)
 		{
 			this.info = info;
-		}
-
-		void ScoutTick(Actor self)
-		{
-			var candidates = Operation.GetUnitsInBlock(
-				self.CenterPosition,
-				Operation.OperationAreaRadius,
-				self.Trait<Aircraft>().Facing,
-				self.Trait<Aircraft>().MovementSpeed);
-
-			candidates = candidates.Where(c => !Operation.PossibleVictims.Contains(c));
-
-			foreach (Actor actor in candidates)
-			{
-				if (!Operation.IsValidTarget(actor))
-					continue;
-
-				Operation.PossibleVictims.Add(actor);
-
-				FlyParticle fly = new FlyParticle();
-				fly.Position = self.CenterPosition;
-				fly.Speed = new WVec(0, self.Trait<Aircraft>().MovementSpeed, 0).Rotate(
-					WRot.FromYaw(self.TraitsImplementing<Aircraft>().First().Facing)) / 2;
-
-				Func<WPos> positionFunc = () =>
-				{
-					WVec randomIncrement = new WVec(self.World.SharedRandom.Next() % 30 - 15,
-													self.World.SharedRandom.Next() % 30 - 15,
-													self.World.SharedRandom.Next() % 30 - 15);
-					WPos goalPosition = new WPos(actor.CenterPosition.X, actor.CenterPosition.Y, 512);
-					WVec speedGoal = (goalPosition - fly.Position) / 10;
-					fly.Speed = (80 * fly.Speed + 20 * speedGoal) / 100 + randomIncrement;
-					fly.Speed = new WVec(fly.Speed.X, fly.Speed.Y, fly.Speed.Z);
-					fly.Position = fly.Position + fly.Speed;
-					return fly.Position;
-				};
-
-				var flyEffect = new LoopingSpriteEffect(
-					positionFunc,
-					() => new WAngle(0),
-					self.World,
-					"vulture-effect",
-					"fly", "effect");
-
-				var revealShroudEffect = new AttachedRevealShroudEffect(
-						Target.FromActor(actor),
-						WDist.FromCells(2),
-						Shroud.SourceType.Visibility,
-						self.Owner,
-						PlayerRelationship.Ally,
-						0,
-						100000);
-
-				Operation.FlyEffects.Add(flyEffect, actor);
-				Operation.RevealEffects.Add(revealShroudEffect);
-
-				self.World.AddFrameEndTask(w =>
-				{
-					w.Add(flyEffect);
-					w.Add(revealShroudEffect);
-				});
-			}
+			State = OperationStateType.APPROACH;
 		}
 
 		void HarvestTick(Actor self)
@@ -398,8 +249,8 @@ namespace OpenRA.Mods.Common.Traits
 				new WDist(pickUpDistance),
 				self.Trait<Aircraft>().Facing,
 				self.Trait<Aircraft>().MovementSpeed);
+
 			candidatesIterable = candidatesIterable.Where(Operation.IsValidTarget);
-			candidatesIterable = candidatesIterable.Where(a => Operation.PossibleVictims.Contains(a));
 
 			List<Actor> candidates = candidatesIterable.ToList();
 
@@ -469,20 +320,15 @@ namespace OpenRA.Mods.Common.Traits
 
 		void ITick.Tick(Actor self)
 		{
-			switch (Operation.Dispetcher.GetStage())
+			switch (State)
 			{
-				case OperationVultureStage.SCOUT:
-					ScoutTick(self);
-					break;
-				case OperationVultureStage.HARVEST:
+				case OperationStateType.HARVEST:
 					HarvestTick(self);
 					break;
-				case OperationVultureStage.DROP:
+				case OperationStateType.DROP:
 					DropTick(self);
 					break;
 			}
-
-			Operation.TryRunTick();
 		}
 
 		// public void SetTarget(World w, WPos pos) { Operation.Target = Target.FromPos(pos); }
