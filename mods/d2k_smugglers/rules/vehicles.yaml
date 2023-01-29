@@ -18,6 +18,8 @@ combat_tank_s:
 
 scavanger:
 	Inherits: ^Tank
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Armor
 		BuildPaletteOrder: 100
