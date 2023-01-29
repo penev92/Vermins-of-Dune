@@ -98,7 +98,10 @@ namespace OpenRA.Mods.Common.Traits
 			var altitude = World.Map.Rules.Actors[UnitType].TraitInfo<AircraftInfo>().CruiseAltitude.Length;
 			WVec attackDirection = (target - drop);
 			attackDirection = new WVec(attackDirection.X, attackDirection.Y, 0);
-			attackDirection = attackDirection * 1024 / attackDirection.Length;
+			AttackAngle = WAngle.ArcTan(attackDirection.X, attackDirection.Y);
+
+			// Bring attackDirection to facing quantization
+			attackDirection = new WVec(0, 1024, 0).Rotate(WRot.FromYaw(AttackAngle));
 
 			CheckpointStart = target - (World.Map.DistanceToEdge(target, -attackDirection)
 				+ cordon).Length * attackDirection / attackDirection.Length;
@@ -106,8 +109,6 @@ namespace OpenRA.Mods.Common.Traits
 			CheckpointTarget = target + new WVec(0, 0, altitude);
 			CheckpointStart += new WVec(0, 0, altitude);
 			CheckpointDropPoint = drop + new WVec(0, 0, altitude);
-
-			AttackAngle = WAngle.ArcTan(-attackDirection.X, attackDirection.Y);
 
 			var rules = World.Map.Rules;
 			AircraftInfo info = rules.Actors[UnitType].TraitInfo<AircraftInfo>();
@@ -126,12 +127,13 @@ namespace OpenRA.Mods.Common.Traits
 			{
 				// Includes the 90 degree rotation between body and world coordinates
 				var so = squadOffset;
-				var spawnOffset = new WVec(LoopRadius, i * VultureOffset, 0).Rotate(WRot.FromYaw(AttackAngle));
-				var targetOffset = new WVec(LoopRadius, 0, 0).Rotate(WRot.FromYaw(AttackAngle));
+
+				var spawnOffsetShift = new WVec(0, -1024, 0).Rotate(WRot.FromYaw(AttackAngle));
+				var targetOffset = new WVec(-LoopRadius, 0, 0).Rotate(WRot.FromYaw(AttackAngle));
 
 				var vulture = World.CreateActor(false, UnitType, new TypeDictionary
 				{
-					new CenterPositionInit(CheckpointStart + spawnOffset),
+					new CenterPositionInit(CheckpointStart + (spawnOffsetShift * i * VultureOffset / 1024) + targetOffset),
 					new OwnerInit(Owner),
 					new FacingInit(AttackAngle),
 				});
@@ -297,9 +299,6 @@ namespace OpenRA.Mods.Common.Traits
 				return;
 			}
 
-			carryall.Carryable.Trait<IPositionable>().SetPosition(carryall.Carryable, targetLocation, SubCell.FullCell);
-			carryall.Carryable.Trait<IFacing>().Facing = facing.Facing;
-
 			// Put back into world
 			self.World.AddFrameEndTask(w =>
 			{
@@ -309,6 +308,9 @@ namespace OpenRA.Mods.Common.Traits
 				var cargo = carryall.Carryable;
 				if (cargo == null)
 					return;
+
+				carryall.Carryable.Trait<IPositionable>().SetPosition(carryall.Carryable, targetLocation, SubCell.FullCell);
+				carryall.Carryable.Trait<IFacing>().Facing = facing.Facing;
 
 				var carryable = cargo.Trait<Carryable>();
 				w.Add(cargo);

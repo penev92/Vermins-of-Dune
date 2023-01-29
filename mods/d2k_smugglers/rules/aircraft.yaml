@@ -11,7 +11,7 @@ vulture:
 	Inherits: ^Plane
 	FlyVulture:
 	Health:
-		HP: 9000
+		HP: 4000
 	Armor:
 		Type: light
 	Aircraft:
