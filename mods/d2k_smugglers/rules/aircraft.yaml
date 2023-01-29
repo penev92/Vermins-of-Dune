@@ -27,4 +27,4 @@ vulture:
 	Carryall:
 		BeforeLoadDelay: 0
 		BeforeUnloadDelay: 0
-		LocalOffset: 0, 0, -128
+		LocalOffset: 0, 0, -256
