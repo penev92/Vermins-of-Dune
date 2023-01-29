@@ -185,6 +185,11 @@ namespace OpenRA.Mods.Common.Traits
 				return false;
 			}
 
+			if (!target.TraitsImplementing<IDefaultVisibility>().ToList().First().IsVisible(target, Owner))
+			{
+				return false;
+			}
+
 			return true;
 		}
 

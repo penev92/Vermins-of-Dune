@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenRA.Graphics;
 using OpenRA.Mods.Common.Activities;
 using OpenRA.Mods.Common.Effects;
 using OpenRA.Primitives;
@@ -59,7 +60,7 @@ namespace OpenRA.Mods.Common.Traits
 
 		public override void SelectTarget(Actor self, string order, SupportPowerManager manager)
 		{
-			base.SelectTarget(self, order, manager);
+			self.World.OrderGenerator = new SelectVulturePowerTarget(order, manager, info, MouseButton.Left, self.Owner);
 		}
 
 		public override void Activate(Actor self, Order order, SupportPowerManager manager)
@@ -184,6 +185,39 @@ namespace OpenRA.Mods.Common.Traits
 				w.Remove(beacon);
 				beacon = null;
 			});
+		}
+	}
+
+	public class SelectVulturePowerTarget : SelectGenericPowerTarget
+	{
+		readonly VulturePowerInfo info;
+		protected Player player;
+
+		public SelectVulturePowerTarget(
+			string order,
+			SupportPowerManager manager,
+			VulturePowerInfo info,
+			MouseButton button,
+			Player player)
+			: base(order, manager, info.Cursor, button)
+		{
+			this.info = info;
+			this.player = player;
+		}
+
+		public override IEnumerable<Order> Order(World world, CPos cell, int2 worldPixel, MouseInput mi)
+		{
+			if (player.Shroud.IsVisible(cell))
+			{
+				return base.Order(world, cell, worldPixel, mi);
+			}
+
+			return Enumerable.Empty<Order>();
+		}
+
+		protected override string GetCursor(World world, CPos cell, int2 worldPixel, MouseInput mi)
+		{
+			return player.Shroud.IsVisible(cell) ? base.GetCursor(world, cell, worldPixel, mi) : "generic-blocked";
 		}
 	}
 }

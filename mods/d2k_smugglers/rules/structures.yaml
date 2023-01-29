@@ -188,4 +188,4 @@ palace:
 		CameraActor: camera
 		ArrowSequence: arrow
 		CircleSequence: circles
-		SupportPowerPaletteOrder: 10
+		SupportPowerPaletteOrder: 25
