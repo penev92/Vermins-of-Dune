@@ -33,4 +33,4 @@ icon:
 	deathhand: DATA.R8
 		Start: 4296
 		Offset: -30,-24
-	vulture: s-scavanger-cameo.shp
+	vulture: vulture-cameo.shp
