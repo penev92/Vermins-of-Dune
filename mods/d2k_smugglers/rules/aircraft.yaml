@@ -14,6 +14,10 @@ vulture:
 		HP: 4000
 	Armor:
 		Type: light
+	Encyclopedia:
+		Description: Vultures are fast aircraft units equiped with Gertzin magnets, that allow them to pick up units on the fly. Are used to capture enemy vehicles.
+		Order: 245
+		Category: Units
 	Aircraft:
 		Speed: 250
 		TurnSpeed: 8

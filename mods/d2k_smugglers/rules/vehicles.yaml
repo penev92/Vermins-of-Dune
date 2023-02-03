@@ -1,5 +1,11 @@
 combat_tank_s:
 	Inherits: ^combat_tank
+	Encyclopedia:
+		Description: The Combat Tank is effective against most vehicles, less so against lightly armored vehicles.\n\nSmuggler Combat Tanks are less expensive, but they are more fragile 
+		Order: 165
+		Category: Units
+	Tooltip:
+		Name: Smuggler Combat Tank
 	Buildable:
 		Prerequisites: ~heavy.smuggler_combat
 	Turreted:
@@ -27,10 +33,16 @@ scavanger:
 		BuildDuration: 562
 		BuildDurationModifier: 100
 		Description: Decomposes enemy units into resources
+	Encyclopedia:
+		Description: Scavanger provide resources while being on the battlefield \n\nTheir attack rays decompose enemy units into salvagable bits. \n\nThey are very resistant to bullets and high explosives, but vulnerable to missiles and high caliber guns.
+		Order: 225
+		Category: Units
+	Armor:
+		Type: heavy
 	Valued:
 		Cost: 800
 	Tooltip:
-		Name: Scavanger Tank
+		Name: Scavanger
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Armament@damage:
@@ -67,7 +79,11 @@ shuttle:
 		Prerequisites: ~light.smuggler, upgrade.light, high_tech_factory, ~techlevel.medium
 		BuildDuration: 225
 		BuildDurationModifier: 100
-		Description: Stealth transport unit
+		Description: Transport unit
+	Encyclopedia:
+		Description: Shuttles are transport units, disquised under Arakeen transport.
+		Order: 125
+		Category: Units
 	Valued:
 		Cost: 300
 	Tooltip:
