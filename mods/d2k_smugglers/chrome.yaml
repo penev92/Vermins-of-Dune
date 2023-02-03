@@ -25,3 +25,12 @@ flags:
 		mercenary: 46, 0, 22, 21
 		spectator: 46, 22, 22, 21
 		Random: 46, 44, 22, 21
+
+
+loadingscreen:
+	Image: d2k_smugglers|uibits/loadscreen.png
+	Image2x: d2k_smugglers|uibits/loadscreen-2x.png
+	Image3x: d2k_smugglers|uibits/loadscreen-3x.png
+	Regions:
+		logo: 0, 0, 512, 512
+
