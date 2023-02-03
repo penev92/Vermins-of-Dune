@@ -144,10 +144,12 @@ starport:
 	ProvidesPrerequisite@smugglers:
 		Prerequisite: starport.smugglers
 		Factions: smuggler
-	ProvidesPrerequisite@ordos_combat:
+	ProvidesPrerequisite@smugglers_combat:
 		Prerequisite: starport.smugglers_combat
-		Factions: smuggler, mercenary
-
+		Factions: smuggler
+	ProvidesPrerequisite@ordos_combat:
+		Prerequisite: starport.ordos_combat
+		Factions: ordos, mercenary
 
 palace:
 	RenderSprites:
@@ -174,15 +176,15 @@ palace:
 		Prerequisite: palace.vulture
 		Factions: smuggler
 	VulturePower@vulture:
+		Name: Operation Vulture 
 		Icon: vulture
-		Description: Operation Vulture 
+		Description: Vultures harvest enemy units and drop at your palace
 		Prerequisites: ~techlevel.superweapons, ~palace.vulture
 		PauseOnCondition: disabled
 		RequiresCondition: smuggler
 		ChargeInterval: 2500
 		SquadSize: 3
 		SquadOffset: -4096, 2048, 0
-		LongDesc: Vultures harvest enemy units and drop at your palace
 		UnitType: vulture
 		DisplayBeacon: True
 		CameraActor: camera

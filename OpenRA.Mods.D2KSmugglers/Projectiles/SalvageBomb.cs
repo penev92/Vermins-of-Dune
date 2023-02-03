@@ -5,14 +5,10 @@
  */
 #endregion
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using OpenRA.GameRules;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common;
-using OpenRA.Mods.Common.Effects;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.D2KSmugglers.Graphics;
 using OpenRA.Primitives;
@@ -212,7 +208,7 @@ namespace OpenRA.Mods.D2KSmugglers.Projectiles
 			if ((tp.Actor.CenterPosition - pos).HorizontalLengthSquared > tp.Trait.Range.LengthSquared)
 				return false;
 
-			if (!tp.Trait.DeflectionStances.HasStance(tp.Actor.Owner.RelationshipWith(args.SourceActor.Owner)))
+			if (!tp.Trait.DeflectionStances.HasRelationship(tp.Actor.Owner.RelationshipWith(args.SourceActor.Owner)))
 				return false;
 
 			return tp.Actor.World.SharedRandom.Next(100) < tp.Trait.Chance;
@@ -283,7 +279,7 @@ namespace OpenRA.Mods.D2KSmugglers.Projectiles
 
 			// Check for walls or other blocking obstacles
 			var shouldExplode = false;
-			if (info.Blockable && BlocksProjectiles.AnyBlockingActorsBetween(world, lastPos, pos, info.Width, out var blockedPos))
+			if (info.Blockable && BlocksProjectiles.AnyBlockingActorsBetween(world, args.SourceActor.Owner, lastPos, pos, info.Width, out var blockedPos))
 			{
 				pos = blockedPos;
 				shouldExplode = true;

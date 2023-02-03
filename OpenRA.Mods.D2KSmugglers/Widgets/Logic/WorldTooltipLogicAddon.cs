@@ -47,7 +47,7 @@ namespace OpenRA.Mods.Smugglers
 						labelText = "Unrevealed Terrain";
 						break;
 					case WorldTooltipType.Resource:
-						labelText = viewport.ResourceTooltip.Info.Name;
+						labelText = viewport.ResourceTooltip;
 						break;
 					case WorldTooltipType.Actor:
 						{

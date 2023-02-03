@@ -1,10 +1,8 @@
 ﻿using System;
 
-using OpenRA.Activities;
 using OpenRA.GameRules;
 using OpenRA.Mods.Common.Effects;
 using OpenRA.Mods.Common.Traits;
-using OpenRA.Mods.D2KSmugglers.Projectiles;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Warheads
@@ -16,9 +14,16 @@ namespace OpenRA.Mods.Common.Warheads
 			var resourceGain = args.DamageModifiers[0];
 			Actor actor = args.WeaponTarget.Actor;
 
-			if (actor != null && resourceGain > 0 && !actor.IsDead)
+			if (actor == null || actor.IsDead)
 			{
+				return;
+			}
 
+			var playerResources = actor.Owner.PlayerActor.Trait<PlayerResources>();
+			resourceGain = Math.Min(resourceGain, playerResources.ResourceCapacity - playerResources.Resources);
+
+			if (resourceGain > 0)
+			{
 				actor.Owner.PlayerActor.Trait<PlayerResources>().GiveResources(resourceGain);
 				var resourceGainString = FloatingText.FormatCashTick(resourceGain);
 
@@ -31,7 +36,7 @@ namespace OpenRA.Mods.Common.Warheads
 						if (notify.Actor.Owner != actor.Owner)
 							continue;
 
-						notify.Trait.OnResourceAccepted(notify.Actor, actor, resourceGain);
+						notify.Trait.OnResourceAccepted(notify.Actor, actor, "Spice", 1, resourceGain);
 					}
 			}
 		}

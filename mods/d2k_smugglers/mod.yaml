@@ -1,7 +1,7 @@
 Metadata:
 	Title: Dune 2000 (Smugglers)
 	WebIcon32: https://www.openra.net/images/icons/d2k_32x32.png
-	Version: 20210501
+	Version: 20230203
 
 PackageFormats: D2kSoundResources
 
@@ -18,10 +18,11 @@ Packages:
 	^EngineDir|mods/common: common
 	~SOUND.RS
 	d2k|bits
+	d2k|bits/tex
 	d2k_smugglers|bits
 	d2k_smugglers|uibits
-	d2k|bits/scripts
-	d2k|bits/tex
+	d2k|scripts
+	common|scripts
 	d2k|uibits
 
 MapFolders:
@@ -30,7 +31,7 @@ MapFolders:
 	~^SupportDir|maps/d2k/release-20210321: User
 
 RequiresMods:
-	d2k: playtest-20210321
+	d2k: playtest-20230110
 	modchooser: playtest-20210321
 
 Rules:
@@ -92,6 +93,7 @@ Assemblies:
 ChromeLayout:
 	common|chrome/ingame.yaml
 	common|chrome/ingame-chat.yaml
+	common|chrome/ingame-transients.yaml
 	common|chrome/ingame-fmvplayer.yaml
 	d2k|chrome/ingame-menu.yaml
 	common|chrome/ingame-info.yaml
@@ -99,6 +101,7 @@ ChromeLayout:
 	common|chrome/ingame-infobriefing.yaml
 	common|chrome/ingame-infoobjectives.yaml
 	d2k|chrome/ingame-infostats.yaml
+	common|chrome/ingame-info-lobby-options.yaml
 	d2k|chrome/ingame-observer.yaml
 	d2k|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
@@ -108,6 +111,11 @@ ChromeLayout:
 	d2k|chrome/mainmenu.yaml
 	common|chrome/mainmenu-prompts.yaml
 	common|chrome/settings.yaml
+	common|chrome/settings-display.yaml
+	common|chrome/settings-audio.yaml
+	common|chrome/settings-input.yaml
+	common|chrome/settings-hotkeys.yaml
+	common|chrome/settings-advanced.yaml
 	common|chrome/credits.yaml
 	common|chrome/lobby.yaml
 	common|chrome/lobby-mappreview.yaml
@@ -134,7 +142,12 @@ ChromeLayout:
 	common|chrome/replaybrowser.yaml
 	common|chrome/gamesave-browser.yaml
 	common|chrome/gamesave-loading.yaml
+	common|chrome/text-notifications.yaml
+	d2k|chrome/encyclopedia.yaml
 	d2k_smugglers|chrome/tooltips.yaml
+
+Translations:
+	common|languages/en.ftl
 
 Weapons:
 	d2k|weapons/debris.yaml
@@ -155,15 +168,15 @@ Notifications:
 Music:
 	d2k|audio/music.yaml
 
-Translations:
-	d2k|languages/english.yaml
-
 Hotkeys:
 	common|hotkeys/game.yaml
 	common|hotkeys/observer.yaml
 	common|hotkeys/production-common.yaml
 	common|hotkeys/supportpowers.yaml
 	common|hotkeys/viewport.yaml
+	common|hotkeys/chat.yaml
+	common|hotkeys/editor.yaml
+	common|hotkeys/control-groups.yaml
 	d2k|hotkeys.yaml
 
 LoadScreen: LogoStripeLoadScreen
@@ -221,47 +234,54 @@ Missions:
 	# d2k|missions.yaml
 	d2k_smugglers|missions.yaml
 
+DefaultOrderGenerator: UnitOrderGenerator
+
 SupportsMapsFrom: d2k, d2k_smugglers
 
 SoundFormats: Aud, Wav
 
 SpriteFormats: R8, ShpTD, TmpRA
 
+VideoFormats: Vqa
+
+TerrainFormat: DefaultTerrain
+
 SpriteSequenceFormat: DefaultSpriteSequence
 
 ModelSequenceFormat: PlaceholderModelSequence
 
 AssetBrowser:
-	SupportedExtensions: .shp, .r8, .vqa
+	SpriteExtensions: .shp, .r8, .tmp
+	AudioExtensions: .aud, .wav
+	VideoExtensions: .vqa
 
 GameSpeeds:
-	slowest:
-		Name: Slowest
-		Timestep: 80
-		OrderLatency: 2
-	slower:
-		Name: Slower
-		Timestep: 50
-		OrderLatency: 3
-	default:
-		Name: Normal
-		Timestep: 40
-		OrderLatency: 3
-	fast:
-		Name: Fast
-		Timestep: 35
-		OrderLatency: 4
-	faster:
-		Name: Faster
-		Timestep: 30
-		OrderLatency: 4
-	fastest:
-		Name: Fastest
-		Timestep: 20
-		OrderLatency: 6
-
-ColorValidator:
-	TeamColorPresets: 9023cd, f53333, ffae00, fff830, 87f506, f872ad, da06f3, ddb8ff, def7b2, 39c46f, 200738, 280df6, 2f86f2, 76d2f8, 498221, 392929
+	DefaultSpeed: default
+	Speeds:
+		slowest:
+			Name: slowest
+			Timestep: 80
+			OrderLatency: 2
+		slower:
+			Name: slower
+			Timestep: 50
+			OrderLatency: 3
+		default:
+			Name: normal
+			Timestep: 40
+			OrderLatency: 3
+		fast:
+			Name: fast
+			Timestep: 35
+			OrderLatency: 4
+		faster:
+			Name: faster
+			Timestep: 30
+			OrderLatency: 4
+		fastest:
+			Name: fastest
+			Timestep: 20
+			OrderLatency: 6
 
 ModContent:
 	InstallPromptMessage: Dune 2000 requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without\nmusic or videos) from an online mirror of the game files.\n\nAdvanced Install includes options for copying the music, videos,\nand other content from an original game disc.

@@ -17,7 +17,6 @@ DecomposeTarget:
 			harvester: 50
 		DamageTypes: Prone50Percent, TriggerProne, SoundDeath
 		DamageCalculationType: ClosestTargetablePosition
-    ResourceYield: 75
 		WeaponYieldInfo: DecomposeYield
 
 
@@ -37,7 +36,8 @@ DecomposeYield:
 		Speed: 200
 		Blockable: false
 		Shadow: true
-		LaunchAngle: 10
+		MinimumLaunchAngle: 10
+		MaximumLaunchAngle: 10
 		ContrailLength: 20
 		ContrailWidth: 64
 		TrailImage: devour-trail

@@ -14,9 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Activities;
 using OpenRA.Mods.Common.Activities;
-using OpenRA.Mods.Common.Effects;
 using OpenRA.Mods.Common.Traits.Render;
-using OpenRA.Mods.D2KSmugglers.Effects;
 using OpenRA.Primitives;
 using OpenRA.Traits;
 
@@ -290,7 +288,7 @@ namespace OpenRA.Mods.Common.Traits
 			if (carryall.Carryable == null)
 				return;
 
-			var localOffset = carryall.CarryableOffset.Rotate(body.QuantizeOrientation(self, self.Orientation));
+			var localOffset = carryall.CarryableOffset.Rotate(body.QuantizeOrientation(self.Orientation));
 			var targetPosition = self.CenterPosition + body.LocalToWorld(localOffset);
 			var targetLocation = self.World.Map.CellContaining(targetPosition);
 
