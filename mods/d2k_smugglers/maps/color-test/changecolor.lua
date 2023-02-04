@@ -56,27 +56,27 @@ all_unit_types = {
 
 WorldLoaded = function()
 
-	-- player = {
-	-- 	Player.GetPlayer("Smugglers"),
-	-- 	Player.GetPlayer("IX"),
-	-- 	Player.GetPlayer("Ordos"),
-	-- 	Player.GetPlayer("Mercenaries"),
-	-- 	Player.GetPlayer("Atreides"),
-	-- 	Player.GetPlayer("Harkonnen"),
-	-- 	Player.GetPlayer("Fremen"),
-	-- 	Player.GetPlayer("Corrino"),
-	-- } 
+	player = {
+		Player.GetPlayer("Smugglers"),
+		Player.GetPlayer("IX"),
+		Player.GetPlayer("Ordos"),
+		Player.GetPlayer("Mercenaries"),
+		Player.GetPlayer("Atreides"),
+		Player.GetPlayer("Harkonnen"),
+		Player.GetPlayer("Fremen"),
+		Player.GetPlayer("Corrino"),
+	} 
 	
-	-- colored_units = player[1].GetActorsByTypes(all_unit_types)
-	-- neutral_units = Player.GetPlayer("Neutral").GetActorsByTypes(all_unit_types)
-	-- ChangeOwner(neutral_units, player[1])
+	colored_units = player[1].GetActorsByTypes(all_unit_types)
+	neutral_units = Player.GetPlayer("Neutral").GetActorsByTypes(all_unit_types)
+	ChangeOwner(neutral_units, player[1])
 
-	-- ChangeColor = function()
-	-- 	i = i % 8 + 1
-	-- 	ChangeOwner(colored_units, player[i])
-	-- 	Trigger.AfterDelay(FlashTime, ChangeColor)
-	-- end
+	ChangeColor = function()
+		i = i % 8 + 1
+		ChangeOwner(colored_units, player[i])
+		Trigger.AfterDelay(FlashTime, ChangeColor)
+	end
 
-	-- Trigger.AfterDelay(FlashTime, ChangeColor)
+	Trigger.AfterDelay(FlashTime, ChangeColor)
 
 end

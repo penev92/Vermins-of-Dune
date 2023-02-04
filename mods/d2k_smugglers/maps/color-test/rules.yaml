@@ -1,6 +1,6 @@
 World:
 	LuaScript:
-		Scripts: campaign-global.lua, changecolor.lua
+		Scripts: campaign.lua, changecolor.lua
 	MissionData:
 		Briefing:A map for color test
 	MapOptions:
