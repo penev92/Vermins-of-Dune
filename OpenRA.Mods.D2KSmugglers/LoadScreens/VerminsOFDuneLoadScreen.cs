@@ -40,13 +40,13 @@ namespace OpenRA.Mods.Common.LoadScreens
 			{
 				lastSheet = s;
 				lastDensity = density;
-				logo = CreateSprite(s, density, new Rectangle(0, 0, 512, 512));
+				logo = CreateSprite(s, density, new Rectangle(0, 0, 1024, 1024));
 			}
 
 			if (r.Resolution != lastResolution)
 			{
 				lastResolution = r.Resolution;
-				logoPos = new float2(lastResolution.Width / 2 - 256, lastResolution.Height / 2 - 256);
+				logoPos = new float2(lastResolution.Width / 2 - 512, lastResolution.Height / 2 - 512);
 			}
 
 			if (logo != null)

@@ -5,8 +5,8 @@ Container@GAMESAVE_LOADING_SCREEN:
 	Children:
 		LogicKeyListener@CANCEL_HANDLER:
 		Image@LOGO:
-			X: (WINDOW_RIGHT - 512) / 2
-			Y: (WINDOW_BOTTOM - 512) / 2
+			X: (WINDOW_RIGHT - 1024) / 2
+			Y: (WINDOW_BOTTOM - 1024) / 2
 			ImageCollection: loadingscreen
 			ImageName: logo
 		Label@TITLE:

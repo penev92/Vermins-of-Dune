@@ -32,5 +32,5 @@ loadingscreen:
 	Image2x: d2k_smugglers|uibits/loadscreen-2x.png
 	Image3x: d2k_smugglers|uibits/loadscreen-3x.png
 	Regions:
-		logo: 0, 0, 512, 512
+		logo: 0, 0, 1024, 1024
 
