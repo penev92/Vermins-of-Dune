@@ -47,6 +47,7 @@ Rules:
 	d2k|rules/starport.yaml
 	d2k|rules/husks.yaml
 	d2k|rules/arrakis.yaml
+	d2k_smugglers|rules/ai.yaml
 	d2k_smugglers|rules/structures.yaml
 	d2k_smugglers|rules/infantry.yaml
 	d2k_smugglers|rules/misc.yaml

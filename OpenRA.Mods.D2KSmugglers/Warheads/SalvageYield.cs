@@ -20,6 +20,7 @@ namespace OpenRA.Mods.Common.Warheads
 			}
 
 			var playerResources = actor.Owner.PlayerActor.Trait<PlayerResources>();
+
 			resourceGain = Math.Min(resourceGain, playerResources.ResourceCapacity - playerResources.Resources);
 
 			if (resourceGain > 0)
