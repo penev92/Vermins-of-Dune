@@ -17,7 +17,7 @@ combat_tank_s:
 	Health:
 		HP: 18000
 	Valued:
-		Cost: 550
+		Cost: 600
 	SpawnActorOnDeath:
 		Actor: combat_tank_o.husk
 
