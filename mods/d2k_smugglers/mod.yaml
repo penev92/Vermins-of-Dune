@@ -8,9 +8,8 @@ PackageFormats: D2kSoundResources
 Packages:
 	~^SupportDir|Content/d2k/v2/
 	~^SupportDir|Content/d2k/v2/GAMESFX
+	~^SupportDir|Content/d2k/v2/Movies
 	~^SupportDir|Content/d2k_smugglers/GAMESFX
-	~^SupportDir|Content/d2k_smugglers/Movies
-	~^SupportDir|Content/d2k_smugglers/Music
 	~^SupportDir|Content/d2k/v2/Music
 	^EngineDir
 	$d2k: d2k
@@ -28,7 +27,7 @@ Packages:
 MapFolders:
 	d2k_smugglers|maps: System
 	# d2k|maps: System
-	~^SupportDir|maps/d2k/release-20210321: User
+	~^SupportDir|maps/d2k/{DEV_VERSION}: User
 
 RequiresMods:
 	d2k: playtest-20230110
@@ -134,17 +133,16 @@ ChromeLayout:
 	common|chrome/connection.yaml
 	d2k|chrome/dropdowns.yaml
 	common|chrome/musicplayer.yaml
-	# d2k|chrome/tooltips.yaml
 	common|chrome/assetbrowser.yaml
 	d2k|chrome/missionbrowser.yaml
 	common|chrome/confirmation-dialogs.yaml
 	common|chrome/editor.yaml
 	common|chrome/replaybrowser.yaml
 	common|chrome/gamesave-browser.yaml
-	d2k_smugglers|chrome/gamesave-loading.yaml
 	common|chrome/text-notifications.yaml
 	d2k|chrome/encyclopedia.yaml
 	d2k_smugglers|chrome/tooltips.yaml
+	d2k_smugglers|chrome/gamesave-loading.yaml
 
 Translations:
 	common|languages/en.ftl
@@ -284,7 +282,7 @@ GameSpeeds:
 			OrderLatency: 6
 
 ModContent:
-	InstallPromptMessage: Dune 2000 requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without\nmusic or videos) from an online mirror of the game files.\n\nAdvanced Install includes options for copying the music, videos,\nand other content from an original game disc.
+	InstallPromptMessage: Vermins of DUne requires artwork and audio from the \noriginal game and mod specific content \n\nQuick Install will automatically download this content (without\nmusic or videos) from an online mirror of the game files.\n\nAdvanced Install includes options for copying the music, videos,\nand other content from an original game disc.
 	HeaderMessage: The original game content may be copied from an original game disc,\nor downloaded from an online mirror of the game files.
 	QuickDownload: quickinstall
 	Packages:
@@ -293,6 +291,10 @@ ModContent:
 			Sources: d2k-a, d2k-a-linux, d2k-b, d2k-b-linux, d2k-c, d2k-c-linux, d2k-d, d2k-d-linux, d2k-e, d2k-e-linux, gruntmods
 			Required: true
 			Download: basefiles
+		smuggler: Smuggler Addon Content
+			TestFiles: ^SupportDir|Content/d2k_smugglers/GAMESFX/ATK_SCAVANGER.WAV
+			Required: true
+			Download: smugglerfiles
 		patch: 1.06 Patch Content
 			TestFiles: ^SupportDir|Content/d2k/v2/DATA.R8, ^SupportDir|Content/d2k/v2/BLOXXMAS.R8
 			Sources: gruntmods
@@ -306,6 +308,7 @@ ModContent:
 			Sources: d2k-a, d2k-a-linux, d2k-b, d2k-b-linux, d2k-c, d2k-c-linux, d2k-d, d2k-d-linux, d2k-e, d2k-e-linux
 	Downloads:
 		d2k|installer/downloads.yaml
+		d2k_smugglers|installer/downloads.yaml
 	Sources:
 		d2k|installer/d2k-a.yaml
 		d2k|installer/d2k-b.yaml
@@ -313,6 +316,7 @@ ModContent:
 		d2k|installer/d2k-d.yaml
 		d2k|installer/d2k-e.yaml
 		d2k|installer/downloads.yaml
+		d2k_smugglers|installer/downloads.yaml
 		d2k|installer/gruntmods.yaml
 
 # DiscordService:
