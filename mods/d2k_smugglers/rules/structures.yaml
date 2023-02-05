@@ -179,7 +179,7 @@ palace:
 		Prerequisites: ~techlevel.superweapons, ~palace.vulture
 		PauseOnCondition: disabled
 		RequiresCondition: smuggler
-		ChargeInterval: 2500
+		ChargeInterval: 5000
 		SquadSize: 3
 		SquadOffset: -4096, 2048, 0
 		UnitType: vulture
