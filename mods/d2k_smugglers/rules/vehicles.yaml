@@ -52,6 +52,7 @@ scavanger:
 		Weapon: DecomposeTargetMuzzle
 		MuzzleSequence: muzzle
 	AttackFrontal:
+		FacingTolerance: 80
 	WithMuzzleOverlay:
 		IgnoreOffset: true
 	Mobile:
