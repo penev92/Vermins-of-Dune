@@ -1,0 +1,317 @@
+MapFormat: 12
+
+RequiresMod: d2k_smugglers
+
+Title: Scavanger Test
+
+Author: oldnaari
+
+Tileset: ARRAKIS
+
+MapSize: 34,130
+
+Bounds: 1,1,32,128
+
+Visibility: Lobby
+
+Categories: Conquest
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+		Enemies: Smugglers, Harkonnen, Multi0
+	PlayerReference@Smugglers:
+		Name: Smugglers
+		Playable: True
+		LockFaction: True
+		Faction: smuggler
+		LockColor: True
+		Color: 9E5A10
+		Enemies: Harkonnen, Creeps
+	PlayerReference@Harkonnen:
+		Name: Harkonnen
+		LockFaction: True
+		Faction: harkonnen
+		LockColor: True
+		Color: FF0000
+		Enemies: Smugglers, Creeps
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+
+Actors:
+	Actor1: wind_trap
+		Owner: Smugglers
+		Location: 6,2
+	Actor2: wind_trap
+		Owner: Smugglers
+		Location: 8,2
+	Actor3: outpost
+		Owner: Smugglers
+		Location: 2,2
+	Actor4: scavanger
+		Owner: Smugglers
+		Location: 4,13
+		Facing: 780
+	Actor6: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 11,13
+	Actor7: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,12
+	Actor8: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,14
+	Actor9: scavanger
+		Owner: Smugglers
+		Location: 21,13
+		Facing: 780
+	Actor10: mpspawn
+		Owner: Neutral
+		Faction: smuggler
+		Location: 6,5
+	Actor12: construction_yard
+		Owner: Harkonnen
+		Location: 26,2
+	Actor11: silo
+		Owner: Smugglers
+		Location: 11,2
+	Actor13: silo
+		Owner: Smugglers
+		Location: 12,3
+	Actor14: silo
+		Owner: Smugglers
+		Location: 12,2
+	Actor15: silo
+		Owner: Smugglers
+		Location: 13,2
+	Actor16: silo
+		Owner: Smugglers
+		Location: 13,3
+	Actor17: silo
+		Owner: Smugglers
+		Location: 13,4
+	Actor18: silo
+		Owner: Smugglers
+		Location: 12,4
+	Actor19: silo
+		Owner: Smugglers
+		Location: 11,4
+	Actor20: silo
+		Owner: Smugglers
+		Location: 11,3
+	Actor21: medium_gun_turret
+		Owner: Harkonnen
+		Location: 12,22
+	Actor22: wall
+		Owner: Harkonnen
+		Location: 13,22
+	Actor23: wall
+		Owner: Harkonnen
+		Location: 12,23
+	Actor24: scavanger
+		Owner: Smugglers
+		Location: 4,22
+		Facing: 780
+	Actor25: camera
+		Owner: Smugglers
+		Location: 11,22
+	Actor26: camera
+		Owner: Smugglers
+		Location: 12,13
+	Actor27: camera
+		Owner: Smugglers
+		Location: 29,13
+	Actor28: camera
+		Owner: Smugglers
+		Location: 29,22
+	Actor30: scavanger
+		Owner: Smugglers
+		Location: 21,22
+		Facing: 780
+	Actor31: raider
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,30
+	Actor32: raider
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,31
+	Actor33: raider
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,32
+	Actor34: raider
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,31
+	Actor35: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,30
+	Actor36: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,31
+	Actor37: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,32
+	Actor38: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,31
+	Actor39: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,31
+	Actor40: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 12,31
+	Actor41: camera
+		Owner: Smugglers
+		Location: 11,31
+	Actor42: camera
+		Owner: Smugglers
+		Location: 28,31
+	Actor43: combat_tank_h
+		Location: 21,21
+		Faction: Random
+		Facing: 780
+		Owner: Smugglers
+	Actor44: combat_tank_h
+		Location: 4,21
+		Faction: Random
+		Facing: 780
+		TurretFacing: 780
+		Owner: Smugglers
+	Actor45: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,41
+	Actor46: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 12,41
+	Actor47: camera
+		Owner: Smugglers
+		Location: 11,41
+	Actor48: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,40
+	Actor49: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,41
+	Actor50: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,42
+	Actor51: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,43
+	Actor52: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,39
+	Actor53: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,39
+	Actor54: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,40
+	Actor55: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,41
+	Actor56: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,42
+	Actor57: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,42
+	Actor58: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,43
+	Actor59: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,39
+	Actor60: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,40
+	Actor61: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,41
+	Actor62: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,42
+	Actor63: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,43
+	Actor64: camera
+		Owner: Smugglers
+		Location: 28,41
+	Actor65: scavanger
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,52
+	Actor66: combat_tank_s
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,51
+	Actor67: combat_tank_s
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,52
+	Actor68: combat_tank_s
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,53
+	Actor69: camera
+		Owner: Smugglers
+		Location: 12,52
+	Actor70: camera
+		Owner: Smugglers
+		Location: 28,52
+	Actor72: missile_tank
+		Owner: Harkonnen
+		Facing: 384
+		Location: 14,52
+	Actor73: siege_tank
+		Owner: Harkonnen
+		Facing: 384
+		Location: 13,51
+	Actor74: devastator
+		Owner: Harkonnen
+		Facing: 384
+		Location: 13,53
+	Actor71: outpost
+		Owner: Harkonnen
+		Location: 28,21
+
+Rules: d2k_smugglers|rules/campaign-palettes.yaml,

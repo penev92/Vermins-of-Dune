@@ -1,0 +1,9 @@
+Debris:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 15
+
+Debris2:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 6

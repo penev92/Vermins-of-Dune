@@ -1,0 +1,10 @@
+^MG:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 4
+
+
+M_HMG:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 10

@@ -38,7 +38,7 @@ scavanger:
 		Order: 225
 		Category: Units
 	Armor:
-		Type: heavy
+		Type: scavanger
 	Valued:
 		Cost: 800
 	Tooltip:
@@ -59,7 +59,7 @@ scavanger:
 		Speed: 32
 		TurnSpeed: 12
 	Health:
-		HP: 18000
+		HP: 1000
 	Selectable:
 		Class: scavanger
 	RevealsShroud:

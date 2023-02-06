@@ -29,7 +29,7 @@ all_unit_types = {
 	"barracks",
 	"light_factory",
 	"heavy_factory",
-	-- "silo",
+	"silo",
 	"construction_yard",
 	"outpost",
 	"high_tech_factory",

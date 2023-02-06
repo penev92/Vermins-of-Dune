@@ -1,17 +1,18 @@
 DecomposeTarget:
 	ReloadDelay: 16
-	Range: 4c0
+	Range: 5c0
 	Report: ATK_SCAVANGER.WAV
 	Projectile: InstantHit
 	Warhead@1Dam: SalvageTarget
-		Damage: 1500
+		Damage: 4500
 		Versus:
 			none: 100
-			building: 50
+			building: 10
 			wall: 100
 			light: 100
 			wood: 80
 			heavy: 60
+			scavanger: 20
 			invulnerable: 0
 			cy: 40
 			harvester: 50
@@ -22,7 +23,7 @@ DecomposeTarget:
 
 DecomposeTargetMuzzle:
 	ReloadDelay: 2
-	Range: 4c0
+	Range: 5c0
 	Burst: 3
 	BurstDelays: 4
 	Projectile: InstantHit
@@ -43,3 +44,63 @@ DecomposeYield:
 		TrailImage: devour-trail
 		ContrailColor: 000000
 	Warhead: SalvageYield
+
+
+Sound:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 12
+
+
+OrniBomb:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 12
+
+
+DeathHandCluster:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 12
+
+
+CrateExplosion:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 6
+
+
+grenade:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 4
+
+
+GrenDeath:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 4
+
+
+SardDeath:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 20
+
+
+SpiceExplosion:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 6
+
+
+BloomExplosion:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 6
+
+
+PlasmaExplosion:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 6

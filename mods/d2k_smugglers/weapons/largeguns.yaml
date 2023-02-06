@@ -1,0 +1,17 @@
+^Cannon:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 15
+
+
+DevBullet:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 20
+
+
+155mm:
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			scavanger: 4
+

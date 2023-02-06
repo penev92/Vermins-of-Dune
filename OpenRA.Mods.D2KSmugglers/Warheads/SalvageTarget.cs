@@ -1,10 +1,7 @@
 ﻿using System;
 
-using OpenRA.Activities;
 using OpenRA.GameRules;
-using OpenRA.Mods.Common.Effects;
 using OpenRA.Mods.Common.Traits;
-using OpenRA.Mods.D2KSmugglers.Projectiles;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Warheads
@@ -12,11 +9,12 @@ namespace OpenRA.Mods.Common.Warheads
 	public class SalvageTargetWarhead : SpreadDamageWarhead
 	{
 		[Desc("The percentage of the damage that will be returned as resources.")]
-		public readonly int ResourceYield = 75;
+		public readonly int ResourceYield = 20;
 
 		[Desc("The weapon to use for returning resources")]
 		public readonly string WeaponYieldInfo = "DecomposeYield";
 
+		const int salvageResourceMultiplier = 100;
 		protected override void InflictDamage(Actor victim, Actor firedBy, HitShape shape, WarheadArgs args)
 		{
 			var victimMaxHP = victim.Info.TraitInfo<HealthInfo>().HP;
@@ -31,9 +29,9 @@ namespace OpenRA.Mods.Common.Warheads
 
 			var healthAfterDamage = victim.Trait<Health>().HP;
 
-			var resourceGain = ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
+			long salvageGain = (long)salvageResourceMultiplier * ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
 
-			resourceGain = resourceGain > 0 ? resourceGain : 0;
+			salvageGain = salvageGain > 0 ? salvageGain : 0;
 
 			if (firedBy.Owner.IsAlliedWith(firedBy.World.RenderPlayer))
 			{
@@ -50,7 +48,7 @@ namespace OpenRA.Mods.Common.Warheads
 					Weapon = weaponYield,
 					Facing = muzzleFacing(),
 					CurrentMuzzleFacing = muzzleFacing,
-					DamageModifiers = new int[] { resourceGain },
+					DamageModifiers = new int[] { (int)salvageGain },
 					InaccuracyModifiers = new int[0],
 					RangeModifiers = new int[0],
 					Source = muzzlePosition(),

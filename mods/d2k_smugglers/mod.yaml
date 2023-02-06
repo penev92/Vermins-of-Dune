@@ -154,6 +154,10 @@ Weapons:
 	d2k|weapons/largeguns.yaml
 	d2k|weapons/missiles.yaml
 	d2k|weapons/other.yaml
+	d2k_smugglers|weapons/debris.yaml
+	d2k_smugglers|weapons/smallguns.yaml
+	d2k_smugglers|weapons/largeguns.yaml
+	d2k_smugglers|weapons/missiles.yaml
 	d2k_smugglers|weapons/other.yaml
 
 Voices:
