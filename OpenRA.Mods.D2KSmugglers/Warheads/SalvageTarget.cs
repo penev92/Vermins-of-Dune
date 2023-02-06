@@ -33,34 +33,31 @@ namespace OpenRA.Mods.Common.Warheads
 
 			salvageGain = salvageGain > 0 ? salvageGain : 0;
 
-			if (firedBy.Owner.IsAlliedWith(firedBy.World.RenderPlayer))
+			Func<WPos> muzzlePosition = () => victim.CenterPosition;
+
+			IFacing firedByMobileTrait = firedBy.Trait<IFacing>();
+			Func<WAngle> muzzleFacing = () => firedByMobileTrait.Facing;
+
+			WeaponInfo weaponYield;
+			victim.World.Map.Rules.Weapons.TryGetValue(WeaponYieldInfo.ToLower(), out weaponYield);
+
+			var argsReturn = new ProjectileArgs
 			{
-				Func<WPos> muzzlePosition = () => victim.CenterPosition;
-
-				IFacing firedByMobileTrait = firedBy.Trait<IFacing>();
-				Func<WAngle> muzzleFacing = () => firedByMobileTrait.Facing;
-
-				WeaponInfo weaponYield;
-				victim.World.Map.Rules.Weapons.TryGetValue(WeaponYieldInfo.ToLower(), out weaponYield);
-
-				var argsReturn = new ProjectileArgs
-				{
-					Weapon = weaponYield,
-					Facing = muzzleFacing(),
-					CurrentMuzzleFacing = muzzleFacing,
-					DamageModifiers = new int[] { (int)salvageGain },
-					InaccuracyModifiers = new int[0],
-					RangeModifiers = new int[0],
-					Source = muzzlePosition(),
-					CurrentSource = muzzlePosition,
-					SourceActor = victim,
-					PassiveTarget = firedBy.CenterPosition,
-					GuidedTarget = Target.FromActor(firedBy)
-				};
-				var projectile = weaponYield.Projectile.Create(argsReturn);
-				if (projectile != null)
-					firedBy.World.AddFrameEndTask(w => w.Add(projectile));
-			}
+				Weapon = weaponYield,
+				Facing = muzzleFacing(),
+				CurrentMuzzleFacing = muzzleFacing,
+				DamageModifiers = new int[] { (int)salvageGain },
+				InaccuracyModifiers = new int[0],
+				RangeModifiers = new int[0],
+				Source = muzzlePosition(),
+				CurrentSource = muzzlePosition,
+				SourceActor = victim,
+				PassiveTarget = firedBy.CenterPosition,
+				GuidedTarget = Target.FromActor(firedBy)
+			};
+			var projectile = weaponYield.Projectile.Create(argsReturn);
+			if (projectile != null)
+				firedBy.World.AddFrameEndTask(w => w.Add(projectile));
 		}
 
 		public override bool IsValidAgainst(Actor victim, Actor firedBy)
