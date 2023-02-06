@@ -1,18 +1,18 @@
 DecomposeTarget:
 	ReloadDelay: 16
-	Range: 5c0
+	Range: 6c0
 	Report: ATK_SCAVANGER.WAV
 	Projectile: InstantHit
 	Warhead@1Dam: SalvageTarget
-		Damage: 4500
+		Damage: 2000
 		Versus:
-			none: 100
-			building: 10
+			none: 20
+			building: 20
 			wall: 100
 			light: 100
 			wood: 80
 			heavy: 60
-			scavanger: 20
+			scavanger: 3
 			invulnerable: 0
 			cy: 40
 			harvester: 50
@@ -23,7 +23,7 @@ DecomposeTarget:
 
 DecomposeTargetMuzzle:
 	ReloadDelay: 2
-	Range: 5c0
+	Range: 6c0
 	Burst: 3
 	BurstDelays: 4
 	Projectile: InstantHit
@@ -49,58 +49,58 @@ DecomposeYield:
 Sound:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 12
+			scavanger: 6
 
 
 OrniBomb:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 12
+			scavanger: 6
 
 
 DeathHandCluster:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 12
+			scavanger: 6
 
 
 CrateExplosion:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 6
+			scavanger: 3
 
 
 grenade:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 4
+			scavanger: 2
 
 
 GrenDeath:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 4
+			scavanger: 2
 
 
 SardDeath:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 20
+			scavanger: 10
 
 
 SpiceExplosion:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 6
+			scavanger: 3
 
 
 BloomExplosion:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 6
+			scavanger: 3
 
 
 PlasmaExplosion:
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			scavanger: 6
+			scavanger: 3
