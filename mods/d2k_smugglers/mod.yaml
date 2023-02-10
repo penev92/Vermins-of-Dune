@@ -26,7 +26,7 @@ Packages:
 
 MapFolders:
 	d2k_smugglers|maps: System
-	# d2k|maps: System
+	d2k|maps: System
 	~^SupportDir|maps/d2k/{DEV_VERSION}: User
 
 RequiresMods:

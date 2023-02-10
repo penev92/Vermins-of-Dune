@@ -12,9 +12,9 @@ MapSize: 34,130
 
 Bounds: 1,1,32,128
 
-Visibility: Lobby
+Visibility: MissionSelector
 
-Categories: Conquest
+Categories: Campaign
 
 Players:
 	PlayerReference@Neutral:
@@ -420,5 +420,130 @@ Actors:
 	Actor102: silo
 		Owner: Harkonnen
 		Location: 31,4
+	Actor103: camera
+		Owner: Smugglers
+		Location: 12,72
+	Actor104: camera
+		Owner: Smugglers
+		Location: 28,72
+	Actor105: missile_tank
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,72
+	Actor106: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 13,72
+	Actor107: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,71
+	Actor108: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,73
+	Actor109: missile_tank
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,71
+	Actor110: missile_tank
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,73
+	Actor111: camera
+		Owner: Smugglers
+		Location: 12,81
+	Actor112: camera
+		Owner: Smugglers
+		Location: 28,81
+	Actor113: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,80
+	Actor114: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,81
+	Actor115: combat_tank_h
+		Owner: Smugglers
+		Facing: 384
+		Location: 5,80
+	Actor116: combat_tank_h
+		Owner: Smugglers
+		Facing: 384
+		Location: 4,82
+	Actor117: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 13,81
+	Actor118: combat_tank_s
+		Owner: Harkonnen
+		Facing: 384
+		Location: 12,80
+	Actor119: combat_tank_s
+		Owner: Harkonnen
+		Facing: 384
+		Location: 11,81
+	Actor120: combat_tank_h
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,80
+	Actor121: combat_tank_h
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,81
+	Actor122: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 20,82
+	Actor123: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,83
+	Actor124: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,82
+	Actor125: quad
+		Owner: Smugglers
+		Facing: 384
+		Location: 21,79
+	Actor126: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,80
+	Actor128: combat_tank_h
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,81
+	Actor127: light_inf
+		Owner: Harkonnen
+		SubCell: 3
+		Location: 28,82
+		Facing: 384
+	Actor130: light_inf
+		Owner: Harkonnen
+		Facing: 384
+		Location: 29,83
+		SubCell: 3
+	Actor131: light_inf
+		Owner: Harkonnen
+		Facing: 384
+		Location: 27,81
+		SubCell: 3
+	Actor132: light_inf
+		Owner: Harkonnen
+		Facing: 384
+		SubCell: 3
+		Location: 29,79
+	Actor133: trooper
+		Owner: Harkonnen
+		Facing: 384
+		Location: 28,83
+		SubCell: 3
+	Actor134: scavanger
+		Owner: Harkonnen
+		Facing: 384
+		Location: 30,81
 
 Rules: d2k_smugglers|rules/campaign-palettes.yaml,
