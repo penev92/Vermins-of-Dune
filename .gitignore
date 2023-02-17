@@ -49,3 +49,7 @@ _ReSharper.*/
 mods/d2k
 mods/common
 mods/modcontent
+
+
+packaging/**/build/*
+*.AppImage
