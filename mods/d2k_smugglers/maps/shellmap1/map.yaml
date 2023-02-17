@@ -1,0 +1,51 @@
+MapFormat: 12
+
+RequiresMod: d2k_smugglers
+
+Title: Shellmap - Vermins of Dune
+
+Author: oldnaari
+
+Tileset: ARRAKIS
+
+MapSize: 130,130
+
+Bounds: 1,1,128,128
+
+Visibility: MissionSelector
+
+Categories: Conquest
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Smugglers:
+		Name: Smugglers
+		Playable: True
+		LockFaction: True
+		Faction: smuggler
+		LockColor: True
+		Color: 9E5A10
+		Enemies: IX, Creeps
+	PlayerReference@Ordos:
+		Name: Ordos
+		LockFaction: True
+		Faction: ordos
+		LockColor: True
+		Enemies: Creeps
+	PlayerReference@Mercenaries:
+		Name: Mercenaries
+		LockFaction: True
+		Faction: mercenary
+		LockColor: True
+		Enemies: Creeps
+Actors:
+
+Rules: d2k|rules/campaign-palettes.yaml, rules.yaml
