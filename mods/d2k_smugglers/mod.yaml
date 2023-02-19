@@ -26,12 +26,11 @@ Packages:
 
 MapFolders:
 	d2k_smugglers|maps: System
-	# d2k|maps: System
 	~^SupportDir|maps/d2k/{DEV_VERSION}: User
 
 RequiresMods:
-	d2k: playtest-20230110
-	modchooser: playtest-20210321
+	d2k: playtest-20230218
+	modchooser: playtest-20230218
 
 Rules:
 	d2k|rules/misc.yaml
@@ -289,7 +288,7 @@ GameSpeeds:
 ModContent:
 	InstallPromptMessage: Vermins of DUne requires artwork and audio from the \noriginal game and mod specific content \n\nQuick Install will automatically download this content (without\nmusic or videos) from an online mirror of the game files.\n\nAdvanced Install includes options for copying the music, videos,\nand other content from an original game disc.
 	HeaderMessage: The original game content may be copied from an original game disc,\nor downloaded from an online mirror of the game files.
-	QuickDownload: quickinstall
+	QuickDownload: smugglerfiles
 	Packages:
 		base: Base Game Files
 			TestFiles: ^SupportDir|Content/d2k/v2/BLOXBASE.R8, ^SupportDir|Content/d2k/v2/BLOXBAT.R8, ^SupportDir|Content/d2k/v2/BLOXBGBS.R8, ^SupportDir|Content/d2k/v2/BLOXICE.R8, ^SupportDir|Content/d2k/v2/BLOXTREE.R8, ^SupportDir|Content/d2k/v2/BLOXWAST.R8, ^SupportDir|Content/d2k/v2/SOUND.RS, ^SupportDir|Content/d2k/v2/PALETTE.BIN, ^SupportDir|Content/d2k/v2/FONT.BIN,  ^SupportDir|Content/d2k/v2/FONTCOL.FNT,  ^SupportDir|Content/d2k/v2/FONTCOL.FPL
