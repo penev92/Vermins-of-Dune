@@ -114,7 +114,10 @@ function build_platform()
 	echo "Compiling Windows launcher (${PLATFORM})"
 	install_windows_launcher "${TEMPLATE_ROOT}/${ENGINE_DIRECTORY}" "${BUILTDIR}" "win-${PLATFORM}" "${MOD_ID}" "${PACKAGING_WINDOWS_LAUNCHER_NAME}"  "${PACKAGING_DISPLAY_NAME}" "${PACKAGING_FAQ_URL}"
 
-	wine64 rcedit-x64.exe "${BUILTDIR}/${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" --set-icon "${BUILTDIR}/${MOD_ID}.ico"
+	echo "Please run the following line from an external terminal"
+	echo rcedit-x64.exe "${BUILTDIR}/${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" --set-icon "${BUILTDIR}/${MOD_ID}.ico"
+	read -p "Press any key to resume ..."
+	#wine64 rcedit-x64.exe "${BUILTDIR}/${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" --set-icon "${BUILTDIR}/${MOD_ID}.ico"
 
 	echo "Building Windows setup.exe (${PLATFORM})"
 	pushd "${PACKAGING_DIR}" > /dev/null

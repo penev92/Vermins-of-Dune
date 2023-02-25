@@ -313,7 +313,7 @@ namespace OpenRA.Mods.D2KSmugglers.Projectiles
 			if (ticks <= info.Arm)
 				return;
 
-			WAngle deg180 = WAngle.ArcCos(0) + WAngle.ArcCos(0);
+			var deg180 = WAngle.ArcCos(0) + WAngle.ArcCos(0);
 			var warheadArgs = new WarheadArgs(args)
 			{
 				ImpactOrientation = new WRot(WAngle.Zero, WAngle.Zero, args.CurrentMuzzleFacing() + deg180),

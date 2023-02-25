@@ -23,8 +23,7 @@ namespace OpenRA.Mods.Common.Traits
 	public class FlyVultureInfo : AttackBaseInfo
 	{
 		[Desc("Tolerance for attack angle. Range [0, 512], 512 covers 360 degrees.")]
-		public readonly new WAngle FacingTolerance = new WAngle(8);
-
+		public new readonly WAngle FacingTolerance = new WAngle(8);
 		public override object Create(ActorInitializer init) { return new FlyVulture(init.Self, this); }
 	}
 
@@ -69,7 +68,6 @@ namespace OpenRA.Mods.Common.Traits
 		public int VultureOffset { get; private set; }
 		public int LoopRadius { get; private set; }
 
-		int lastTick;
 		public OperationVulture(
 			WPos target,
 			WPos drop,
@@ -89,12 +87,11 @@ namespace OpenRA.Mods.Common.Traits
 			Owner = owner;
 			RevealDuration = revealDuration;
 			Vultures = new List<Actor>();
-			lastTick = world.WorldTick;
 			SquadSize = squadSize;
 			World = world;
 
 			var altitude = World.Map.Rules.Actors[UnitType].TraitInfo<AircraftInfo>().CruiseAltitude.Length;
-			WVec attackDirection = (target - drop);
+			var attackDirection = (target - drop);
 			attackDirection = new WVec(attackDirection.X, attackDirection.Y, 0);
 			AttackAngle = WAngle.ArcTan(attackDirection.X, attackDirection.Y);
 
@@ -109,10 +106,10 @@ namespace OpenRA.Mods.Common.Traits
 			CheckpointDropPoint = drop + new WVec(0, 0, altitude);
 
 			var rules = World.Map.Rules;
-			AircraftInfo info = rules.Actors[UnitType].TraitInfo<AircraftInfo>();
-			LoopPeriodInTicks = 1024 / info.TurnSpeed.Angle;
-			VultureOffset = info.Speed * LoopPeriodInTicks * (SquadSize + 1) / SquadSize;
-			LoopRadius = info.Speed * LoopPeriodInTicks * 100 / 628;
+			var aircraft = rules.Actors[UnitType].TraitInfo<AircraftInfo>();
+			LoopPeriodInTicks = 1024 / aircraft.TurnSpeed.Angle;
+			VultureOffset = aircraft.Speed * LoopPeriodInTicks * (SquadSize + 1) / SquadSize;
+			LoopRadius = aircraft.Speed * LoopPeriodInTicks * 100 / 628;
 		}
 
 		public void SendVultures(
@@ -191,7 +188,7 @@ namespace OpenRA.Mods.Common.Traits
 			return true;
 		}
 
-		private bool IsDockedHarvester(Actor other)
+		bool IsDockedHarvester(Actor other)
 		{
 			if (other.TraitsImplementing<Harvester>().ToList().Count != 0)
 				return other.Trait<WithSpriteBody>().DefaultAnimation.CurrentSequence.Name == "dock-loop";
@@ -201,16 +198,16 @@ namespace OpenRA.Mods.Common.Traits
 
 		public IEnumerable<Actor> GetUnitsInBlock(WPos blockCenterPosition, WDist squareSize, WAngle angle, int speed)
 		{
-			WDist diagonal = squareSize * 141 / 100;
+			var diagonal = squareSize * 141 / 100;
 			var candidates = World.FindActorsInCircle(blockCenterPosition, diagonal);
-			WRot rotation = WRot.FromYaw(-angle);
+			var rotation = WRot.FromYaw(-angle);
 
 			Func<Actor, bool> selector = (a) =>
 			{
 				var diff = (a.CenterPosition - blockCenterPosition).Rotate(rotation);
 
-				bool isYInRange = (Math.Abs(diff.Y) < squareSize.Length + speed);
-				bool isXInRange = (Math.Abs(diff.X) < squareSize.Length);
+				var isYInRange = (Math.Abs(diff.Y) < squareSize.Length + speed);
+				var isXInRange = (Math.Abs(diff.X) < squareSize.Length);
 
 				return isXInRange && isXInRange;
 			};
@@ -224,8 +221,6 @@ namespace OpenRA.Mods.Common.Traits
 
 	public class FlyVulture : AttackBase, ITick, ISync, INotifyRemovedFromWorld
 	{
-		readonly FlyVultureInfo info;
-
 		public event Action<Actor> OnRemovedFromWorld = self => { };
 		public event Action<Actor> OnEnteredOperationRange = self => { };
 		public event Action<Actor> OnExitedOperationRange = self => { };
@@ -236,13 +231,12 @@ namespace OpenRA.Mods.Common.Traits
 		public FlyVulture(Actor self, FlyVultureInfo info)
 			: base(self, info)
 		{
-			this.info = info;
 			State = OperationStateType.APPROACH;
 		}
 
 		void HarvestTick(Actor self)
 		{
-			int pickUpDistance = 1024;
+			var pickUpDistance = 1024;
 
 			var carryallTrait = self.Trait<Carryall>();
 
@@ -257,15 +251,15 @@ namespace OpenRA.Mods.Common.Traits
 
 			candidatesIterable = candidatesIterable.Where(Operation.IsValidTarget);
 
-			List<Actor> candidates = candidatesIterable.ToList();
+			var candidates = candidatesIterable.ToList();
 
 			if (candidates.Count == 0)
 				return;
 
-			Actor closestTarget = candidates.MaxBy(a => -(self.CenterPosition - a.CenterPosition).LengthSquared);
+			var closestTarget = candidates.MaxBy(a => -(self.CenterPosition - a.CenterPosition).LengthSquared);
 
-			CPos selfPosition = new CPos(self.CenterPosition.X, self.CenterPosition.Y);
-			CPos closestTargetPosition = new CPos(closestTarget.CenterPosition.X, closestTarget.CenterPosition.Y);
+			var selfPosition = new CPos(self.CenterPosition.X, self.CenterPosition.Y);
+			var closestTargetPosition = new CPos(closestTarget.CenterPosition.X, closestTarget.CenterPosition.Y);
 
 			self.World.AddFrameEndTask(w =>
 			{
@@ -281,9 +275,9 @@ namespace OpenRA.Mods.Common.Traits
 
 		void DropTick(Actor self)
 		{
-			Carryall carryall = self.Trait<Carryall>();
-			BodyOrientation body = self.Trait<BodyOrientation>();
-			Aircraft aircraft = self.Trait<Aircraft>();
+			var carryall = self.Trait<Carryall>();
+			var body = self.Trait<BodyOrientation>();
+			var aircraft = self.Trait<Aircraft>();
 
 			if (carryall.Carryable == null)
 				return;
@@ -295,7 +289,7 @@ namespace OpenRA.Mods.Common.Traits
 			if (!self.World.Map.Contains(targetLocation))
 				return;
 
-			Mobile droppableMobile = carryall.Carryable.Trait<Mobile>();
+			var droppableMobile = carryall.Carryable.Trait<Mobile>();
 
 			if (!droppableMobile.CanEnterCell(targetLocation))
 			{

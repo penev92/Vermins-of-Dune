@@ -12,7 +12,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenRA.Graphics;
 using OpenRA.Mods.Common.Activities;
 using OpenRA.Mods.Common.Effects;
 using OpenRA.Primitives;
@@ -172,7 +171,6 @@ namespace OpenRA.Mods.Common.Traits
 
 			camera.QueueActivity(new Wait(info.CameraRemoveDelay));
 			camera.QueueActivity(new RemoveSelf());
-			camera = null;
 		}
 
 		void RemoveBeacon(Beacon beacon)
@@ -190,7 +188,6 @@ namespace OpenRA.Mods.Common.Traits
 
 	public class SelectVulturePowerTarget : SelectGenericPowerTarget
 	{
-		readonly VulturePowerInfo info;
 		protected Player player;
 
 		public SelectVulturePowerTarget(
@@ -201,7 +198,6 @@ namespace OpenRA.Mods.Common.Traits
 			Player player)
 			: base(order, manager, info.Cursor, button)
 		{
-			this.info = info;
 			this.player = player;
 		}
 

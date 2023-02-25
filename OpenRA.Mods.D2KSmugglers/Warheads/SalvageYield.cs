@@ -9,17 +9,17 @@ namespace OpenRA.Mods.Common.Warheads
 {
 	public class SalvageYieldWarhead : Warhead
 	{
-		const int salvageResourceMultiplier = 100;
-		private int tryRepair(Actor actor, int resourceAmount)
+		const int SalvageResourceMultiplier = 100;
+		static int TryRepair(Actor actor, int resourceAmount)
 		{
 			var actorHealth = actor.Trait<IHealth>();
-			ValuedInfo actorCost = actor.Info.TraitInfo<ValuedInfo>();
+			var actorCost = actor.Info.TraitInfo<ValuedInfo>();
 
-			var repairCost = salvageResourceMultiplier * (actorHealth.MaxHP - actorHealth.HP) * actorCost.Cost / actorHealth.MaxHP;
+			var repairCost = SalvageResourceMultiplier * (actorHealth.MaxHP - actorHealth.HP) * actorCost.Cost / actorHealth.MaxHP;
 
 			var salvageSpentOnRepair = Math.Min(repairCost, resourceAmount);
 
-			var healthRestored = salvageSpentOnRepair * actorHealth.MaxHP / actorCost.Cost / salvageResourceMultiplier;
+			var healthRestored = salvageSpentOnRepair * actorHealth.MaxHP / actorCost.Cost / SalvageResourceMultiplier;
 
 			actorHealth.InflictDamage(actor, actor, new Damage(-healthRestored), true);
 
@@ -29,16 +29,16 @@ namespace OpenRA.Mods.Common.Warheads
 		public override void DoImpact(in Target target, WarheadArgs args)
 		{
 			var salvageAmount = args.DamageModifiers[0];
-			Actor actor = args.WeaponTarget.Actor;
+			var actor = args.WeaponTarget.Actor;
 
 			if (actor == null || actor.IsDead)
 			{
 				return;
 			}
 
-			salvageAmount = tryRepair(actor, salvageAmount);
+			salvageAmount = TryRepair(actor, salvageAmount);
 			var playerResources = actor.Owner.PlayerActor.Trait<PlayerResources>();
-			var resourcesGain = Math.Min(salvageAmount / salvageResourceMultiplier,
+			var resourcesGain = Math.Min(salvageAmount / SalvageResourceMultiplier,
 				playerResources.ResourceCapacity - playerResources.Resources);
 
 			if (resourcesGain > 0)

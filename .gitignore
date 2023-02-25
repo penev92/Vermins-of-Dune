@@ -50,6 +50,7 @@ mods/d2k
 mods/common
 mods/modcontent
 
-
 packaging/**/build/*
+*.exe
+*.zip
 *.AppImage

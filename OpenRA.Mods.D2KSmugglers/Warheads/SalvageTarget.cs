@@ -14,13 +14,13 @@ namespace OpenRA.Mods.Common.Warheads
 		[Desc("The weapon to use for returning resources")]
 		public readonly string WeaponYieldInfo = "DecomposeYield";
 
-		const int salvageResourceMultiplier = 100;
+		const int SalvageResourceMultiplier = 100;
 		protected override void InflictDamage(Actor victim, Actor firedBy, HitShape shape, WarheadArgs args)
 		{
 			var victimMaxHP = victim.Info.TraitInfo<HealthInfo>().HP;
 			var victimCost = victim.Info.TraitInfo<ValuedInfo>().Cost;
 
-			int damage = Damage * DamageVersus(victim, shape, args) / 100;
+			var damage = Damage * DamageVersus(victim, shape, args) / 100;
 
 			// damage = Util.ApplyPercentageModifiers(damage, args.DamageModifiers);
 			var healthBeforeDamage = victim.Trait<Health>().HP;
@@ -29,13 +29,13 @@ namespace OpenRA.Mods.Common.Warheads
 
 			var healthAfterDamage = victim.Trait<Health>().HP;
 
-			long salvageGain = (long)salvageResourceMultiplier * ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
+			var salvageGain = (long)SalvageResourceMultiplier * ResourceYield * (healthBeforeDamage - healthAfterDamage) * victimCost / victimMaxHP / 100;
 
 			salvageGain = salvageGain > 0 ? salvageGain : 0;
 
 			Func<WPos> muzzlePosition = () => victim.CenterPosition;
 
-			IFacing firedByMobileTrait = firedBy.Trait<IFacing>();
+			var firedByMobileTrait = firedBy.Trait<IFacing>();
 			Func<WAngle> muzzleFacing = () => firedByMobileTrait.Facing;
 
 			WeaponInfo weaponYield;
@@ -47,8 +47,8 @@ namespace OpenRA.Mods.Common.Warheads
 				Facing = muzzleFacing(),
 				CurrentMuzzleFacing = muzzleFacing,
 				DamageModifiers = new int[] { (int)salvageGain },
-				InaccuracyModifiers = new int[0],
-				RangeModifiers = new int[0],
+				InaccuracyModifiers = Array.Empty<int>(),
+				RangeModifiers = Array.Empty<int>(),
 				Source = muzzlePosition(),
 				CurrentSource = muzzlePosition,
 				SourceActor = victim,

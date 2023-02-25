@@ -9,6 +9,7 @@
  */
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Effects;
@@ -19,7 +20,7 @@ namespace OpenRA.Mods.D2KSmugglers.Effects
 {
 	public class AttachedRevealShroudEffect : IEffect
 	{
-		static readonly PPos[] NoCells = { };
+		static readonly PPos[] NoCells = Array.Empty<PPos>();
 
 		public readonly Target Target;
 		readonly Player player;

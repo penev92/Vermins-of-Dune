@@ -31,7 +31,7 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 		readonly WDist width;
 		int next;
 		int length;
-		int skip;
+		readonly int skip;
 
 		public SalvageContrailRenderable(World world, Color color, WDist width, int length, int skip, int zOffset)
 			: this(world, new WPos[length], width, 0, 0, skip, color, zOffset) { }
@@ -68,7 +68,7 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 
 		public static float PositionBasedRadiusModifier(float time_in_seconds, WPos position)
 		{
-			double mutliplier = (
+			var mutliplier = (
 				(1.0 + 0.3 * Math.Sin((double)position.X * 100.0 + 10.0 * time_in_seconds)) *
 				(1.0 + 0.3 * Math.Sin((double)position.Y * 100.0 + 10.0 * time_in_seconds)) *
 				(1.0 + 0.3 * Math.Sin((double)position.Z * 100.0 + 10.0 * time_in_seconds)));
@@ -106,7 +106,7 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 				if (!world.FogObscures(curPos) && !world.FogObscures(nextPos))
 				{
 					var time_in_seconds = (float)wr.World.Timestep / 30;
-					float modifier = PositionBasedRadiusModifier(time_in_seconds, curPos);
+					var modifier = PositionBasedRadiusModifier(time_in_seconds, curPos);
 					wcr.DrawLine(wr.Screen3DPosition(curPos), wr.Screen3DPosition(nextPos), modifier * screenWidth, curColor, nextColor);
 				}
 
@@ -153,7 +153,7 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 
 	public class SalvageContrailFader : IEffect
 	{
-		WPos pos;
+		readonly WPos pos;
 		SalvageContrailRenderable trail;
 		int ticks;
 
