@@ -53,7 +53,6 @@ namespace OpenRA.Mods.D2KSmugglers.Graphics
 		public int ZOffset { get { return zOffset; } }
 		public bool IsDecoration { get { return true; } }
 
-		public IRenderable WithPalette(PaletteReference newPalette) { return new SalvageContrailRenderable(world, (WPos[])trail.Clone(), width, next, length, skip, color, zOffset); }
 		public IRenderable WithZOffset(int newOffset) { return new SalvageContrailRenderable(world, (WPos[])trail.Clone(), width, next, length, skip, color, newOffset); }
 		public IRenderable OffsetBy(in WVec vec)
 		{
