@@ -29,8 +29,8 @@ MapFolders:
 	~^SupportDir|maps/d2k/{DEV_VERSION}: User
 
 RequiresMods:
-	d2k: playtest-20230218
-	modchooser: playtest-20230218
+	d2k: release-20230225
+	modchooser: release-20230225
 
 Rules:
 	d2k|rules/misc.yaml
