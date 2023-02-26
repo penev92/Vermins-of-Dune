@@ -24,12 +24,12 @@ echo Enter a utility command or --exit to exit.
 echo Press enter to view a list of valid utility commands.
 echo.
 
-set /P command=Please enter a command: OpenRA.Utility.exe %MOD_ID% 
+set /P command="Please enter a command: OpenRA.Utility.exe %MOD_ID% "
 if /I "%command%" EQU "--exit" (cd %TEMPLATE_DIR% & exit /b)
 echo.
 echo ----------------------------------------
 echo.
-echo OpenRA.Utility.exe %MOD_ID% %command%
+echo Starting OpenRA.Utility.exe %MOD_ID% %command%
 call bin\OpenRA.Utility.exe %MOD_ID% %command%
 goto loop
 
