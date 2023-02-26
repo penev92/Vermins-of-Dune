@@ -53,7 +53,7 @@ Rules:
 	d2k_smugglers|rules/world.yaml
 	d2k_smugglers|rules/aircraft.yaml
 	d2k_smugglers|rules/vehicles.yaml
-	d2k_smugglers|rules/husks.yaml	
+	d2k_smugglers|rules/husks.yaml
 	d2k_smugglers|rules/starport.yaml
 
 Sequences:
@@ -322,6 +322,10 @@ ModContent:
 		d2k|installer/downloads.yaml
 		d2k_smugglers|installer/downloads.yaml
 		d2k|installer/gruntmods.yaml
+
+ModCredits:
+	ModCreditsFile: d2k_smugglers|credits.txt
+	ModTabTitle: Vermins of Dune
 
 # DiscordService:
 # 	ApplicationId: 712711732770111550
